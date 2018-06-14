@@ -29,6 +29,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 f5f6d5266095d9b5a9cb629d89087ded Assembly-CSharp.dll:UnityARInterface.ARRemoteVideo
 65ce61bce6a9cc1cdde99a2eb764fefc Assembly-CSharp.dll:Mapbox.Unity.MeshGeneration.Modifiers.SnapTerrainModifier
 324f6aeb2cad1a0cb65d8c02b33db245 Assembly-CSharp.dll:Mapbox.Unity.Ar.SnapAlignmentStrategy
+4aac805516ae743aa9d5e9608a29a30d Assembly-CSharp.dll:.Collect
 1677eae4673ca307e9f6138b6ac0ec80 Assembly-CSharp.dll:Mapbox.Examples.RotateOnYTargetTransform
 5d56d57891485d75c62bcc75163d0eee Assembly-CSharp.dll:UnityARInterface.MatchingScalePicker
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Mapbox.Unity.MeshGeneration.Factories.VectorTileFactory
@@ -315,4 +316,3 @@ fd1441f74fdb9cec10ac22c943c596cd Assembly-CSharp.dll:Mapbox.Unity.MeshGeneration
 391d84b859f3b155fe38f54bfce79162 Assembly-CSharp.dll:.UnityPointCloudExample
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.UnityARCameraNearFar
 3705132c2a63d8b7c63d014a33ee7119 Assembly-CSharp.dll:Mapbox.Unity.MeshGeneration.Modifiers.ModifierStack
-4aeb5b9808bc4fbeea5461c50af5f1af Assembly-CSharp.dll:.Collect

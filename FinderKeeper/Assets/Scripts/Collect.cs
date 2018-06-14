@@ -6,56 +6,67 @@ using UnityEngine.SceneManagement;
 
 public class Collect : MonoBehaviour {
 
-    public Text ScoreText;
-    public GameObject CollectionPanel = null;
-
-    private bool _isCollectionPanelOpen = false;
+    public Text scoreText;
+    public GameObject collectionPanel = null;
+    public Button collectionButton;
+    
     private int _score = 0;
     private string _scoreOutput = "Score = ";
+    private GameObject _collectedItem = null;
 
-    public void ToggleCollectionPanel() {
-        _isCollectionPanelOpen = !_isCollectionPanelOpen;
-
-        SetCollectionPanelVisibility();
+    public void ShowCollectionPanel() {
+        if (collectionPanel != null) {
+            collectionPanel.SetActive(true);
+        }
     }
 
-    private void SetCollectionPanelVisibility() {
-        if (CollectionPanel != null) {
-            CollectionPanel.SetActive(_isCollectionPanelOpen);
+    public void HideCollectionPanel()
+    {
+        if (collectionPanel != null)
+        {
+            collectionPanel.SetActive(false);
         }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        ToggleCollectionPanel();
-        if (collision.gameObject.tag == "High")
-
-        {
-            _score += 10;
-            ScoreText.text = _scoreOutput + _score;
-            Destroy(collision.gameObject);
-        }
-        if (collision.gameObject.tag == "Mid")
-
-        {
-            _score += 5;
-            ScoreText.text = _scoreOutput + _score;
-            Destroy(collision.gameObject);
-        }
-        if (collision.gameObject.tag == "Low")
-
-        {
-            _score += 2;
-            ScoreText.text = _scoreOutput + _score;
-            Destroy(collision.gameObject);
-        }
+        _collectedItem = collision.gameObject;
+        ShowCollectionPanel();
     }
 
     // Use this for initialization
     void Start () {
-		CollectionPanel.SetActive(false);
+        HideCollectionPanel();
         _score = 0;
-        ScoreText.text = _scoreOutput + _score;
+        scoreText.text = _scoreOutput + _score;
+
+        Button btn = collectionButton.GetComponent<Button>();
+        btn.onClick.AddListener(CollectionOnClick);
+    }
+
+    void CollectionOnClick() {
+        if (_collectedItem.tag == "High")
+
+        {
+            _score += 10;
+            scoreText.text = _scoreOutput + _score;
+            Destroy(_collectedItem);
+        }
+        if (_collectedItem.tag == "Mid")
+
+        {
+            _score += 5;
+            scoreText.text = _scoreOutput + _score;
+            Destroy(_collectedItem);
+        }
+        if (_collectedItem.tag == "Low")
+
+        {
+            _score += 2;
+            scoreText.text = _scoreOutput + _score;
+            Destroy(_collectedItem);
+        }
+        HideCollectionPanel();
     }
 	
 	// Update is called once per frame
