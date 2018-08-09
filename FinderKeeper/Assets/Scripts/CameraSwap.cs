@@ -5,12 +5,12 @@ using UnityEngine;
 public class CameraSwap : MonoBehaviour
  {
      public Camera IsometricCamera, ThirdPersonCamera;
-     public bool swapFlag = false;
+     public bool isIsoCamera = true;
 
      public void Swap()
      {
-         swapFlag = !swapFlag;
-         IsometricCamera.gameObject.SetActive(swapFlag);
-         ThirdPersonCamera.gameObject.SetActive(!swapFlag);
+         isIsoCamera = !isIsoCamera;
+         IsometricCamera.gameObject.SetActive(isIsoCamera);
+         ThirdPersonCamera.gameObject.SetActive(!isIsoCamera);
      }
  }
