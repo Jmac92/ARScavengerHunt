@@ -32,7 +32,7 @@ public class Spawn : MonoBehaviour {
         }
         if (Random.Range(0, 10000) < 10)
         {
-            Vector3 pos = new Vector3(this.transform.position.x + Random.Range(-4.0f, 4.0f),
+            Vector3 pos = new Vector3(this.transform.position.x + Random.Range(-1.0f, 1.0f),
                 this.transform.position.y,
                 this.transform.position.z + Random.Range(-4.0f, 4.0f));
 
