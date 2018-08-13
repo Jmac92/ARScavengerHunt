@@ -8,8 +8,10 @@ public class Collect : MonoBehaviour {
 
     public Text scoreText;
     public GameObject collectionPanel = null;
+    public GameObject InventoryList;
     public Button collectionButton;
-    
+
+    private Inventory _inventory;
     private int _score = 0;
     private string _scoreOutput = "Score = ";
     private GameObject _collectedItem = null;
@@ -50,6 +52,8 @@ public class Collect : MonoBehaviour {
         {
             _score += 10;
             scoreText.text = _scoreOutput + _score;
+            _inventory = InventoryList.GetComponent<Inventory>();
+            _inventory.Add("High");
             Destroy(_collectedItem);
         }
         if (_collectedItem.tag == "Mid")
@@ -57,6 +61,8 @@ public class Collect : MonoBehaviour {
         {
             _score += 5;
             scoreText.text = _scoreOutput + _score;
+            _inventory = InventoryList.GetComponent<Inventory>();
+            _inventory.Add("Mid");
             Destroy(_collectedItem);
         }
         if (_collectedItem.tag == "Low")
@@ -64,6 +70,8 @@ public class Collect : MonoBehaviour {
         {
             _score += 2;
             scoreText.text = _scoreOutput + _score;
+            _inventory = InventoryList.GetComponent<Inventory>();
+            _inventory.Add("Low");
             Destroy(_collectedItem);
         }
         HideCollectionPanel();
