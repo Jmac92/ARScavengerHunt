@@ -11,7 +11,7 @@ public class Collect : MonoBehaviour {
     public Button collectionButton;
     
     private int _score = 0;
-    private string _scoreOutput = "Score = ";
+    private string _scoreOutput = "Score: ";
     private GameObject _collectedItem = null;
 
     public void ShowCollectionPanel() {
