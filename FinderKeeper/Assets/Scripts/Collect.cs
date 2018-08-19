@@ -31,12 +31,6 @@ public class Collect : MonoBehaviour {
         }
     }
 
-  /*  void OnCollisionEnter(Collision collision)
-    {
-        _collectedItem = collision.gameObject;
-        ShowCollectionPanel();
-    }*/
-
     // Use this for initialization
     void Awake () {
         HideCollectionPanel();
@@ -54,7 +48,7 @@ public class Collect : MonoBehaviour {
             _score += 10;
             scoreText.text = _scoreOutput + _score;
             _inventory = InventoryList.GetComponent<Inventory>();
-            _inventory.Add("High");
+            _inventory.AddItem("High");
             Destroy(_collectedItem);
         }
         if (_collectedItem.tag == "Mid")
@@ -63,7 +57,7 @@ public class Collect : MonoBehaviour {
             _score += 5;
             scoreText.text = _scoreOutput + _score;
             _inventory = InventoryList.GetComponent<Inventory>();
-            _inventory.Add("Mid");
+            _inventory.AddItem("Mid");
             Destroy(_collectedItem);
         }
         if (_collectedItem.tag == "Low")
@@ -72,7 +66,7 @@ public class Collect : MonoBehaviour {
             _score += 2;
             scoreText.text = _scoreOutput + _score;
             _inventory = InventoryList.GetComponent<Inventory>();
-            _inventory.Add("Low");
+            _inventory.AddItem("Low");
             Destroy(_collectedItem);
         }
         HideCollectionPanel();

@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour {
     }
 
 
-    public void Add(string itemName)
+    public void AddItem(string itemName)
     {
         Instantiate(collectedItems);
         collectedItems.itemName = itemName;
