@@ -3929,7 +3929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeText: {fileID: 468239928}
-  ScoreText: {fileID: 0}
+  ScoreText: {fileID: 485274471}
   MaxTime: 300
   SceneTime: 0
   EndPanel: {fileID: 722275309}
