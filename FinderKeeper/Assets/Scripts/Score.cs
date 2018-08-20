@@ -6,7 +6,7 @@ using UnityEngine;
 public class Score : MonoBehaviour {
     public Text ScoreText;
     private int score = 0;
-    private string scoreOutput = "Score = ";
+    private string scoreOutput = "Score: ";
 
 	// Use this for initialization
 	void Start () {
