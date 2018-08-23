@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33730911255999156}
   - component: {fileID: 23645091383476610}
   - component: {fileID: 65138979519953538}
-  - component: {fileID: 114853604826660548}
   - component: {fileID: 54860113001905562}
+  - component: {fileID: 114605090025646368}
   m_Layer: 0
   m_Name: LowScoreCube
   m_TagString: Low
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114853604826660548
+--- !u!114 &114605090025646368
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -121,6 +121,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1258442394921422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99c54f43a077ff64a8ade235755c0e59, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b79c62851650aa4cac853390104276d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -3222,6 +3222,15 @@ Prefab:
       propertyPath: _imagery._layerProperty.rasterOptions.useMipMap
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114586318175614768, guid: 35ce2bb4caba9434db5e656796b632b1,
+        type: 2}
+      propertyPath: _latitudeLongitude
+      value: -37.807846, 144.986221
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720180231397290, guid: 35ce2bb4caba9434db5e656796b632b1, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35ce2bb4caba9434db5e656796b632b1, type: 2}
   m_IsPrefabParent: 0
@@ -3695,7 +3704,7 @@ GameObject:
   - component: {fileID: 1370302644}
   - component: {fileID: 1370302647}
   - component: {fileID: 1370302646}
-  - component: {fileID: 1370302648}
+  - component: {fileID: 1370302645}
   m_Layer: 0
   m_Name: radar
   m_TagString: Untagged
@@ -3716,6 +3725,17 @@ Transform:
   m_Father: {fileID: 1613087246}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1370302645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1370302643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c567162e2f274f8875da4e6ba479b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &1370302646
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3758,23 +3778,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1370302643}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1370302648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1370302643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2e446932c7876c41bc2308f78ef994b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HighScoreCube: {fileID: 1998543645524028, guid: 031b78201f0793e4d8296f9b1097b57f,
-    type: 2}
-  MidScoreCube: {fileID: 1915904004142456, guid: fe2e354e34abd6f4c83bf7dac4ef20e4,
-    type: 2}
-  LowScoreCube: {fileID: 1258442394921422, guid: d1644303f73fef34da28d0096233dbaa,
-    type: 2}
 --- !u!1 &1483012081 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1617592976793816, guid: 35ce2bb4caba9434db5e656796b632b1,
@@ -4175,28 +4178,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _map: {fileID: 1771452847}
   _locationStrings:
-  - -37.822334, 145.038072
-  - -37.822635, 145.038056
-  - -37.822228, 145.039242
-  - -37.822359, 145.038759
-  - -37.822033, 145.038362
-  - -37.821910, 145.039027
-  - -37.820766, 145.039252
-  - -37.821228, 145.039815
-  - -37.820796, 145.038522
-  - -37.820338, 145.038570
-  - -37.820834, 145.037830
-  - -37.820330, 145.037674
-  - -37.820610, 145.036859
-  - -37.820246, 145.036623
-  - -37.820242, 145.036328
-  - -37.820594, 145.035620
-  - -37.821958, 145.035582
-  - -37.822377, 145.037116
-  - -37.822881, 145.038827
-  - -37.823084, 145.039878
-  _spawnScale: 10
-  _markerPrefab: {fileID: 1258442394921422, guid: d1644303f73fef34da28d0096233dbaa,
+  - -37.807395, 144.986678
+  - -37.808516, 144.985867
+  - -37.807999, 144.987240
+  - -37.808024, 144.986382
+  - -37.808914, 144.987723
+  _spawnScale: 1
+  _markerPrefab: {fileID: 1104045228279890, guid: d80e668de025f8e4e849e7d1e12f3b64,
     type: 2}
 --- !u!1 &1781117499
 GameObject:
@@ -4369,7 +4357,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee8d87f6832d4b49ad33e6d2fbf5cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   itemsParent: {fileID: 1511751753}
   collectedItems: {fileID: 114771368447956202, guid: eabfa385a946aec4c977ad2ac2118b08,
     type: 2}
