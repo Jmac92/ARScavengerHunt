@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class TimeScript : MonoBehaviour {
     public Text TimeText;
-    public Text ScoreText;
+    public Text ItemText;
     public float MaxTime = 300;
     public float SceneTime = 0;
     public GameObject EndPanel;
@@ -23,12 +23,22 @@ public class TimeScript : MonoBehaviour {
         SceneTime += Time.deltaTime;
         if (SceneTime >= MaxTime)
         {
-            EndGame.finalScore = ScoreText.text;
-            EndPanel.SetActive(true);
+            End();
+        }
+
+        if (ItemText.text == "Items = 5/5")
+        {
+            End();
         }
         else
         {
             TimeText.text = TimeOutput + (Mathf.RoundToInt(MaxTime - SceneTime)).ToString();
         }
+    }
+
+    void End()
+    {
+        EndGame.finalScore = ItemText.text;
+        EndPanel.SetActive(true);
     }
 }

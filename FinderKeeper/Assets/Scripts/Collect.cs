@@ -6,15 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class Collect : MonoBehaviour {
 
-    public Text scoreText;
+    public Text itemsText;
     public GameObject collectionPanel = null;
     public GameObject InventoryList;
     public Button collectionButton;
 
     private Inventory _inventory;
-    private int _score = 0;
-    private string _scoreOutput = "Score = ";
+    private int _Items = 0;
+    private string _itemOutput = "Items = ";
     private GameObject _collectedItem = null;
+    
 
 
     public void ShowCollectionPanel() {
@@ -34,42 +35,26 @@ public class Collect : MonoBehaviour {
     // Use this for initialization
     void Awake () {
         HideCollectionPanel();
-        _score = 0;
-        scoreText.text = _scoreOutput + _score;
+        _Items = 0;
+        itemsText.text = _itemOutput + _Items +"/5";
 
         Button btn = collectionButton.GetComponent<Button>();
         btn.onClick.AddListener(CollectionOnClick);
     }
 
     void CollectionOnClick() {
-        if (_collectedItem.tag == "High")
-
-        {            
-            _score += 10;
-            scoreText.text = _scoreOutput + _score;
-            _inventory = InventoryList.GetComponent<Inventory>();
-            _inventory.AddItem("High");
-            Destroy(_collectedItem);
-        }
-        if (_collectedItem.tag == "Mid")
-
-        {
-            _score += 5;
-            scoreText.text = _scoreOutput + _score;
-            _inventory = InventoryList.GetComponent<Inventory>();
-            _inventory.AddItem("Mid");
-            Destroy(_collectedItem);
-        }
         if (_collectedItem.tag == "Low")
-
         {
-            _score += 2;
-            scoreText.text = _scoreOutput + _score;
+            _Items += 1;
+            itemsText.text = _itemOutput + _Items + "/5";
             _inventory = InventoryList.GetComponent<Inventory>();
-            _inventory.AddItem("Low");
-            Destroy(_collectedItem);
+            _inventory.DarkenImage();
+            Destroy(_collectedItem.transform.parent.gameObject);
+            
         }
         HideCollectionPanel();
+        
+        
     }
     private void Update()
     {
@@ -79,11 +64,15 @@ public class Collect : MonoBehaviour {
             RaycastHit raycastHit;
             if (Physics.Raycast(raycast, out raycastHit))
             {
-                if (raycastHit.collider.tag == "High" || raycastHit.collider.tag == "Mid" || raycastHit.collider.tag == "Low") {
+                if (raycastHit.collider.tag == "Low") {
                     _collectedItem = raycastHit.transform.gameObject;
                     ShowCollectionPanel();
                 }
             }
+        }
+        if (_Items == 5)
+        {
+
         }
     }
 }
