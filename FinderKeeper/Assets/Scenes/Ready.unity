@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657856, g: 0.49641234, b: 0.57481724, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -242,9 +242,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "There are 5 items to collect located around the Gridstone. \n\nCollect
-    as many as you can to score the most points before the time runs out!\n\nYou have
-    5 minutes.\n\nReady?"
+  m_Text: "There are 5 items to collect located around Gridstone. \n\nCollect as many
+    as you can before the time runs out!\n\nYou have 5 minutes.\n\nReady?"
 --- !u!222 &401344382
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -823,7 +822,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Scavenge at Swinburne
+  m_Text: Scavenge at Gridstone
 --- !u!222 &1725178198
 CanvasRenderer:
   m_ObjectHideFlags: 0
