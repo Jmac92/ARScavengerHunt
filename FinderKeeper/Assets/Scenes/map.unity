@@ -1512,7 +1512,7 @@ Prefab:
     - target: {fileID: 223859765797766192, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224797118019332994, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
         type: 2}
@@ -1699,7 +1699,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &413035926
 RectTransform:
@@ -4594,6 +4594,7 @@ MonoBehaviour:
   - -37.807999, 144.987240
   - -37.808024, 144.986382
   - -37.808914, 144.987723
+  - -37.687519, 145.125534
   _spawnScale: 1.5
   _markerPrefab: {fileID: 1104045228279890, guid: d80e668de025f8e4e849e7d1e12f3b64,
     type: 2}
