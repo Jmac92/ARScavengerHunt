@@ -379,7 +379,32 @@ MonoBehaviour:
         wallMaterial: {fileID: 0}
   _vectorData:
     _layerProperty:
-      sourceType: 0
+      tileJsonData:
+        tileJSONLoaded: 0
+        LayerDisplayNames:
+        - admin
+        - aeroway
+        - airport_label
+        - barrier_line
+        - building
+        - country_label
+        - housenum_label
+        - landuse
+        - landuse_overlay
+        - marine_label
+        - motorway_junction
+        - mountain_peak_label
+        - place_label
+        - poi_label
+        - rail_station_label
+        - road
+        - road_label
+        - state_label
+        - water
+        - water_label
+        - waterway
+        - waterway_label
+      _sourceType: 0
       sourceOptions:
         isActive: 1
         layerSource:
@@ -398,6 +423,7 @@ MonoBehaviour:
         entityPerCoroutine: 20
       vectorSubLayers:
       - coreOptions:
+          sourceId: 
           isActive: 1
           sublayerName: ResidentialBuildings
           geometryType: 2
@@ -406,23 +432,28 @@ MonoBehaviour:
           groupFeatures: 0
           lineWidth: 1
         filterOptions:
+          _selectedLayerName: 
           filters:
           - Key: type
+            KeyDescription: 
             PropertyValue: residential
             Min: 0
             Max: 0
             filterOperator: 0
           combinerType: 0
         extrusionOptions:
+          _selectedLayerName: building
           extrusionType: 1
           extrusionGeometryType: 0
           propertyName: height
+          propertyDescription: Number. Height of building or part of building.
           minimumHeight: 0
           maximumHeight: 0
           extrusionScaleFactor: 1
         colliderOptions:
           colliderType: 1
         materialOptions:
+          style: 4
           texturingType: 3
           materials:
           - Materials:
@@ -440,6 +471,7 @@ MonoBehaviour:
         - {fileID: 11400000, guid: 14ec972a1cec2dc429f5eca7d22b572f, type: 2}
         - {fileID: 11400000, guid: aa354e89f869a4db0a6c3ceb3c79d0be, type: 2}
       - coreOptions:
+          sourceId: 
           isActive: 1
           sublayerName: CommercialBuildings
           geometryType: 2
@@ -448,23 +480,28 @@ MonoBehaviour:
           groupFeatures: 0
           lineWidth: 1
         filterOptions:
+          _selectedLayerName: 
           filters:
           - Key: type
+            KeyDescription: 
             PropertyValue: commercial
             Min: 0
             Max: 0
             filterOperator: 0
           combinerType: 0
         extrusionOptions:
+          _selectedLayerName: building
           extrusionType: 1
           extrusionGeometryType: 0
           propertyName: height
+          propertyDescription: Number. Height of building or part of building.
           minimumHeight: 0
           maximumHeight: 0
           extrusionScaleFactor: 1
         colliderOptions:
           colliderType: 1
         materialOptions:
+          style: 4
           texturingType: 3
           materials:
           - Materials:
@@ -482,6 +519,7 @@ MonoBehaviour:
         - {fileID: 11400000, guid: 14ec972a1cec2dc429f5eca7d22b572f, type: 2}
         - {fileID: 11400000, guid: aa354e89f869a4db0a6c3ceb3c79d0be, type: 2}
       - coreOptions:
+          sourceId: 
           isActive: 1
           sublayerName: OtherBuildings
           geometryType: 2
@@ -490,28 +528,34 @@ MonoBehaviour:
           groupFeatures: 0
           lineWidth: 1
         filterOptions:
+          _selectedLayerName: 
           filters:
           - Key: type
+            KeyDescription: 
             PropertyValue: commercial
             Min: 0
             Max: 0
             filterOperator: 0
           - Key: type
+            KeyDescription: 
             PropertyValue: residential
             Min: 0
             Max: 0
             filterOperator: 0
           combinerType: 2
         extrusionOptions:
+          _selectedLayerName: building
           extrusionType: 1
           extrusionGeometryType: 0
           propertyName: height
+          propertyDescription: Number. Height of building or part of building.
           minimumHeight: 0
           maximumHeight: 0
           extrusionScaleFactor: 1
         colliderOptions:
           colliderType: 1
         materialOptions:
+          style: 4
           texturingType: 3
           materials:
           - Materials:
@@ -530,6 +574,7 @@ MonoBehaviour:
         - {fileID: 11400000, guid: aa354e89f869a4db0a6c3ceb3c79d0be, type: 2}
         - {fileID: 11400000, guid: d534c6a861f735c4dab3990ac3c05158, type: 2}
       - coreOptions:
+          sourceId: 
           isActive: 1
           sublayerName: Parks
           geometryType: 2
@@ -538,23 +583,28 @@ MonoBehaviour:
           groupFeatures: 0
           lineWidth: 1
         filterOptions:
+          _selectedLayerName: 
           filters:
           - Key: type
+            KeyDescription: 
             PropertyValue: park
             Min: 0
             Max: 0
             filterOperator: 0
           combinerType: 0
         extrusionOptions:
+          _selectedLayerName: landuse
           extrusionType: 0
           extrusionGeometryType: 0
           propertyName: height
+          propertyDescription: 
           minimumHeight: 0
           maximumHeight: 0
           extrusionScaleFactor: 1
         colliderOptions:
           colliderType: 2
         materialOptions:
+          style: 0
           texturingType: 0
           materials:
           - Materials:
@@ -572,6 +622,7 @@ MonoBehaviour:
         - {fileID: 11400000, guid: d5cfd67d46b2f4892ae231737f3a95f8, type: 2}
         - {fileID: 11400000, guid: 14ec972a1cec2dc429f5eca7d22b572f, type: 2}
         - {fileID: 11400000, guid: 4aeb0629486794f25bf199af8a4f4830, type: 2}
+      locationPrefabList: []
   _tileProvider: {fileID: 0}
 --- !u!1 &165147574
 GameObject:
@@ -1644,7 +1695,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1351042186}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 550, z: -550}
+  m_LocalPosition: {x: 27, y: 279, z: -279}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1397620595}
@@ -1846,7 +1897,7 @@ Prefab:
     - target: {fileID: 224835413515161394, guid: 98be219873e6d4dffb5949746f515a33,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -69.16049
+      value: -69.706314
       objectReference: {fileID: 0}
     - target: {fileID: 224835413515161394, guid: 98be219873e6d4dffb5949746f515a33,
         type: 2}
@@ -1856,12 +1907,12 @@ Prefab:
     - target: {fileID: 224835413515161394, guid: 98be219873e6d4dffb5949746f515a33,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 118.32098
+      value: 119.41262
       objectReference: {fileID: 0}
     - target: {fileID: 224857786874416376, guid: 98be219873e6d4dffb5949746f515a33,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 138.32098
+      value: 139.41263
       objectReference: {fileID: 0}
     - target: {fileID: 224907856650798614, guid: 98be219873e6d4dffb5949746f515a33,
         type: 2}
@@ -1912,7 +1963,7 @@ Prefab:
     - target: {fileID: 224857786874416376, guid: 98be219873e6d4dffb5949746f515a33,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 114731470950229392, guid: 98be219873e6d4dffb5949746f515a33,
         type: 2}
@@ -2144,12 +2195,12 @@ Prefab:
     - target: {fileID: 224000013044306136, guid: 3adcee2515f8c49f4a7afb3bacf2c56e,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 371
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000013044306136, guid: 3adcee2515f8c49f4a7afb3bacf2c56e,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 197.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000013044306136, guid: 3adcee2515f8c49f4a7afb3bacf2c56e,
         type: 2}

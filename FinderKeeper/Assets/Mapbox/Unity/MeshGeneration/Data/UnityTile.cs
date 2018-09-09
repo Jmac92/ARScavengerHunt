@@ -132,7 +132,7 @@ namespace Mapbox.Unity.MeshGeneration.Data
 			}
 
 			scaleFactor = Mathf.Pow(2, (map.InitialZoom - zoom));
-			gameObject.transform.localScale = new Vector3(scaleFactor, 1, scaleFactor);
+			gameObject.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
 			gameObject.SetActive(true);
 		}
 
@@ -191,6 +191,11 @@ namespace Mapbox.Unity.MeshGeneration.Data
 
 			HeightDataState = TilePropertyState.Loaded;
 			OnHeightDataChanged(this);
+
+			if (_rasterData != null)
+			{
+				_meshRenderer.material.mainTexture = _rasterData;
+			}
 		}
 
 		public float QueryHeightData(float x, float y)
@@ -253,7 +258,7 @@ namespace Mapbox.Unity.MeshGeneration.Data
 			}
 		}
 
-		void OnDestroy()
+		protected virtual void OnDestroy()
 		{
 			Cancel();
 			if (_heightTexture != null)

@@ -74,13 +74,11 @@
 	public enum UvMapType
 	{
 		[Description("Use image texture using tiled UV.")]
-		Tiled,
-		[Description("Use image texture from the Imagery source as texture for roofs. ")]
-		Satellite,
+		Tiled = 0,
 		[Description("Use an image texture atlas to define textures for roof & sides of buildings.")]
-		Atlas,
+		Atlas = 2,
 		[Description("Use an image texture atlas and a color pallete to define textures for roof & sides of buildings.")]
-		AtlasWithColorPalette,
+		AtlasWithColorPalette = 3,
 	}
 
 	public enum ImagerySourceType
@@ -175,5 +173,64 @@
 		MeshCollider,
 		[Description("Sphere collider added to the GameObject.")]
 		SphereCollider,
+	}
+
+	public enum MapFeatureType
+	{
+		[Description("Building Layer.")]
+		Building,
+		[Description("Road Layer.")]
+		Road,
+		[Description("Parkland Layer.")]
+		Parkland,
+	};
+
+	public enum StyleTypes
+	{
+		[Description("Custom style.")]
+		Custom,
+		[Description("Simple style combines stylized vector designs with scriptable palettes to create a simple, procedurally colored rendering style.")]
+		Simple,
+		[Description("Light style uses colored materials to create light, greyscale shading for your map.")]
+		Light,
+		[Description("Dark style uses colored materials to create dark, greyscale shading for your map.")]
+		Dark,
+		[Description("Realistic style combines modern, urban designs with physically based rendering materials to help create a contemporary, realistic rendering style.")]
+		Realistic,
+		[Description("Fantasy style combines old world medieval designs with physically based rendering materials to help create a fantasy rendering style.")]
+		Fantasy,
+		[Description("Satellite style uses high-resolution satellite imagery as a texture set. The comprehensive set of road, label, and POI information brings clarity and context to the crisp detail in our high-resolution satellite imagery.")]
+		Satellite,
+
+	}
+
+	public enum LocationPrefabFindBy
+	{
+		[Description("Display points of interest based on a choice of categories")]
+		MapboxCategory,
+		[Description("Display points of interest based on name")]
+		POIName,
+		[Description("Display points of interest at specific address or geographical co-ordinates on the map")]
+		AddressOrLatLon,
+	}
+
+	public enum LocationPrefabCategories
+	{
+		None = 0,
+		AnyCategory = ~0,
+		ArtsAndEntertainment = 1 << 0,
+		Food = 1 << 1,
+		Nightlife = 1 << 2,
+		OutdoorsAndRecreation = 1 << 3,
+		Services = 1 << 4,
+		Shops = 1 << 5,
+		Transportation = 1 << 6
+	}
+
+	public enum FeatureProcessingStage
+	{
+		PreProcess,
+		Process,
+		PostProcess
 	}
 }
