@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DistanceToPlayer : MonoBehaviour {
-	// Use this for initialization
+    // Use this for initialization
+
 	void Start () {
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
 		
@@ -13,7 +14,7 @@ public class DistanceToPlayer : MonoBehaviour {
 	void Update () {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         float dist = (gameObject.transform.position - player.transform.position).magnitude;
-        if (dist < 15.0f)
+        if (!ToggleARMode.isARActive && dist < 15.0f)
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
