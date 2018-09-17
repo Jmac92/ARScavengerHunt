@@ -6,7 +6,7 @@ using UnityEngine;
 public class ItemsCollected : MonoBehaviour {
     public Text CollectedText;
     private int CollectedItems = 0;
-    private string CollectedItemsOutput = "Items: ";
+    private string CollectedItemsOutput;
 
 	// Use this for initialization
 	void Start () {
