@@ -6,18 +6,12 @@ using UnityEngine;
 public class ItemsCollected : MonoBehaviour {
     public Text CollectedText;
     private int CollectedItems = 0;
-    private string CollectedItemsOutput;
+    
 
 	// Use this for initialization
 	void Start () {
         CollectedItems = 0;
-        CollectedText.text = CollectedItemsOutput + CollectedItems + "/5";
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-		
+        CollectedText.text = CollectedItems + "/5";
 	}
 }
 
