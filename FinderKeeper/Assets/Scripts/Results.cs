@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class Results : MonoBehaviour {
     public Text scoreText;
+    private string scoreOutput = "You found: ";
 
 	// Use this for initialization
 	void Start () {
-		scoreText.text = EndGame.finalScore;
+		scoreText.text =scoreOutput + EndGame.finalScore;
 	}
 	
 	// Update is called once per frame

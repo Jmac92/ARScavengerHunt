@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour {
     [SerializeField] ItemDisplay[] display;
     public Button closeInventoryList;
     private int no = 0;
+    private Color _color = new Color32(245,232,179, 255);
 
     private void Awake()
     {
@@ -57,7 +58,7 @@ public class Inventory : MonoBehaviour {
 
         if (display[no].Item != null && display[no].GetComponent<Image>().color != Color.gray)
         {
-            if (display[no].GetComponent<Image>().color == Color.white)
+            if (display[no].GetComponent<Image>().color == _color)
             {
                 display[no].GetComponent<Image>().color = Color.gray;
             }
