@@ -7,11 +7,19 @@ public class InventoryList : MonoBehaviour {
     public GameObject inventoryList;
     public Button openInventoryList;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        if (inventoryList== null)
+            inventoryList = GameObject.Find("InventoryList");
+
+        if (openInventoryList == null)
+            openInventoryList = GameObject.Find("itemButton").GetComponent<Button>();
+    }
+
+    // Use this for initialization
+    void Start () {
         if (inventoryList != null)
             inventoryList.SetActive(false);
-	
 	}
 	
 	// Update is called once per frame

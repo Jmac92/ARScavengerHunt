@@ -11,11 +11,22 @@ public class TimeScript : MonoBehaviour {
     public float SceneTime = 0;
     public GameObject EndPanel;
     private bool timeStop = false;
-   
 
+    private void Awake()
+    {
+        if (TimeText == null)
+            TimeText = GameObject.Find("Time").GetComponent<Text>();
 
-	// Use this for initialization
-	void Start () {
+        if (ItemText == null)
+            ItemText = GameObject.Find("ItemsCollected").GetComponent<Text>();
+
+        //BUSTED
+        if (EndPanel == null)
+            EndPanel = GameObject.Find("EndPanel");
+    }
+
+    // Use this for initialization
+    void Start () {
 		EndPanel.SetActive(false);
         timeStop = false;
 	}

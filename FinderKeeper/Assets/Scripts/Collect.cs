@@ -36,10 +36,27 @@ public class Collect : MonoBehaviour {
     void Awake () {
         HideCollectionPanel();
         _Items = 0;
-        itemsText.text = _itemOutput + _Items +"/5";
+        
 
-        Button btn = collectionButton.GetComponent<Button>();
-        btn.onClick.AddListener(CollectionOnClick);
+        if (itemsText == null)
+            itemsText = GameObject.Find("ItemsCollected").GetComponent<Text>();
+        itemsText.text = _itemOutput + _Items + "/5";
+
+        //BUSTED
+        if (collectionPanel == null)
+            collectionPanel = GameObject.FindWithTag("CollectionPanel");
+
+        if (InventoryList == null)
+            InventoryList = GameObject.Find("InventoryList");
+
+        //BUSTED
+        if (collectionButton == null)
+            collectionButton = GameObject.FindWithTag("CollectionButton").GetComponent<Button>();
+
+        collectionButton.onClick.AddListener(CollectionOnClick);
+
+        if (InventoryList == null)
+            InventoryList = GameObject.Find("InventoryList");
     }
 
     void CollectionOnClick() {
@@ -52,10 +69,9 @@ public class Collect : MonoBehaviour {
             Destroy(_collectedItem.transform.parent.gameObject);
             
         }
-        HideCollectionPanel();
-        
-        
+        HideCollectionPanel();  
     }
+
     private void Update()
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
