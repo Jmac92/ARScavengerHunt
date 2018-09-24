@@ -10,19 +10,30 @@ public class TimeScript : MonoBehaviour {
     public float MaxTime = 300;
     public float SceneTime = 0;
     public GameObject EndPanel;
-    private string TimeOutput = "REMAINING TIME:\n";
+    private bool timeStop = false;
+   
 
 
 	// Use this for initialization
 	void Start () {
 		EndPanel.SetActive(false);
+        timeStop = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        SceneTime += Time.deltaTime;
+        if (timeStop == false)
+        {
+            SceneTime += Time.deltaTime;
+        }
+
+        string min = Mathf.Floor(SceneTime / 60).ToString("00");
+        string sec = Mathf.Floor(SceneTime % 60).ToString("00");
+      
+        
         if (SceneTime >= MaxTime)
         {
+            timeStop = true;
             End();
         }
 
@@ -32,7 +43,7 @@ public class TimeScript : MonoBehaviour {
         }
         else
         {
-            TimeText.text = TimeOutput + (Mathf.RoundToInt(MaxTime - SceneTime)).ToString();
+            TimeText.text = min + ":" + sec;
         }
     }
 

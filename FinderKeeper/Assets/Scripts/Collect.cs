@@ -13,7 +13,7 @@ public class Collect : MonoBehaviour {
 
     private Inventory _inventory;
     private int _Items = 0;
-    private string _itemOutput = "Items = ";
+    private string _itemOutput;
     private GameObject _collectedItem = null;
     
 
