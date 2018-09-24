@@ -1503,7 +1503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.01677149, y: 0.1804807}
   m_AnchorMax: {x: 0.142, y: 0.84629774}
-  m_AnchoredPosition: {x: 22.331078, y: -0.5000553}
+  m_AnchoredPosition: {x: 22.331076, y: -0.5000553}
   m_SizeDelta: {x: 47.89622, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &338544964
@@ -3563,7 +3563,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapManager: {fileID: 1771452847}
-  _deviceLocationProvider: {fileID: 2117919255}
+  _deviceLocationProviderUnity: {fileID: 2117919255}
+  _deviceLocationProviderAndroid: {fileID: 0}
   _editorLocationProvider: {fileID: 1671377449}
   _transformLocationProvider: {fileID: 1459868930}
   _dontDestroyOnLoad: 0
@@ -4380,8 +4381,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061d2afb48ace4fd19611279b6cf732f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _useDeviceOrientation: 0
+  _subtractUserHeading: 0
   _rotationFollowFactor: 2
   _rotateZ: 0
+  _useNegativeAngle: 0
   _useTransformLocationProvider: 0
 --- !u!114 &1352142562
 MonoBehaviour:
@@ -5667,15 +5671,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1352142560}
-        m_MethodName: ShowARCanvas
-        m_Mode: 1
+      - m_Target: {fileID: 1483012082}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: ARMode
           m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -5884,12 +5888,37 @@ MonoBehaviour:
         wallMaterial: {fileID: 0}
   _vectorData:
     _layerProperty:
-      sourceType: 0
+      tileJsonData:
+        tileJSONLoaded: 0
+        LayerDisplayNames:
+        - admin
+        - aeroway
+        - airport_label
+        - barrier_line
+        - building
+        - country_label
+        - housenum_label
+        - landuse
+        - landuse_overlay
+        - marine_label
+        - motorway_junction
+        - mountain_peak_label
+        - place_label
+        - poi_label
+        - rail_station_label
+        - road
+        - road_label
+        - state_label
+        - water
+        - water_label
+        - waterway
+        - waterway_label
+      _sourceType: 1
       sourceOptions:
         isActive: 1
         layerSource:
           Name: Mapbox Terrain
-          Id: mapbox.3d-buildings,mapbox.mapbox-streets-v7
+          Id: mapbox.mapbox-streets-v7
           Modified: 
           UserName: 
       useOptimizedStyle: 0
@@ -5902,6 +5931,7 @@ MonoBehaviour:
         isEnabled: 1
         entityPerCoroutine: 20
       vectorSubLayers: []
+      locationPrefabList: []
   _tileProvider: {fileID: 0}
 --- !u!114 &1771452848
 MonoBehaviour:
@@ -7163,6 +7193,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _desiredAccuracyInMeters: 5
   _updateDistanceInMeters: 5
+  _updateTimeInMilliSeconds: 500
+  _userHeadingSmoothing: {fileID: 0}
+  _deviceOrientationSmoothing: {fileID: 0}
+  _editorDebuggingOnly:
+    _mockUnityInputLocation: 0
+    _locationLogFile: {fileID: 0}
 --- !u!1 &2129196603
 GameObject:
   m_ObjectHideFlags: 0
