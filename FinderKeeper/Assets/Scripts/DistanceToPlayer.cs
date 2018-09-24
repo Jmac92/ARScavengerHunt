@@ -17,10 +17,12 @@ public class DistanceToPlayer : MonoBehaviour {
         if (!ToggleARMode.isARActive && dist < 15.0f)
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            gameObject.transform.GetChild(1).gameObject.SetActive(true);
         }
         else
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.GetChild(1).gameObject.SetActive(false);
         }
         //Debug.Log(string.Format("Distance between {0} and {1} is: {2}",gameObject, player, dist));
     }
