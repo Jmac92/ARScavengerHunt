@@ -14,29 +14,21 @@ public class TimeScript : MonoBehaviour {
 
     private void Awake()
     {
-        if (TimeText == null)
-            TimeText = GameObject.Find("Time").GetComponent<Text>();
-
-        if (ItemText == null)
-            ItemText = GameObject.Find("ItemsCollected").GetComponent<Text>();
-
-        //BUSTED
-        if (EndPanel == null)
-            EndPanel = GameObject.Find("EndPanel");
     }
 
     // Use this for initialization
-    void Start () {
+    protected void Start () {
 		EndPanel.SetActive(false);
         timeStop = false;
+        Debug.Log("MANAGER: " + (GameManager.instance != null));
+        GameManager.instance.maxTime = MaxTime;
+        GameManager.instance.sceneTime = SceneTime;
+        GameManager.instance.hasTimerStarted = true;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        if (timeStop == false)
-        {
-            SceneTime += Time.deltaTime;
-        }
+	protected void Update () {
+        SceneTime = GameManager.instance.sceneTime;
 
         string min = Mathf.Floor(SceneTime / 60).ToString("00");
         string sec = Mathf.Floor(SceneTime % 60).ToString("00");

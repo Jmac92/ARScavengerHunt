@@ -9,11 +9,6 @@ public class InventoryList : MonoBehaviour {
 
     private void Awake()
     {
-        if (inventoryList== null)
-            inventoryList = GameObject.Find("InventoryList");
-
-        if (openInventoryList == null)
-            openInventoryList = GameObject.Find("itemButton").GetComponent<Button>();
     }
 
     // Use this for initialization

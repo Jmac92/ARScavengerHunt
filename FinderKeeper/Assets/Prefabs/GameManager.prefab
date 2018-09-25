@@ -19,10 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4585990891147346}
-  - component: {fileID: 114508520613611898}
-  - component: {fileID: 114727265314810538}
-  - component: {fileID: 114647950631440058}
-  - component: {fileID: 114554506556676942}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -43,58 +39,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114508520613611898
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1222846978708728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fdb5f21aed1b9145b93dcb8437adfd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemsText: {fileID: 0}
-  collectionPanel: {fileID: 0}
-  InventoryList: {fileID: 0}
-  collectionButton: {fileID: 0}
---- !u!114 &114554506556676942
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1222846978708728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aafb82cd1800f9b48afb11e6b26f265e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114647950631440058
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1222846978708728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd6ee77a273f8344687493bd4465c439, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeText: {fileID: 0}
-  ItemText: {fileID: 0}
-  MaxTime: 300
-  SceneTime: 0
-  EndPanel: {fileID: 0}
---- !u!114 &114727265314810538
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1222846978708728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c1a6577c97fac4088f656041cd5ba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryList: {fileID: 0}
-  openInventoryList: {fileID: 0}

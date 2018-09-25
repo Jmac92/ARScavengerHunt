@@ -36,27 +36,6 @@ public class Collect : MonoBehaviour {
     void Awake () {
         HideCollectionPanel();
         _Items = 0;
-        
-
-        if (itemsText == null)
-            itemsText = GameObject.Find("ItemsCollected").GetComponent<Text>();
-        itemsText.text = _itemOutput + _Items + "/5";
-
-        //BUSTED
-        if (collectionPanel == null)
-            collectionPanel = GameObject.FindWithTag("CollectionPanel");
-
-        if (InventoryList == null)
-            InventoryList = GameObject.Find("InventoryList");
-
-        //BUSTED
-        if (collectionButton == null)
-            collectionButton = GameObject.FindWithTag("CollectionButton").GetComponent<Button>();
-
-        collectionButton.onClick.AddListener(CollectionOnClick);
-
-        if (InventoryList == null)
-            InventoryList = GameObject.Find("InventoryList");
     }
 
     void CollectionOnClick() {
