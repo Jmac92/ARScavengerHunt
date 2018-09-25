@@ -1102,7 +1102,7 @@ Prefab:
     - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
         type: 2}
@@ -1142,7 +1142,7 @@ Prefab:
     - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
         type: 2}
@@ -1503,7 +1503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.01677149, y: 0.1804807}
   m_AnchorMax: {x: 0.142, y: 0.84629774}
-  m_AnchoredPosition: {x: 22.331085, y: -0.5000572}
+  m_AnchoredPosition: {x: 22.331055, y: -0.5000572}
   m_SizeDelta: {x: 47.89622, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &338544964
@@ -1928,7 +1928,7 @@ RectTransform:
   - {fileID: 242394800}
   - {fileID: 1820294598}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3431,8 +3431,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 50, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1352142558}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &863608547
 GameObject:
@@ -3563,7 +3563,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapManager: {fileID: 1771452847}
-  _deviceLocationProvider: {fileID: 2117919255}
+  _deviceLocationProviderUnity: {fileID: 2117919255}
+  _deviceLocationProviderAndroid: {fileID: 0}
   _editorLocationProvider: {fileID: 1671377449}
   _transformLocationProvider: {fileID: 1459868930}
   _dontDestroyOnLoad: 0
@@ -3613,8 +3614,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 50, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1352142558}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!1 &992060969
 GameObject:
@@ -4337,6 +4338,8 @@ Transform:
   - {fileID: 1704588616}
   - {fileID: 389934372}
   - {fileID: 1012281226}
+  - {fileID: 785944163}
+  - {fileID: 983544293}
   m_Father: {fileID: 1483012083}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4378,8 +4381,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061d2afb48ace4fd19611279b6cf732f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _useDeviceOrientation: 1
+  _subtractUserHeading: 0
   _rotationFollowFactor: 2
   _rotateZ: 0
+  _useNegativeAngle: 0
   _useTransformLocationProvider: 0
 --- !u!114 &1352142562
 MonoBehaviour:
@@ -4673,7 +4679,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1395754529
 GameObject:
@@ -4900,7 +4906,7 @@ Transform:
   - {fileID: 1771452849}
   - {fileID: 937329416}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1491010567
 GameObject:
@@ -5823,7 +5829,6 @@ MonoBehaviour:
         camera: {fileID: 1248989438}
         visibleBuffer: 0
         disposeBuffer: 0
-        updateInterval: 0
       rangeAroundCenterOptions:
         west: 1
         north: 1
@@ -5840,6 +5845,7 @@ MonoBehaviour:
       scalingType: 1
       unityTileSize: 100
     loadingTexture: {fileID: 2800000, guid: e2896a92727704803a9c422b043eae89, type: 3}
+    tileMaterial: {fileID: 0}
   _imagery:
     _layerProperty:
       sourceType: 2
@@ -5866,7 +5872,6 @@ MonoBehaviour:
           UserName: 
       elevationLayerType: 0
       requiredOptions:
-        baseMaterial: {fileID: 2100000, guid: b9f23e9bce724fa4daac57ecded470b8, type: 2}
         addCollider: 0
         exaggerationFactor: 1
       modificationOptions:
@@ -5882,7 +5887,10 @@ MonoBehaviour:
         wallMaterial: {fileID: 0}
   _vectorData:
     _layerProperty:
-      sourceType: 0
+      tileJsonData:
+        tileJSONLoaded: 0
+        LayerDisplayNames: []
+      _sourceType: 1
       sourceOptions:
         isActive: 1
         layerSource:
@@ -5900,6 +5908,7 @@ MonoBehaviour:
         isEnabled: 1
         entityPerCoroutine: 20
       vectorSubLayers: []
+      locationPrefabList: []
   _tileProvider: {fileID: 0}
 --- !u!114 &1771452848
 MonoBehaviour:
@@ -5936,7 +5945,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1771452846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf32ea2cc0514b569329f6b6b68f9b4, type: 3}
+  m_Script: {fileID: 11500000, guid: cf44a65d5a57342b3acbce3ae17842a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _locationBasedGame: {fileID: 1483012081}
@@ -7162,6 +7171,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _desiredAccuracyInMeters: 5
   _updateDistanceInMeters: 5
+  _updateTimeInMilliSeconds: 500
+  _userHeadingSmoothing: {fileID: 0}
+  _deviceOrientationSmoothing: {fileID: 0}
+  _editorDebuggingOnly:
+    _mockUnityInputLocation: 0
+    _locationLogFile: {fileID: 0}
 --- !u!1 &2129196603
 GameObject:
   m_ObjectHideFlags: 0

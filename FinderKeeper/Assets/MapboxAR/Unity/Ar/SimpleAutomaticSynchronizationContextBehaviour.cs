@@ -132,7 +132,7 @@ namespace Mapbox.Unity.Ar
 
 		void LocationProvider_OnLocationUpdated(Location location)
 		{
-			if (location.IsLocationUpdated || location.IsHeadingUpdated)
+			if (location.IsLocationUpdated || location.IsUserHeadingUpdated)
 			{
 				// With this line, we can control accuracy of Gps updates. 
 				// Be aware that we only get location information if it previously met
@@ -170,12 +170,13 @@ namespace Mapbox.Unity.Ar
 							, latitudeLongitude.x
 							, latitudeLongitude.y
 							, location.Accuracy
-							, location.Heading
+							, location.UserHeading
 						)
 						, "lightblue"
 					);
 
-					var position = Conversions.GeoToWorldPosition(latitudeLongitude, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz();
+					var position = _map.GeoToWorldPosition(latitudeLongitude, false);
+					position.y = _map.Root.position.y;
 					_synchronizationContext.AddSynchronizationNodes(location, position, _arPositionReference.localPosition);
 				}
 			}
