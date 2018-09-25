@@ -50,6 +50,8 @@ namespace Mapbox.Examples
 
 		Quaternion _targetRotation;
 
+		bool _isRotatable = true;
+
 		/// <summary>
 		/// The location provider.
 		/// This is public so you change which concrete <see cref="ILocationProvider"/> to use at runtime.  
@@ -153,6 +155,11 @@ namespace Mapbox.Examples
 			}
 
 			return euler;
+		}
+
+		public void ToggleRotation() {
+			_isRotatable = !_isRotatable;
+			this.enabled = _isRotatable;
 		}
 
 

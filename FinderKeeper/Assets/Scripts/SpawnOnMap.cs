@@ -52,6 +52,9 @@ public class SpawnOnMap : MonoBehaviour
             var location = _locations[i];
             spawnedObject.transform.localPosition = _map.GeoToWorldPosition(location, true);
             spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
+            var pos = spawnedObject.transform.localPosition;
+            pos.y = 5;
+            spawnedObject.transform.localPosition = pos;
         }
     }
 }

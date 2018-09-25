@@ -7,6 +7,7 @@ TagManager:
   - High
   - Low
   - Mid
+  - RadarPulse
   layers:
   - Default
   - TransparentFX
