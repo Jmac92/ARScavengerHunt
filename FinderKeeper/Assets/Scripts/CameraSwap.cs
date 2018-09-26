@@ -12,5 +12,14 @@ public class CameraSwap : MonoBehaviour
          isIsoCamera = !isIsoCamera;
          IsometricCamera.gameObject.SetActive(isIsoCamera);
          ThirdPersonCamera.gameObject.SetActive(!isIsoCamera);
+
+         GameObject radar = GameObject.FindGameObjectWithTag("RadarPulse");
+         var position = radar.transform.localPosition;
+         if (isIsoCamera) {
+             position.z = 0;
+         } else {
+             position.z = -12;
+         }
+         radar.transform.localPosition = position;
      }
  }
