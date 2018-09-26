@@ -4,16 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Results : MonoBehaviour {
-    public Text scoreText;
-    private string scoreOutput = "You found: ";
+	[SerializeField]
+    Text scoreText;
+
+	[SerializeField]
+	Text messageText;
 
 	// Use this for initialization
 	void Start () {
-		scoreText.text =scoreOutput + EndGame.finalScore;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		scoreText.text = "You found: " + EndGame.finalScore;
+
+		switch (EndGame.finalScore)
+		{
+			case "5/5":
+				messageText.text = "Impressive!";
+				break;
+			case "4/5":
+				messageText.text = "So close!";
+				break;
+			case "3/5":
+				messageText.text = "Well done!";
+				break;	
+			default:
+				messageText.text = "Better luck next time!";
+				break;
+		}
 	}
 }
