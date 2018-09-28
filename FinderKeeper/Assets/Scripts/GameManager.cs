@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public static GameManager instance;
-
     public float maxTime = 300;
     public float sceneTime = 0;
     public bool hasTimerStarted = false;
 
+    private static GameManager _instance;
+
     // Use this for initialization
     void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else if (instance != this)
+        if (_instance == null)
+            _instance = this;
+        else if (_instance != this)
 
         Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
@@ -40,6 +40,19 @@ public class GameManager : MonoBehaviour {
         if (hasTimerStarted)
         {
             sceneTime += Time.deltaTime;
+        }
+    }
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = FindObjectOfType<GameManager>();
+
+            DontDestroyOnLoad(_instance);
+
+            return _instance;
         }
     }
 }

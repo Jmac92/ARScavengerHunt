@@ -4,8 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TimeScript : MonoBehaviour
-{
+public class TimeScript : MonoBehaviour {
     public Text TimeText;
     public Text ItemText;
     public float MaxTime = 300;
@@ -13,27 +12,28 @@ public class TimeScript : MonoBehaviour
     public GameObject EndPanel;
     private bool timeStop = false;
 
-
-
-    // Use this for initialization
-    void Start()
+    private void Awake()
     {
-        EndPanel.SetActive(false);
-        timeStop = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (timeStop == false)
-        {
-            SceneTime += Time.deltaTime;
-        }
+    // Use this for initialization
+    protected void Start () {
+		EndPanel.SetActive(false);
+        timeStop = false;
+        Debug.Log("MANAGER: " + (GameManager.Instance != null));
+        GameManager.Instance.maxTime = MaxTime;
+        GameManager.Instance.sceneTime = SceneTime;
+        GameManager.Instance.hasTimerStarted = true;
+	}
+	
+	// Update is called once per frame
+	protected void Update () {
+        SceneTime = GameManager.Instance.sceneTime;
 
         string min = Mathf.Floor(SceneTime / 60).ToString("00");
         string sec = Mathf.Floor(SceneTime % 60).ToString("00");
-
-
+      
+        
         if (SceneTime >= MaxTime)
         {
             timeStop = true;
