@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -15,31 +16,27 @@ public class GameManager : MonoBehaviour {
         if (_instance == null)
             _instance = this;
         else if (_instance != this)
+            Destroy(gameObject);
 
-        Destroy(gameObject);
+        PlayerPrefs.DeleteKey("maxTime");
+        PlayerPrefs.DeleteKey("sceneTime");
+        PlayerPrefs.DeleteKey("hasTimerStarted");
+
+        PlayerPrefs.SetFloat("maxTime", maxTime);
+        sceneTime = PlayerPrefs.GetFloat("sceneTime");
+
+
         DontDestroyOnLoad(gameObject);
+
+        
     }
-
-    //public float MaxTime {
-    //    get { return _maxTime; }
-    //    set { _maxTime = value; }
-    //}
-
-    //public float SceneTime {
-    //    get { return _sceneTime; }
-    //    set { _sceneTime = value; }
-    //}
-
-    //public bool HasTimerStarted {
-    //    get { return _hasTimerStarted; }
-    //    set { _hasTimerStarted = value; }
-    //}
 
     private void Update()
     {
-        if (hasTimerStarted)
+        if (Convert.ToBoolean(PlayerPrefs.GetInt("hasTimerStarted")))
         {
             sceneTime += Time.deltaTime;
+            PlayerPrefs.SetFloat("sceneTime", sceneTime);
         }
     }
 
@@ -48,9 +45,9 @@ public class GameManager : MonoBehaviour {
         get
         {
             if (_instance == null)
+            {
                 _instance = FindObjectOfType<GameManager>();
-
-            DontDestroyOnLoad(_instance);
+            }
 
             return _instance;
         }

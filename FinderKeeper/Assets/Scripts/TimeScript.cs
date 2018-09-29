@@ -11,24 +11,19 @@ public class TimeScript : MonoBehaviour {
     public float SceneTime = 0;
     public GameObject EndPanel;
     private bool timeStop = false;
-
-    private void Awake()
-    {
-    }
+    
 
     // Use this for initialization
     protected void Start () {
 		EndPanel.SetActive(false);
         timeStop = false;
-        Debug.Log("MANAGER: " + (GameManager.Instance != null));
-        GameManager.Instance.maxTime = MaxTime;
-        GameManager.Instance.sceneTime = SceneTime;
-        GameManager.Instance.hasTimerStarted = true;
+        MaxTime = PlayerPrefs.GetFloat("maxTime");
+        PlayerPrefs.SetInt("hasTimerStarted", 1);
 	}
 	
 	// Update is called once per frame
-	protected void Update () {
-        SceneTime = GameManager.Instance.sceneTime;
+	private void Update () {
+        SceneTime = PlayerPrefs.GetFloat("sceneTime");
 
         string min = Mathf.Floor(SceneTime / 60).ToString("00");
         string sec = Mathf.Floor(SceneTime % 60).ToString("00");
