@@ -13,7 +13,6 @@ public class Collect : MonoBehaviour {
 
     private Inventory _inventory;
     private int _Items = 0;
-    private string _itemOutput;
     private GameObject _collectedItem = null;
     
 
@@ -42,7 +41,7 @@ public class Collect : MonoBehaviour {
         if (_collectedItem.tag == "Low")
         {
             _Items += 1;
-            itemsText.text = _itemOutput + _Items + "/5";
+            itemsText.text =  _Items + "/5";
             _inventory = InventoryList.GetComponent<Inventory>();
             _inventory.DarkenImage();
             Destroy(_collectedItem.transform.parent.gameObject);

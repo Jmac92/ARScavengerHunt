@@ -2716,7 +2716,6 @@ MonoBehaviour:
         camera: {fileID: 0}
         visibleBuffer: 0
         disposeBuffer: 0
-        updateInterval: 0
       rangeAroundCenterOptions:
         west: 1
         north: 1
@@ -2733,6 +2732,7 @@ MonoBehaviour:
       scalingType: 0
       unityTileSize: 100
     loadingTexture: {fileID: 0}
+    tileMaterial: {fileID: 0}
   _imagery:
     _layerProperty:
       sourceType: 0
@@ -2759,7 +2759,6 @@ MonoBehaviour:
           UserName: 
       elevationLayerType: 0
       requiredOptions:
-        baseMaterial: {fileID: 0}
         addCollider: 0
         exaggerationFactor: 1
       modificationOptions:
@@ -2777,7 +2776,29 @@ MonoBehaviour:
     _layerProperty:
       tileJsonData:
         tileJSONLoaded: 0
-        LayerDisplayNames: []
+        LayerDisplayNames:
+        - admin
+        - aeroway
+        - airport_label
+        - barrier_line
+        - building
+        - country_label
+        - housenum_label
+        - landuse
+        - landuse_overlay
+        - marine_label
+        - motorway_junction
+        - mountain_peak_label
+        - place_label
+        - poi_label
+        - rail_station_label
+        - road
+        - road_label
+        - state_label
+        - water
+        - water_label
+        - waterway
+        - waterway_label
       _sourceType: 1
       sourceOptions:
         isActive: 1
@@ -2795,46 +2816,7 @@ MonoBehaviour:
       performanceOptions:
         isEnabled: 1
         entityPerCoroutine: 20
-      vectorSubLayers:
-      - coreOptions:
-          sourceId: 
-          isActive: 1
-          sublayerName: buildings
-          geometryType: 2
-          layerName: building
-          snapToTerrain: 1
-          groupFeatures: 0
-          lineWidth: 1
-        filterOptions:
-          _selectedLayerName: 
-          filters: []
-          combinerType: 0
-        extrusionOptions:
-          _selectedLayerName: 
-          extrusionType: 1
-          extrusionGeometryType: 0
-          propertyName: height
-          propertyDescription: 
-          minimumHeight: 0
-          maximumHeight: 0
-          extrusionScaleFactor: 1
-        colliderOptions:
-          colliderType: 0
-        materialOptions:
-          style: 0
-          texturingType: 0
-          materials:
-          - Materials:
-            - {fileID: 2100000, guid: 65fb5c4ce7e4e4e1bbd063bbb561cde7, type: 2}
-          - Materials:
-            - {fileID: 2100000, guid: 65fb5c4ce7e4e4e1bbd063bbb561cde7, type: 2}
-          atlasInfo: {fileID: 0}
-          colorPalette: {fileID: 0}
-        honorBuildingIdSetting: 1
-        buildingsWithUniqueIds: 0
-        moveFeaturePositionTo: 0
-        MeshModifiers: []
-        GoModifiers: []
+      vectorSubLayers: []
       locationPrefabList:
       - coreOptions:
           sourceId: 
@@ -2843,7 +2825,7 @@ MonoBehaviour:
           geometryType: 0
           layerName: 
           snapToTerrain: 1
-          groupFeatures: 0
+          combineMeshes: 0
           lineWidth: 0
         filterOptions:
           _selectedLayerName: 
@@ -2865,12 +2847,22 @@ MonoBehaviour:
           texturingType: 0
           materials: []
           atlasInfo: {fileID: 0}
+          lightStyleOpacity: 1
+          darkStyleOpacity: 1
+          colorStyleColor: {r: 1, g: 1, b: 1, a: 1}
+          samplePalettes: 0
           colorPalette: {fileID: 0}
+        performanceOptions:
+          isEnabled: 1
+          entityPerCoroutine: 20
         honorBuildingIdSetting: 0
         buildingsWithUniqueIds: 0
         moveFeaturePositionTo: 0
         MeshModifiers: []
         GoModifiers: []
+        presetFeatureType: 4
+        _maskValue: 0
+        selectedTypes: 
         spawnPrefabOptions:
           prefab: {fileID: 1560603973885938, guid: 94e4bc7d5d6208d4cb2466981fd4dbf9,
             type: 2}

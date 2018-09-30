@@ -33,11 +33,13 @@ public class GameManager : MonoBehaviour {
 
     private void Update()
     {
+        //Keep time once the player has entered the map scene
         if (Convert.ToBoolean(PlayerPrefs.GetInt("hasTimerStarted")))
         {
             sceneTime += Time.deltaTime;
             PlayerPrefs.SetFloat("sceneTime", sceneTime);
         }
+        else PlayerPrefs.SetFloat("sceneTime", 0);
     }
 
     public static GameManager Instance
