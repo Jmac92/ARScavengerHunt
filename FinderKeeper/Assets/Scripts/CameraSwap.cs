@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraSwap : MonoBehaviour
- {
-     public Camera IsometricCamera, ThirdPersonCamera;
-     public bool isIsoCamera = true;
+public class CameraSwap : MonoBehaviour {
+    [SerializeField]
+    Camera _isometricCamera;
 
-     public void Swap()
-     {
-         isIsoCamera = !isIsoCamera;
-         IsometricCamera.gameObject.SetActive(isIsoCamera);
-         ThirdPersonCamera.gameObject.SetActive(!isIsoCamera);
+    [SerializeField]
+    Camera _thirdPersonCamera;
 
-         GameObject radar = GameObject.FindGameObjectWithTag("RadarPulse");
-         var position = radar.transform.localPosition;
-         if (isIsoCamera) {
-             position.z = 0;
-         } else {
-             position.z = -12;
-         }
-         radar.transform.localPosition = position;
-     }
- }
+    [SerializeField]
+    GameObject _radarPulse;
+
+    bool _isIsoCamera = true;
+
+    public void Swap() {
+        _isIsoCamera = !_isIsoCamera;
+        _isometricCamera.gameObject.SetActive(_isIsoCamera);
+        _thirdPersonCamera.gameObject.SetActive(!_isIsoCamera);
+
+        var position = _radarPulse.transform.localPosition;
+        if (_isIsoCamera) {
+            position.z = 0;
+        } else {
+            position.z = -12;
+        }
+        _radarPulse.transform.localPosition = position;
+    }
+}

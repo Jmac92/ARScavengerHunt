@@ -826,6 +826,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: c60242da976d7f24f8b8a1bc4cea7170, type: 2}
+    - target: {fileID: 198280288110941628, guid: f9bb8fd617c79004c96e5ae8d5b2b8c0,
+        type: 2}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9bb8fd617c79004c96e5ae8d5b2b8c0, type: 2}
   m_IsPrefabParent: 0
@@ -3549,7 +3554,7 @@ Transform:
   - {fileID: 48971992}
   - {fileID: 1459868929}
   m_Father: {fileID: 1483012083}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937329417
 MonoBehaviour:
@@ -3648,6 +3653,141 @@ Transform:
   - {fileID: 746676567}
   m_Father: {fileID: 46839028}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1006689813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1144877731728236, guid: 35ce2bb4caba9434db5e656796b632b1,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1006689816}
+  - component: {fileID: 1006689815}
+  m_Layer: 0
+  m_Name: OverviewMap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1006689815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114276132085450664, guid: 35ce2bb4caba9434db5e656796b632b1,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1006689813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd961b1c9541a4cee99686069ecce852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initializeOnStart: 0
+  _options:
+    locationOptions:
+      latitudeLongitude: 37.784179, -122.401583
+      zoom: 16
+    extentOptions:
+      extentType: 0
+      cameraBoundsOptions:
+        camera: {fileID: 1248989438}
+        visibleBuffer: 0
+        disposeBuffer: 0
+      rangeAroundCenterOptions:
+        west: 1
+        north: 1
+        east: 1
+        south: 1
+      rangeAroundTransformOptions:
+        targetTransform: {fileID: 0}
+        visibleBuffer: 0
+        disposeBuffer: 0
+    placementOptions:
+      placementType: 1
+      snapMapToZero: 0
+    scalingOptions:
+      scalingType: 1
+      unityTileSize: 100
+    loadingTexture: {fileID: 2800000, guid: e2896a92727704803a9c422b043eae89, type: 3}
+    tileMaterial: {fileID: 0}
+  _imagery:
+    _layerProperty:
+      sourceType: 2
+      sourceOptions:
+        isActive: 1
+        layerSource:
+          Name: Streets
+          Id: mapbox://styles/mapbox/dark-v9
+          Modified: 
+          UserName: 
+      rasterOptions:
+        useRetina: 1
+        useCompression: 0
+        useMipMap: 1
+  _terrain:
+    _layerProperty:
+      sourceType: 0
+      sourceOptions:
+        isActive: 1
+        layerSource:
+          Name: 
+          Id: mapbox.terrain-rgb
+          Modified: 
+          UserName: 
+      elevationLayerType: 0
+      requiredOptions:
+        addCollider: 0
+        exaggerationFactor: 1
+      modificationOptions:
+        sampleCount: 10
+        useRelativeHeight: 1
+        earthRadius: 1000
+      unityLayerOptions:
+        addToLayer: 0
+        layerId: 0
+      sideWallOptions:
+        isActive: 0
+        wallHeight: 10
+        wallMaterial: {fileID: 0}
+  _vectorData:
+    _layerProperty:
+      tileJsonData:
+        tileJSONLoaded: 0
+        LayerDisplayNames: []
+      _sourceType: 1
+      sourceOptions:
+        isActive: 1
+        layerSource:
+          Name: Mapbox Terrain
+          Id: mapbox.3d-buildings,mapbox.mapbox-streets-v7
+          Modified: 
+          UserName: 
+      useOptimizedStyle: 0
+      optimizedStyle:
+        Name: 
+        Id: 
+        Modified: 
+        UserName: 
+      performanceOptions:
+        isEnabled: 1
+        entityPerCoroutine: 20
+      vectorSubLayers: []
+      locationPrefabList: []
+  _tileProvider: {fileID: 0}
+--- !u!4 &1006689816
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4771038816137298, guid: 35ce2bb4caba9434db5e656796b632b1,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1006689813}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1483012083}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1012281225
 GameObject:
@@ -4560,9 +4700,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f0e7ef902fc4eefbb7d53b7a997fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsometricCamera: {fileID: 1738812505}
-  ThirdPersonCamera: {fileID: 1248989438}
-  isIsoCamera: 1
+  _isometricCamera: {fileID: 1738812505}
+  _thirdPersonCamera: {fileID: 1248989438}
+  _radarPulse: {fileID: 1012281225}
 --- !u!114 &1352142565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5011,6 +5151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1483012083}
   - component: {fileID: 1483012082}
+  - component: {fileID: 1483012084}
   m_Layer: 0
   m_Name: LocationBasedGame
   m_TagString: Untagged
@@ -5042,10 +5183,32 @@ Transform:
   m_Children:
   - {fileID: 1352142558}
   - {fileID: 1771452849}
+  - {fileID: 1006689816}
   - {fileID: 937329416}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1483012084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1483012081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9831ee22e37c4381a2af820aca79988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mapGameObject: {fileID: 1771452846}
+  _overviewMapGameObject: {fileID: 1006689813}
+  _playerGameObject: {fileID: 1352142557}
+  _radarPulse: {fileID: 1012281225}
+  _map: {fileID: 1771452847}
+  _overviewMap: {fileID: 1006689815}
+  _markerPrefab: {fileID: 1572807047655010, guid: dc045e62d23a829479b958da9344af88,
+    type: 2}
+  _playerPrefab: {fileID: 100004, guid: cdc93de93f2f11e48a70a0446b5a5557, type: 3}
+  _markerSpawnScale: 12
 --- !u!1 &1491010567
 GameObject:
   m_ObjectHideFlags: 0
@@ -6149,13 +6312,35 @@ MonoBehaviour:
     _layerProperty:
       tileJsonData:
         tileJSONLoaded: 0
-        LayerDisplayNames: []
+        LayerDisplayNames:
+        - admin
+        - aeroway
+        - airport_label
+        - barrier_line
+        - building
+        - country_label
+        - housenum_label
+        - landuse
+        - landuse_overlay
+        - marine_label
+        - motorway_junction
+        - mountain_peak_label
+        - place_label
+        - poi_label
+        - rail_station_label
+        - road
+        - road_label
+        - state_label
+        - water
+        - water_label
+        - waterway
+        - waterway_label
       _sourceType: 1
       sourceOptions:
         isActive: 1
         layerSource:
           Name: Mapbox Terrain
-          Id: mapbox.3d-buildings,mapbox.mapbox-streets-v7
+          Id: mapbox.mapbox-streets-v7
           Modified: 
           UserName: 
       useOptimizedStyle: 0
@@ -6208,7 +6393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf44a65d5a57342b3acbce3ae17842a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _locationBasedGame: {fileID: 1483012081}
+  _mapGameObject: {fileID: 1771452846}
   _map: {fileID: 1771452847}
   _locationStrings:
   - -37.807395, 144.986678
@@ -6216,7 +6401,6 @@ MonoBehaviour:
   - -37.807999, 144.987240
   - -37.808024, 144.986382
   - -37.808914, 144.987723
-  - -37.847971, 144.729233
   _spawnScale: 1.5
   _markerPrefab: {fileID: 1961207376309816, guid: 32f43cd74ac333842801bc372d4db9d4,
     type: 2}
@@ -6296,9 +6480,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 242394799}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1483012084}
+        m_MethodName: ToggleOverviewMap
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
