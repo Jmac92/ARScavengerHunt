@@ -9,10 +9,15 @@ public class ARCollect : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        Debug.Log("CONFETTI: " + !!confetti);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (_collectedItem != null) {
+            confetti.transform.parent = transform;
+        }
+
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
@@ -30,6 +35,11 @@ public class ARCollect : MonoBehaviour {
 
     private void CollectItem(GameObject item) {
         item.GetComponent<MeshRenderer>().enabled = false;
+        SoundManager.Instance.PlaySound("PartyPopper");
+
         confetti.Play();
+        if (!confetti.isPlaying) {
+            Destroy(gameObject);
+        }
     }
 }
