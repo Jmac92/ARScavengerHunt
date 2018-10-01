@@ -48,7 +48,7 @@ public class Collect : MonoBehaviour {
             _Items += 1;
             itemsText.text = _itemOutput + _Items + "/5";
             _inventory = InventoryList.GetComponent<Inventory>();
-            _inventory.DarkenImage();
+            _inventory.WhitenImage();
             Destroy(_collectedItem.transform.parent.gameObject);
             
         }
@@ -69,10 +69,6 @@ public class Collect : MonoBehaviour {
                     ShowCollectionPanel();
                 }
             }
-        }
-        if (_Items == 5)
-        {
-
         }
     }
 }

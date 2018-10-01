@@ -27,10 +27,10 @@ public class TimeScript : MonoBehaviour {
             SceneTime += Time.deltaTime;
         }
 
-        string min = Mathf.Floor(SceneTime / 60).ToString("00");
-        string sec = Mathf.Floor(SceneTime % 60).ToString("00");
-      
-        
+        string min = Mathf.Floor(Mathf.Round(MaxTime - SceneTime) / 60).ToString("00");
+        string sec = Mathf.Floor(Mathf.Round(MaxTime - SceneTime) % 60).ToString("00");
+
+
         if (SceneTime >= MaxTime)
         {
             timeStop = true;
