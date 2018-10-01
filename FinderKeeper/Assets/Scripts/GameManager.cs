@@ -39,7 +39,11 @@ public class GameManager : MonoBehaviour {
             sceneTime += Time.deltaTime;
             PlayerPrefs.SetFloat("sceneTime", sceneTime);
         }
-        else PlayerPrefs.SetFloat("sceneTime", 0);
+        else
+        {
+            sceneTime = 0;
+            PlayerPrefs.SetFloat("sceneTime", sceneTime);
+        }
     }
 
     public static GameManager Instance
@@ -53,5 +57,10 @@ public class GameManager : MonoBehaviour {
 
             return _instance;
         }
+    }
+
+    public void ResetTimer() {
+        PlayerPrefs.SetFloat("sceneTime", 0);
+        PlayerPrefs.SetInt("hasTimerStarted", 0);
     }
 }
