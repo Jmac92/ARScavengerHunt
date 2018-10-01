@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class SpawnOnMap : MonoBehaviour
 {
     [SerializeField]
-    GameObject _locationBasedGame;
+    GameObject _mapGameObject;
 
     [SerializeField]
     AbstractMap _map;
@@ -36,7 +36,7 @@ public class SpawnOnMap : MonoBehaviour
             var locationString = _locationStrings[i];
             _locations[i] = Conversions.StringToLatLon(locationString);
             var instance = Instantiate(_markerPrefab);
-            instance.transform.SetParent(_locationBasedGame.transform);
+            instance.transform.SetParent(_mapGameObject.transform);
             instance.transform.localPosition = _map.GeoToWorldPosition(_locations[i], true);
             instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
             _spawnedObjects.Add(instance);
