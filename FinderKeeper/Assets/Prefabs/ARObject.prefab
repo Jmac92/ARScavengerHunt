@@ -1381,8 +1381,8 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 7325
-        atime1: 44718
+        atime0: 0
+        atime1: 65535
         atime2: 0
         atime3: 0
         atime4: 0
