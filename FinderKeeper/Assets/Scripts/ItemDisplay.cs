@@ -7,6 +7,11 @@ public class ItemDisplay : MonoBehaviour {
     private ItemsDetails _item;
     [SerializeField] Image Image;
 
+    private void Start()
+    {
+        Image.GetComponent<Image>().color = Color.gray;
+    }
+
     public ItemsDetails Item
     {
         get { return _item; }

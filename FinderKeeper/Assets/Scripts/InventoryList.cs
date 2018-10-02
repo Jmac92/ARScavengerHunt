@@ -5,12 +5,7 @@ using UnityEngine.UI;
 
 public class InventoryList : MonoBehaviour {
     public GameObject inventoryList;
-    public Button openInventoryList;
-
-    private void Awake()
-    {
-    }
-
+    
     // Use this for initialization
     void Start () {
         if (inventoryList != null)
@@ -19,12 +14,10 @@ public class InventoryList : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Button button = openInventoryList.GetComponent<Button>();
-        button.onClick.AddListener(OpenInventoryList);
 	}
 
-    void OpenInventoryList()
+    public void OpenInventoryList()
     {
-        inventoryList.SetActive(true);
+        inventoryList.SetActive(!inventoryList.activeInHierarchy);
     }
 }

@@ -11,7 +11,9 @@ public class MenuScript : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Ready" && !!GameManager.Instance)
         {
-            GameManager.Instance.ResetTimer();
+            //GameManager.Instance.ResetTimer();
+            PlayerPrefs.SetFloat("sceneTime", 0);
+            PlayerPrefs.SetInt("hasTimerStarted", 0);
         }
 		SceneManager.LoadScene(sceneName); //load a scene
 	}

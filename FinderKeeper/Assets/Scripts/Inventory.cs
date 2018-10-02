@@ -53,14 +53,14 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-    public void DarkenImage()
+    public void WhitenImage()
     {
 
-        if (display[no].Item != null && display[no].GetComponent<Image>().color != Color.gray)
+        if (display[no].Item != null && display[no].GetComponent<Image>().color != Color.white)
         {
             if (display[no].GetComponent<Image>().color == _color)
             {
-                display[no].GetComponent<Image>().color = Color.gray;
+                display[no].GetComponent<Image>().color = Color.white;
             }
             else
             {

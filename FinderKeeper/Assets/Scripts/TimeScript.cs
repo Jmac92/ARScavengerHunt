@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class TimeScript : MonoBehaviour {
     public Text TimeText;
@@ -23,12 +24,13 @@ public class TimeScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	private void Update () {
+        bool hasTimerStarted = Convert.ToBoolean(PlayerPrefs.GetInt("hasTimerStarted"));
         SceneTime = PlayerPrefs.GetFloat("sceneTime");
 
-        string min = Mathf.Floor(SceneTime / 60).ToString("00");
-        string sec = Mathf.Floor(SceneTime % 60).ToString("00");
-      
-        
+        string min = Mathf.Floor(Mathf.Round(MaxTime - SceneTime) / 60).ToString("00");
+        string sec = Mathf.Floor(Mathf.Round(MaxTime - SceneTime) % 60).ToString("00");
+
+
         if (SceneTime >= MaxTime)
         {
             timeStop = true;
@@ -39,14 +41,18 @@ public class TimeScript : MonoBehaviour {
         {
             End();
         }
-        else
-        {
+
+        if (hasTimerStarted)
             TimeText.text = min + ":" + sec;
-        }
+        else
+            TimeText.text = "00:00";
     }
 
     void End()
     {
+        if (!Convert.ToBoolean(PlayerPrefs.GetInt("hasTimerStarted"))) {
+            PlayerPrefs.SetFloat("sceneTime", 300);
+        }
         EndGame.finalScore = ItemText.text;
         EndPanel.SetActive(true);
     }

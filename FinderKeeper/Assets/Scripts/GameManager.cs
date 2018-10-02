@@ -44,6 +44,9 @@ public class GameManager : MonoBehaviour {
             sceneTime = 0;
             PlayerPrefs.SetFloat("sceneTime", sceneTime);
         }
+
+        if (sceneTime >= maxTime)
+            StopTimer();
     }
 
     public static GameManager Instance
@@ -60,7 +63,12 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ResetTimer() {
+        PlayerPrefs.SetInt("hasTimerStarted", 0);
         PlayerPrefs.SetFloat("sceneTime", 0);
+    }
+
+    public void StopTimer()
+    {
         PlayerPrefs.SetInt("hasTimerStarted", 0);
     }
 }
