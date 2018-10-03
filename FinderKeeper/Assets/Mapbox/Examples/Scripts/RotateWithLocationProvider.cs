@@ -50,7 +50,7 @@ namespace Mapbox.Examples
 
 		Quaternion _targetRotation;
 
-		bool _isRotatable = true;
+		public bool _isRotatable = true;
 
 		/// <summary>
 		/// The location provider.
@@ -160,6 +160,13 @@ namespace Mapbox.Examples
 		public void ToggleRotation() {
 			_isRotatable = !_isRotatable;
 			this.enabled = _isRotatable;
+
+			if (!_isRotatable) {
+				var player = GameObject.FindGameObjectWithTag("Player");
+				var rot = player.transform.localRotation;
+				rot = Quaternion.Euler(0, 0, 0);
+				player.transform.localRotation = rot;
+			}
 		}
 
 

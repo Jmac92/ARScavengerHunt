@@ -6,8 +6,17 @@ using Mapbox.Unity.Map;
 using Mapbox.Unity.Utilities;
 using Mapbox.Utils;
 using Mapbox.Map;
+using Mapbox.Examples;
 
 public class OverviewMap : MonoBehaviour {
+    [SerializeField]
+    GameObject _canvas;
+
+    [SerializeField]
+    GameObject _disableOverviewMapButton;
+
+    [SerializeField]
+    GameObject _currentLocationButton;
 
     [SerializeField]
     GameObject _mapGameObject;
@@ -44,33 +53,70 @@ public class OverviewMap : MonoBehaviour {
 
     WaitForSeconds _wait;
 
-    bool _overviewIsActive = false;
+    RotateWithLocationProvider _rotationScript;
 
-    public void ToggleOverviewMap () {
-        if (_overviewIsActive) {
-            Destroy(_playerInstance);
+    CameraSwap _cameraScript;
 
-            _overviewMapGameObject.SetActive(false);
-            _mapGameObject.SetActive(true);
+    bool _oldRotationSetting;
 
-            _playerGameObject.transform.localScale = new Vector3(1, 1, 1);
-            _radarPulse.SetActive(true);
+    bool _oldCameraSetting;
 
-            _overviewIsActive = false;
-        } else {
-            _playerGameObject.transform.localScale = new Vector3(0, 1, 1);
-            _radarPulse.SetActive(false);
+    public void SnapToCurrentLocation () {
+        _overviewMap.UpdateMap(CalculateCentroid(_locations), _overviewMap.InitialZoom);
+    }
 
-            _playerInstance = Instantiate(_playerPrefab);
-            _playerInstance.transform.SetParent(_overviewMapGameObject.transform);
-            _playerInstance.transform.localPosition = _overviewMap.GeoToWorldPosition(_map.CenterLatitudeLongitude, true);
-           
-            _overviewMapGameObject.SetActive(true);
-            _mapGameObject.SetActive(false);
+    public void EnableOverviewMap () {
+        _playerGameObject.transform.localScale = new Vector3(0, 1, 1);
+        _radarPulse.SetActive(false);
 
-            _overviewIsActive = true;
+        _canvas.SetActive(false);
+        
+        _mapGameObject.SetActive(false);
+
+        _overviewMapGameObject.SetActive(true);
+        SnapToCurrentLocation();
+
+        _playerInstance.SetActive(true);
+
+        _disableOverviewMapButton.SetActive(true);
+
+        _currentLocationButton.SetActive(true);
+
+        _oldRotationSetting = _rotationScript.isRotatable;
+        if (_rotationScript.isRotatable) {
+            _rotationScript.ToggleRotation();
+        }
+
+        _oldCameraSetting = _cameraScript.isIsoCamera;
+        if (!_cameraScript.isIsoCamera) {
+            _cameraScript.Swap();
         }
 	}
+
+    public void DisableOverviewMap () {
+        if (_cameraScript.isIsoCamera != _oldCameraSetting) {
+            _cameraScript.Swap();
+        }
+
+        if (_rotationScript.isRotatable != _oldRotationSetting) {
+            _rotationScript.ToggleRotation();
+        }
+
+        _currentLocationButton.SetActive(false);
+
+        _disableOverviewMapButton.SetActive(false);
+
+        _playerInstance.SetActive(false);
+
+        _overviewMapGameObject.SetActive(false);
+
+        _mapGameObject.SetActive(true);
+
+        _canvas.SetActive(true);
+
+        _playerGameObject.transform.localScale = new Vector3(1, 1, 1);
+        _radarPulse.SetActive(true);
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -82,7 +128,12 @@ public class OverviewMap : MonoBehaviour {
 
         InitializeObjects();
 
+        InitializePlayerInstance();
+
         InitializeOverviewMap();
+
+        _rotationScript = _playerGameObject.GetComponent(typeof(RotateWithLocationProvider)) as RotateWithLocationProvider;
+        _cameraScript = _playerGameObject.GetComponent(typeof(CameraSwap)) as CameraSwap;
     }
 
 	private void InitializeObjects () {
@@ -106,6 +157,12 @@ public class OverviewMap : MonoBehaviour {
             instance.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
             _spawnedObjects.Add(instance);
         }
+    }
+
+    private void InitializePlayerInstance () {
+        _playerInstance = Instantiate(_playerPrefab);
+        _playerInstance.transform.SetParent(_overviewMapGameObject.transform);
+        _playerInstance.SetActive(false);
     }
 
     private void InitializeOverviewMap () {
@@ -155,9 +212,11 @@ public class OverviewMap : MonoBehaviour {
             {
                 var spawnedObject = _spawnedObjects[i];
                 var location = _locations[i];
-                spawnedObject.transform.localPosition = _overviewMap.GeoToWorldPosition(location, true);
-                spawnedObject.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
+                spawnedObject.transform.localPosition = Conversions.GeoToWorldPosition(location, _overviewMap.CenterMercator, _overviewMap.WorldRelativeScale).ToVector3xz();  //_overviewMap.GeoToWorldPosition(location, true);
+                //spawnedObject.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
             }
+
+            _playerInstance.transform.localPosition = Conversions.GeoToWorldPosition(_map.CenterLatitudeLongitude, _overviewMap.CenterMercator, _overviewMap.WorldRelativeScale).ToVector3xz();  //_overviewMap.GeoToWorldPosition(_map.CenterLatitudeLongitude, true);
         }
 	}
 }
