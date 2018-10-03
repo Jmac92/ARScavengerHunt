@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657856, g: 0.49641234, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -921,149 +921,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 221411930}
---- !u!1001 &264535862
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224671873148674670, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224797118019332994, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224797118019332994, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1300312574927218, guid: 90617e66ba7fb9c45861dd7de3a7a6f5, type: 2}
-      propertyPath: m_Name
-      value: To Map Button
-      objectReference: {fileID: 0}
-    - target: {fileID: 114330192990448334, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1352142560}
-    - target: {fileID: 114330192990448334, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HideARCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 114330192990448334, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224797118019332994, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 6.415161
-      objectReference: {fileID: 0}
-    - target: {fileID: 1675537284864914, guid: 90617e66ba7fb9c45861dd7de3a7a6f5, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 90617e66ba7fb9c45861dd7de3a7a6f5, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &270124008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,18 +1323,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4165213320594474, guid: f9bb8fd617c79004c96e5ae8d5b2b8c0,
     type: 2}
   m_PrefabInternal: {fileID: 215505112}
---- !u!114 &384950415 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114718757112273916, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-    type: 2}
-  m_PrefabInternal: {fileID: 264535862}
-  m_Script: {fileID: -1254083943, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!114 &384950416 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114653733813471152, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-    type: 2}
-  m_PrefabInternal: {fileID: 264535862}
-  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &389934371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,7 +2206,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 630435769}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1352142566}
+        m_MethodName: OpenInventoryList
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &630435769
@@ -2652,11 +2508,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 722275309}
---- !u!223 &730411229 stripped
-Canvas:
-  m_PrefabParentObject: {fileID: 223859765797766192, guid: 90617e66ba7fb9c45861dd7de3a7a6f5,
-    type: 2}
-  m_PrefabInternal: {fileID: 264535862}
 --- !u!1 &746676566
 GameObject:
   m_ObjectHideFlags: 0
@@ -4028,7 +3879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67ebeff63a617d448f0f74d4570ec39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ARCanvas: {fileID: 730411229}
+  ARCanvas: {fileID: 0}
 --- !u!114 &1352142561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4137,7 +3988,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1352142557}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8724de7e5ba08874a81094b35e9660b9, type: 3}
   m_Name: 
@@ -4360,7 +4211,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1395754529
 GameObject:
@@ -4487,6 +4338,7 @@ GameObject:
   - component: {fileID: 1483012083}
   - component: {fileID: 1483012082}
   - component: {fileID: 1483012084}
+  - component: {fileID: 1483012085}
   m_Layer: 0
   m_Name: LocationBasedGame
   m_TagString: Untagged
@@ -4544,6 +4396,21 @@ MonoBehaviour:
     type: 2}
   _playerPrefab: {fileID: 100004, guid: cdc93de93f2f11e48a70a0446b5a5557, type: 3}
   _markerSpawnScale: 12
+--- !u!114 &1483012085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1483012081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 607e13842873c2c44a978135ed76207c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1222846978708728, guid: e3f137043713c6f4197b2b9190293dc2,
+    type: 2}
+  soundManager: {fileID: 1456043109630126, guid: b63155a37e5326d409321cbc408fd809,
+    type: 2}
 --- !u!1 &1491010567
 GameObject:
   m_ObjectHideFlags: 0
@@ -5498,15 +5365,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1352142560}
-        m_MethodName: ShowARCanvas
-        m_Mode: 1
+      - m_Target: {fileID: 1483012082}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: ARMode
           m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -6576,7 +6443,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1972458207}
   - component: {fileID: 1972458206}
-  - component: {fileID: 1972458208}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -6633,19 +6499,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &1972458208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1972458205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fae7c095a13fb846ae937879fbc6214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  background: {fileID: 384950416}
-  fit: {fileID: 384950415}
 --- !u!1 &2049466228
 GameObject:
   m_ObjectHideFlags: 0

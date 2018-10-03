@@ -13,7 +13,6 @@ public class Collect : MonoBehaviour {
 
     private Inventory _inventory;
     private int _Items = 0;
-    private string _itemOutput;
     private GameObject _collectedItem = null;
     
 
@@ -36,26 +35,21 @@ public class Collect : MonoBehaviour {
     void Awake () {
         HideCollectionPanel();
         _Items = 0;
-        itemsText.text = _itemOutput + _Items +"/5";
-
-        Button btn = collectionButton.GetComponent<Button>();
-        btn.onClick.AddListener(CollectionOnClick);
     }
 
     void CollectionOnClick() {
         if (_collectedItem.tag == "Low")
         {
             _Items += 1;
-            itemsText.text = _itemOutput + _Items + "/5";
+            itemsText.text =  _Items + "/5";
             _inventory = InventoryList.GetComponent<Inventory>();
             _inventory.WhitenImage();
             Destroy(_collectedItem.transform.parent.gameObject);
             
         }
-        HideCollectionPanel();
-        
-        
+        HideCollectionPanel();  
     }
+
     private void Update()
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
