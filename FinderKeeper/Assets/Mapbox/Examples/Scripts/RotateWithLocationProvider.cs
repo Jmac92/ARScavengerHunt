@@ -160,6 +160,13 @@ namespace Mapbox.Examples
 		public void ToggleRotation() {
 			_isRotatable = !_isRotatable;
 			this.enabled = _isRotatable;
+
+			if (!_isRotatable) {
+				var player = GameObject.FindGameObjectWithTag("Player");
+				var rot = player.transform.localRotation;
+				rot = Quaternion.Euler(0, 0, 0);
+				player.transform.localRotation = rot;
+			}
 		}
 
 
