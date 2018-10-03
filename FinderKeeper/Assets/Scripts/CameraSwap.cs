@@ -12,15 +12,15 @@ public class CameraSwap : MonoBehaviour {
     [SerializeField]
     GameObject _radarPulse;
 
-    public bool _isIsoCamera = true;
+    public bool isIsoCamera = true;
 
     public void Swap() {
-        _isIsoCamera = !_isIsoCamera;
-        _isometricCamera.gameObject.SetActive(_isIsoCamera);
-        _thirdPersonCamera.gameObject.SetActive(!_isIsoCamera);
+        isIsoCamera = !isIsoCamera;
+        _isometricCamera.gameObject.SetActive(isIsoCamera);
+        _thirdPersonCamera.gameObject.SetActive(!isIsoCamera);
 
         var position = _radarPulse.transform.localPosition;
-        if (_isIsoCamera) {
+        if (isIsoCamera) {
             position.z = 0;
         } else {
             position.z = -12;

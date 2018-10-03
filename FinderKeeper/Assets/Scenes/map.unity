@@ -4129,12 +4129,12 @@ GameObject:
   - component: {fileID: 1352142563}
   - component: {fileID: 1352142559}
   - component: {fileID: 1352142560}
-  - component: {fileID: 1352142561}
   - component: {fileID: 1352142562}
   - component: {fileID: 1352142564}
   - component: {fileID: 1352142565}
   - component: {fileID: 1352142566}
   - component: {fileID: 1352142568}
+  - component: {fileID: 1352142561}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4196,16 +4196,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1352142557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 061d2afb48ace4fd19611279b6cf732f, type: 3}
+  m_Script: {fileID: 11500000, guid: eb301d66009714d398678cc8297fdacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _useDeviceOrientation: 0
   _subtractUserHeading: 0
-  _rotationFollowFactor: 2
+  _rotationFollowFactor: 1
   _rotateZ: 0
   _useNegativeAngle: 0
   _useTransformLocationProvider: 0
-  _isRotatable: 1
+  isRotatable: 1
 --- !u!114 &1352142562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4244,7 +4244,7 @@ MonoBehaviour:
   _isometricCamera: {fileID: 1738812505}
   _thirdPersonCamera: {fileID: 1248989438}
   _radarPulse: {fileID: 1012281225}
-  _isIsoCamera: 1
+  isIsoCamera: 1
 --- !u!114 &1352142565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5241,7 +5241,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1352142561}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleRotation
         m_Mode: 1
         m_Arguments:

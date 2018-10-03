@@ -82,23 +82,23 @@ public class OverviewMap : MonoBehaviour {
 
         _currentLocationButton.SetActive(true);
 
-        _oldRotationSetting = _rotationScript._isRotatable;
-        if (_rotationScript._isRotatable) {
+        _oldRotationSetting = _rotationScript.isRotatable;
+        if (_rotationScript.isRotatable) {
             _rotationScript.ToggleRotation();
         }
 
-        _oldCameraSetting = _cameraScript._isIsoCamera;
-        if (!_cameraScript._isIsoCamera) {
+        _oldCameraSetting = _cameraScript.isIsoCamera;
+        if (!_cameraScript.isIsoCamera) {
             _cameraScript.Swap();
         }
 	}
 
     public void DisableOverviewMap () {
-        if (_cameraScript._isIsoCamera != _oldCameraSetting) {
+        if (_cameraScript.isIsoCamera != _oldCameraSetting) {
             _cameraScript.Swap();
         }
 
-        if (_rotationScript._isRotatable != _oldRotationSetting) {
+        if (_rotationScript.isRotatable != _oldRotationSetting) {
             _rotationScript.ToggleRotation();
         }
 
