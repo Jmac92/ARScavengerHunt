@@ -50,7 +50,7 @@ namespace Mapbox.Examples
 
 		Quaternion _targetRotation;
 
-		bool _isRotatable = true;
+		public bool _isRotatable = true;
 
 		/// <summary>
 		/// The location provider.

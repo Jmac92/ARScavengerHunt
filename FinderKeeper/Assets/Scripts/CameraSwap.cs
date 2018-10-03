@@ -12,7 +12,7 @@ public class CameraSwap : MonoBehaviour {
     [SerializeField]
     GameObject _radarPulse;
 
-    bool _isIsoCamera = true;
+    public bool _isIsoCamera = true;
 
     public void Swap() {
         _isIsoCamera = !_isIsoCamera;
