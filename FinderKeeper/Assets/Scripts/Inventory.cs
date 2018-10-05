@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour {
     [SerializeField] Transform itemsParent;
     //public ItemsDetails collectedItems;
     [SerializeField] ItemDisplay[] display;
-    public Button closeInventoryList;
+    //public Button closeInventoryList;
     private int no = 0;
     private Color _color = new Color32(245,232,179, 255);
 
@@ -21,9 +21,9 @@ public class Inventory : MonoBehaviour {
     }
     void Update()
     {
-        Button button = closeInventoryList.GetComponent<Button>();
-        button.onClick.AddListener(CloseInventoryList);
-        UpdateData();  
+        //Button button = closeInventoryList.GetComponent<Button>();
+        //button.onClick.AddListener(CloseInventoryList);
+        //UpdateData();  
     }
 
     //Save for future use when player get the ability to add items
