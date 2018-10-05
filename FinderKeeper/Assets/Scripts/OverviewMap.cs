@@ -10,13 +10,10 @@ using Mapbox.Examples;
 
 public class OverviewMap : MonoBehaviour {
     [SerializeField]
-    GameObject _canvas;
+    GameObject _mapCanvas;
 
     [SerializeField]
-    GameObject _disableOverviewMapButton;
-
-    [SerializeField]
-    GameObject _currentLocationButton;
+    GameObject _overviewMapCanvas;
 
     [SerializeField]
     GameObject _mapGameObject;
@@ -69,7 +66,7 @@ public class OverviewMap : MonoBehaviour {
         _playerGameObject.transform.localScale = new Vector3(0, 1, 1);
         _radarPulse.SetActive(false);
 
-        _canvas.SetActive(false);
+        _mapCanvas.SetActive(false);
         
         _mapGameObject.SetActive(false);
 
@@ -78,9 +75,7 @@ public class OverviewMap : MonoBehaviour {
 
         _playerInstance.SetActive(true);
 
-        _disableOverviewMapButton.SetActive(true);
-
-        _currentLocationButton.SetActive(true);
+        _overviewMapCanvas.SetActive(true);
 
         _oldRotationSetting = _rotationScript.isRotatable;
         if (_rotationScript.isRotatable) {
@@ -102,9 +97,7 @@ public class OverviewMap : MonoBehaviour {
             _rotationScript.ToggleRotation();
         }
 
-        _currentLocationButton.SetActive(false);
-
-        _disableOverviewMapButton.SetActive(false);
+        _overviewMapCanvas.SetActive(false);
 
         _playerInstance.SetActive(false);
 
@@ -112,7 +105,7 @@ public class OverviewMap : MonoBehaviour {
 
         _mapGameObject.SetActive(true);
 
-        _canvas.SetActive(true);
+        _mapCanvas.SetActive(true);
 
         _playerGameObject.transform.localScale = new Vector3(1, 1, 1);
         _radarPulse.SetActive(true);
