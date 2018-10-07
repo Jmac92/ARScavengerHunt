@@ -9,7 +9,6 @@ public class Collect : MonoBehaviour {
     public Text itemsText;
     public GameObject collectionPanel = null;
     //public GameObject InventoryList;
-    public Button collectionButton;
 
     //private Inventory _inventory;
     private int _Items = 0;
@@ -37,7 +36,7 @@ public class Collect : MonoBehaviour {
         _Items = 0;
     }
 
-    void CollectionOnClick() {
+    public void CollectionOnClick() {
         if (_collectedItem.tag == "Low")
         {
             _Items += 1;
