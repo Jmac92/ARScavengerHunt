@@ -117,7 +117,7 @@ public class OverviewMap : MonoBehaviour {
 	}
 
     IEnumerator Initialize () {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
 
         InitializeObjects();
 
