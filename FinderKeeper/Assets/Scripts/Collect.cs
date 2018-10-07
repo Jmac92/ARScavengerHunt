@@ -8,10 +8,9 @@ public class Collect : MonoBehaviour {
 
     public Text itemsText;
     public GameObject collectionPanel = null;
-    public GameObject InventoryList;
-    public Button collectionButton;
+    //public GameObject InventoryList;
 
-    private Inventory _inventory;
+    //private Inventory _inventory;
     private int _Items = 0;
     private GameObject _collectedItem = null;
     
@@ -37,13 +36,13 @@ public class Collect : MonoBehaviour {
         _Items = 0;
     }
 
-    void CollectionOnClick() {
+    public void CollectionOnClick() {
         if (_collectedItem.tag == "Low")
         {
             _Items += 1;
             itemsText.text =  _Items + "/5";
-            _inventory = InventoryList.GetComponent<Inventory>();
-            _inventory.WhitenImage();
+            //_inventory = InventoryList.GetComponent<Inventory>();
+            //_inventory.WhitenImage();
             Destroy(_collectedItem.transform.parent.gameObject);
             
         }
