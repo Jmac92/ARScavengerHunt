@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
     public float sceneTime = 0;
     public bool hasTimerStarted = false;
 
+    public ArrayList collectedItems;
+
     private static GameManager _instance;
 
     // Use this for initialization
@@ -25,10 +27,10 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetFloat("maxTime", maxTime);
         sceneTime = PlayerPrefs.GetFloat("sceneTime");
 
+        collectedItems = new ArrayList();
+
 
         DontDestroyOnLoad(gameObject);
-
-        
     }
 
     private void Update()
@@ -70,5 +72,25 @@ public class GameManager : MonoBehaviour {
     public void StopTimer()
     {
         PlayerPrefs.SetInt("hasTimerStarted", 0);
+    }
+
+    public void AddCollectedItem(string id)
+    {
+        collectedItems.Add(id);
+    }
+
+    public void RemoveCollectedItem(string id)
+    {
+        collectedItems.Remove(id);
+    }
+
+    public void ClearCollectedItems()
+    {
+        collectedItems.Clear();
+    }
+
+    public bool HasItemBeenCollected(string id)
+    {
+        return collectedItems.Contains(id);
     }
 }

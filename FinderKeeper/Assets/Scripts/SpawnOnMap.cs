@@ -35,10 +35,12 @@ public class SpawnOnMap : MonoBehaviour
         {
             var locationString = _locationStrings[i];
             _locations[i] = Conversions.StringToLatLon(locationString);
+
             var instance = Instantiate(_markerPrefab);
             instance.transform.SetParent(_mapGameObject.transform);
             instance.transform.localPosition = _map.GeoToWorldPosition(_locations[i], true);
             instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
+            instance.name = _locations[i].ToString();
             _spawnedObjects.Add(instance);
         }
     }
@@ -49,12 +51,15 @@ public class SpawnOnMap : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             var spawnedObject = _spawnedObjects[i];
-            var location = _locations[i];
-            spawnedObject.transform.localPosition = _map.GeoToWorldPosition(location, true);
-            spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
-            var pos = spawnedObject.transform.localPosition;
-            pos.y = 5;
-            spawnedObject.transform.localPosition = pos;
+            if (spawnedObject != null)
+            {
+                var location = _locations[i];
+                spawnedObject.transform.localPosition = _map.GeoToWorldPosition(location, true);
+                spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
+                var pos = spawnedObject.transform.localPosition;
+                pos.y = 5;
+                spawnedObject.transform.localPosition = pos;
+            }
         }
     }
 }

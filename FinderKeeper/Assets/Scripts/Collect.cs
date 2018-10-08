@@ -43,7 +43,15 @@ public class Collect : MonoBehaviour {
             itemsText.text =  _Items + "/5";
             //_inventory = InventoryList.GetComponent<Inventory>();
             //_inventory.WhitenImage();
-            Destroy(_collectedItem.transform.parent.gameObject);
+
+            if (_collectedItem.GetComponentInParent<Collectible>() != null)
+            {
+                Debug.Log("COLLECTED " + _collectedItem.transform.parent.name);
+                var collectible = _collectedItem.GetComponentInParent<Collectible>();
+                collectible.Id = _collectedItem.transform.parent.name;
+                collectible.IsCollected = true;
+            }
+            else Debug.Log(_collectedItem.name + " AIN'T NO COLLECTIBLE");
             
         }
         HideCollectionPanel();  
@@ -51,13 +59,29 @@ public class Collect : MonoBehaviour {
 
     private void Update()
     {
-        if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
+        //Touch input - use this block for app
+        //if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
+        //{
+        //    Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        //    RaycastHit raycastHit;
+        //    if (Physics.Raycast(raycast, out raycastHit))
+        //    {
+        //        if (raycastHit.collider.tag == "Low") {
+        //            _collectedItem = raycastHit.transform.gameObject;
+        //            ShowCollectionPanel();
+        //        }
+        //    }
+        //}
+
+        //mouse input - use this block for testing
+        if (Input.GetMouseButton(0))
         {
-            Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            Ray raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit raycastHit;
             if (Physics.Raycast(raycast, out raycastHit))
             {
-                if (raycastHit.collider.tag == "Low") {
+                if (raycastHit.collider.tag == "Low")
+                {
                     _collectedItem = raycastHit.transform.gameObject;
                     ShowCollectionPanel();
                 }
