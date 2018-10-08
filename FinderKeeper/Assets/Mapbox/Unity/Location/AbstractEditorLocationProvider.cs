@@ -17,7 +17,7 @@
 		[SerializeField]
 		bool _sendEvent;
 
-		WaitForSeconds _wait;
+		WaitForSeconds _wait = new WaitForSeconds(0);
 
 #if UNITY_EDITOR
 		protected virtual void Awake()
@@ -52,7 +52,7 @@
 		}
 
 
-		void OnValidate()
+		protected virtual void OnValidate()
 		{
 			if (_sendEvent)
 			{
