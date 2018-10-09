@@ -35,12 +35,15 @@ public class OverviewMap : MonoBehaviour {
 
     [SerializeField]
     GameObject _markerPrefab;
+    
+    [SerializeField]
+    float _markerSpawnScale;
 
     [SerializeField]
     GameObject _playerPrefab;
 
     [SerializeField]
-    float _markerSpawnScale;
+    GameObject _rotationIcon;
 
     Vector2d[] _locations;
 
@@ -54,15 +57,26 @@ public class OverviewMap : MonoBehaviour {
 
     CameraSwap _cameraScript;
 
-    bool _oldRotationSetting;
-
-    bool _oldCameraSetting;
+    Button _buttonScript;
 
     public void SnapToCurrentLocation () {
         _overviewMap.UpdateMap(CalculateCentroid(_locations), _overviewMap.InitialZoom);
     }
 
+    public void StorePlayerPosition () {
+        Transitions.playerPosition = _map.CenterLatitudeLongitude;
+    }
+
+    public void ToggleARPanel() {
+        var panel = _overviewMapCanvas.transform.Find("ARPanel").gameObject;
+        panel.SetActive(!panel.activeSelf);
+    }
+
     public void EnableOverviewMap () {
+        if (_locations == null) {
+            return;
+        }
+
         _playerGameObject.transform.localScale = new Vector3(0, 1, 1);
         _radarPulse.SetActive(false);
 
@@ -77,25 +91,20 @@ public class OverviewMap : MonoBehaviour {
 
         _overviewMapCanvas.SetActive(true);
 
-        _oldRotationSetting = _rotationScript.isRotatable;
+        Transitions.rotationSetting = _rotationScript.isRotatable;
+        Transitions.playerRotation = _playerGameObject.transform.localRotation;
         if (_rotationScript.isRotatable) {
             _rotationScript.ToggleRotation();
         }
 
-        _oldCameraSetting = _cameraScript.isIsoCamera;
+        Transitions.cameraSetting = _cameraScript.isIsoCamera;
         if (!_cameraScript.isIsoCamera) {
             _cameraScript.Swap();
         }
 	}
 
     public void DisableOverviewMap () {
-        if (_cameraScript.isIsoCamera != _oldCameraSetting) {
-            _cameraScript.Swap();
-        }
-
-        if (_rotationScript.isRotatable != _oldRotationSetting) {
-            _rotationScript.ToggleRotation();
-        }
+        SyncComponentSettings();
 
         _overviewMapCanvas.SetActive(false);
 
@@ -117,19 +126,46 @@ public class OverviewMap : MonoBehaviour {
 	}
 
     IEnumerator Initialize () {
-        yield return new WaitForSeconds(0.1f);
-
-        InitializeObjects();
-
-        InitializePlayerInstance();
-
-        InitializeOverviewMap();
+        yield return new WaitForSeconds(0.0001f);
 
         _rotationScript = _playerGameObject.GetComponent(typeof(RotateWithLocationProvider)) as RotateWithLocationProvider;
         _cameraScript = _playerGameObject.GetComponent(typeof(CameraSwap)) as CameraSwap;
+        _buttonScript = _rotationIcon.GetComponent(typeof(Button)) as Button;
+
+        if (Transitions.locations == null) {
+            InitializeObjectsFromNewLocations();
+            Transitions.locations = _locations;
+        } else {
+            _locations = Transitions.locations;
+            InitializeObjectsFromExistingLocations();
+            SyncComponentSettings();
+            
+        }
+
+        InitializePlayerInstance();
+
+        InitializeOverviewMap();  
     }
 
-	private void InitializeObjects () {
+    private void SyncComponentSettings () {
+        if (_cameraScript.isIsoCamera != Transitions.cameraSetting) {
+            _cameraScript.Swap();
+        }
+
+        if (_rotationScript.isRotatable != Transitions.rotationSetting) {
+            _rotationScript.ToggleRotation();
+
+            if (_rotationScript.isRotatable) {
+                _playerGameObject.transform.localRotation = Transitions.playerRotation;
+            } else {
+                _buttonScript.Lock();
+            }
+        } else if (_rotationScript.isRotatable) {
+            _playerGameObject.transform.localRotation = Transitions.playerRotation;
+        }
+    }
+
+	private void InitializeObjectsFromNewLocations () {
         string[] locationStrings = new string[0];
 		SpawnOnMap spawnScript = _map.GetComponent(typeof(SpawnOnMap)) as SpawnOnMap;
 
@@ -143,10 +179,24 @@ public class OverviewMap : MonoBehaviour {
             _locations[i] = Conversions.StringToLatLon(locationStrings[i]);         
 
             Vector2d randPoint = new Vector2d(CalculateRandomXOffset(_locations[i]), CalculateRandomYOffset(_locations[i]));
+
+            _locations[i] = randPoint;
             
             var instance = Instantiate(_markerPrefab);
             instance.transform.SetParent(_overviewMapGameObject.transform);
             instance.transform.localPosition = _map.GeoToWorldPosition(randPoint, true);
+            instance.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
+            _spawnedObjects.Add(instance);
+        }
+    }
+
+    private void InitializeObjectsFromExistingLocations () {
+        _spawnedObjects = new List<GameObject>();
+        for (int i = 0; i < _locations.Length; i++) {   
+            var location = _locations[i];       
+            var instance = Instantiate(_markerPrefab);
+            instance.transform.SetParent(_overviewMapGameObject.transform);
+            instance.transform.localPosition = _map.GeoToWorldPosition(location, true);
             instance.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
             _spawnedObjects.Add(instance);
         }
@@ -205,11 +255,10 @@ public class OverviewMap : MonoBehaviour {
             {
                 var spawnedObject = _spawnedObjects[i];
                 var location = _locations[i];
-                spawnedObject.transform.localPosition = Conversions.GeoToWorldPosition(location, _overviewMap.CenterMercator, _overviewMap.WorldRelativeScale).ToVector3xz();  //_overviewMap.GeoToWorldPosition(location, true);
-                //spawnedObject.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
+                spawnedObject.transform.localPosition = Conversions.GeoToWorldPosition(location, _overviewMap.CenterMercator, _overviewMap.WorldRelativeScale).ToVector3xz();
             }
 
-            _playerInstance.transform.localPosition = Conversions.GeoToWorldPosition(_map.CenterLatitudeLongitude, _overviewMap.CenterMercator, _overviewMap.WorldRelativeScale).ToVector3xz();  //_overviewMap.GeoToWorldPosition(_map.CenterLatitudeLongitude, true);
+            _playerInstance.transform.localPosition = Conversions.GeoToWorldPosition(_map.CenterLatitudeLongitude, _overviewMap.CenterMercator, _overviewMap.WorldRelativeScale).ToVector3xz();
         }
 	}
 }
