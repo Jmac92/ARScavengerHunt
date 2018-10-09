@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Collect : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class Collect : MonoBehaviour {
     //public GameObject InventoryList;
 
     //private Inventory _inventory;
-    private int _Items = 0;
+    private int _Items;
     private GameObject _collectedItem = null;
     
 
@@ -31,9 +32,11 @@ public class Collect : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Awake () {
+    void Start () {
+        int collectedCount = GameManager.Instance.collectedItems.Count;
+        itemsText.text = collectedCount + "/5";
         HideCollectionPanel();
-        _Items = 0;
+        _Items = collectedCount;
     }
 
     public void CollectionOnClick() {
@@ -48,8 +51,9 @@ public class Collect : MonoBehaviour {
             {
                 Debug.Log("COLLECTED " + _collectedItem.transform.parent.name);
                 var collectible = _collectedItem.GetComponentInParent<Collectible>();
-                collectible.Id = _collectedItem.transform.parent.name;
+                collectible.Id = Convert.ToInt32(_collectedItem.transform.parent.name);
                 collectible.IsCollected = true;
+                GameManager.Instance.AddCollectedItem(collectible.Id);
             }
             else Debug.Log(_collectedItem.name + " AIN'T NO COLLECTIBLE");
             

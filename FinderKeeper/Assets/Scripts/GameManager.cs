@@ -74,12 +74,20 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetInt("hasTimerStarted", 0);
     }
 
-    public void AddCollectedItem(string id)
+    public void AddCollectedItem(int id)
     {
-        collectedItems.Add(id);
+        if(!collectedItems.Contains(id))
+            collectedItems.Add(id);
+        else
+            Debug.Log(id + "ALREADY COLLECTED");
+
+        foreach (var idNo in collectedItems)
+        {
+            Debug.Log("COLLECTED ITEM: " + idNo);
+        }
     }
 
-    public void RemoveCollectedItem(string id)
+    public void RemoveCollectedItem(int id)
     {
         collectedItems.Remove(id);
     }
@@ -89,7 +97,7 @@ public class GameManager : MonoBehaviour {
         collectedItems.Clear();
     }
 
-    public bool HasItemBeenCollected(string id)
+    public bool HasItemBeenCollected(int id)
     {
         return collectedItems.Contains(id);
     }

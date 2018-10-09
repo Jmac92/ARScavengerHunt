@@ -6,7 +6,7 @@ public class Collectible : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
-        Id = "";
+        Id = -1;
         IsCollected = false;
 	}
 	
@@ -21,16 +21,15 @@ public class Collectible : MonoBehaviour {
 
         if (isInCollectionList)
         {
-            Debug.Log("DESTROYING " + Id);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
-        if (Id != "") {
+        if (Id >= 0) {
             Debug.Log("ID: " + Id);
         }
 	}
 
-    public string Id { get; set; }
+    public int Id { get; set; }
 
     public bool IsCollected { get; set; }
 }

@@ -28,20 +28,29 @@ public class SpawnOnMap : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("MAP SCENE INITATING");
         _locations = new Vector2d[_locationStrings.Length];
         _spawnedObjects = new List<GameObject>();
 
         for (int i = 0; i < _locationStrings.Length; i++)
         {
+            var collectedItems = GameManager.Instance.collectedItems;
+            foreach (var id in collectedItems) {
+                Debug.Log("COLLECTED ITEM: " + id);
+            }
+
             var locationString = _locationStrings[i];
             _locations[i] = Conversions.StringToLatLon(locationString);
 
-            var instance = Instantiate(_markerPrefab);
-            instance.transform.SetParent(_mapGameObject.transform);
-            instance.transform.localPosition = _map.GeoToWorldPosition(_locations[i], true);
-            instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
-            instance.name = _locations[i].ToString();
-            _spawnedObjects.Add(instance);
+            if (!GameManager.Instance.HasItemBeenCollected(i))
+            {
+                var instance = Instantiate(_markerPrefab);
+                instance.transform.SetParent(_mapGameObject.transform);
+                instance.transform.localPosition = _map.GeoToWorldPosition(_locations[i], true);
+                instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
+                instance.name = i.ToString();
+                _spawnedObjects.Add(instance);
+            }
         }
     }
 
