@@ -12,9 +12,6 @@ public class ARPlaceMapOnPlane : MonoBehaviour
 	[SerializeField]
 	private GameObject _arRoot;
 
-	//[SerializeField]
-	//private GameObject _arKit;
-
 	void Start()
 	{
 		ARPlaneHandler.returnARPlane += PlaceMap;
@@ -33,15 +30,8 @@ public class ARPlaceMapOnPlane : MonoBehaviour
 		var pointScript = _arRoot.GetComponent(typeof(ARPointCloudVisualizer)) as ARPointCloudVisualizer;
 		var planeScript = _arRoot.GetComponent(typeof(ARPlaneVisualizer)) as ARPlaneVisualizer;
 
-		//var debugPlane = _arRoot.transform.Find("debugPlanePrefab(Clone)");
-		//debugPlane.gameObject.SetActive(false);
-		//var planeHandlerScript = _arKit.GetComponent(typeof(ARPlaneHandler)) as ARPlaneHandler;
-		//var shaderScript = _arKit.GetComponent(typeof(UpdateShaderCoordinatesByARPlane)) as UpdateShaderCoordinatesByARPlane;
-
 		pointScript.enabled = false;
 		planeScript.enabled = false;
-		//planeHandlerScript.enabled = false;
-		//shaderScript.enabled = false;
 
 		var oldMask = _camera.cullingMask;
 		var newMask = oldMask & ~(1 << 8);

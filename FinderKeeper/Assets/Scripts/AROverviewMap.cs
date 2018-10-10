@@ -25,7 +25,7 @@ public class AROverviewMap : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_locations = Transitions.locations;
-
+        
 		_spawnedObjects = new List<GameObject>();
         for (int i = 0; i < _locations.Length; i++) {   
             var location = _locations[i];
@@ -39,7 +39,8 @@ public class AROverviewMap : MonoBehaviour {
         _playerInstance.transform.SetParent(_map.transform);
         _playerInstance.transform.localPosition = Conversions.GeoToWorldPosition(Transitions.playerPosition, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz();
 
-		_map.Initialize(CalculateCentroid(_locations), 16);
+        _map.Initialize(CalculateCentroid(_locations), 16);
+        _map.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
