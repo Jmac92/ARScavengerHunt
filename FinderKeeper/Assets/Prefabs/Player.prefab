@@ -177,7 +177,7 @@ Transform:
   m_GameObject: {fileID: 1934693623955548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.63, z: 0}
-  m_LocalScale: {x: 30.761042, y: 0.16073172, z: 30.761057}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 4505806257800100}
   m_RootOrder: 4
@@ -530,8 +530,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f0e7ef902fc4eefbb7d53b7a997fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsometricCamera: {fileID: 20525562436671852}
-  ThirdPersonCamera: {fileID: 20356865524903596}
+  _isometricCamera: {fileID: 0}
+  _thirdPersonCamera: {fileID: 0}
+  _radarPulse: {fileID: 0}
   isIsoCamera: 1
 --- !u!114 &114148346902887750
 MonoBehaviour:
@@ -545,7 +546,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryList: {fileID: 0}
-  openInventoryList: {fileID: 0}
 --- !u!114 &114212698197423704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -563,6 +563,7 @@ MonoBehaviour:
   _rotateZ: 0
   _useNegativeAngle: 0
   _useTransformLocationProvider: 0
+  _isRotatable: 1
 --- !u!114 &114224615066493946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -603,8 +604,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsText: {fileID: 0}
   collectionPanel: {fileID: 0}
-  InventoryList: {fileID: 0}
-  collectionButton: {fileID: 0}
 --- !u!114 &114726979839039646
 MonoBehaviour:
   m_ObjectHideFlags: 1

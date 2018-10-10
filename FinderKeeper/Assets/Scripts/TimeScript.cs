@@ -53,7 +53,7 @@ public class TimeScript : MonoBehaviour {
         if (!Convert.ToBoolean(PlayerPrefs.GetInt("hasTimerStarted"))) {
             PlayerPrefs.SetFloat("sceneTime", 300);
         }
-        EndGame.finalScore = ItemText.text;
+        Transitions.finalScore = ItemText.text;
         EndPanel.SetActive(true);
     }
 }
