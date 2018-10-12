@@ -67,11 +67,6 @@ public class OverviewMap : MonoBehaviour {
         Transitions.playerPosition = _map.CenterLatitudeLongitude;
     }
 
-    public void ToggleARPanel() {
-        var panel = _overviewMapCanvas.transform.Find("ARPanel").gameObject;
-        panel.SetActive(!panel.activeSelf);
-    }
-
     public void EnableOverviewMap () {
         if (_locations == null) {
             return;

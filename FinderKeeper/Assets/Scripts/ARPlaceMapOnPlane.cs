@@ -12,6 +12,13 @@ public class ARPlaceMapOnPlane : MonoBehaviour
 	[SerializeField]
 	private GameObject _arRoot;
 
+	[SerializeField]
+	private GameObject _arPanel;
+
+	public void ToggleARPanel() {
+		_arPanel.SetActive(!_arPanel.activeSelf);
+	}
+
 	void Start()
 	{
 		ARPlaneHandler.returnARPlane += PlaceMap;
