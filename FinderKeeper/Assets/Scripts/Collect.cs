@@ -56,7 +56,7 @@ public class Collect : MonoBehaviour {
                 GameManager.Instance.AddCollectedItem(collectible.Id);
             }
             else Debug.Log(_collectedItem.name + " AIN'T NO COLLECTIBLE");
-            
+
         }
         HideCollectionPanel();  
     }
@@ -65,17 +65,23 @@ public class Collect : MonoBehaviour {
     {
         //Touch input - use this block for app
         //if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
-        //{
-        //    Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        //    RaycastHit raycastHit;
-        //    if (Physics.Raycast(raycast, out raycastHit))
         //    {
-        //        if (raycastHit.collider.tag == "Low") {
-        //            _collectedItem = raycastHit.transform.gameObject;
-        //            ShowCollectionPanel();
+        //        Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        //        RaycastHit raycastHit;
+        //        if (Physics.Raycast(raycast, out raycastHit))
+        //        {
+        //            if (raycastHit.collider.tag == "Low")
+        //            {
+        //                _collectedItem = raycastHit.transform.gameObject;
+        //                ShowCollectionPanel();
+        //                var collectible = _collectedItem.GetComponentInParent<Collectible>();
+        //                collectible.Id = Convert.ToInt32(_collectedItem.transform.parent.name);
+        //                collectible.IsCollected = true;
+        //                GameManager.Instance.AddCollectedItem(collectible.Id);
+        //                SceneManager.LoadScene("ARMode");
+        //            }
         //        }
         //    }
-        //}
 
         //mouse input - use this block for testing
         if (Input.GetMouseButton(0))
@@ -87,7 +93,11 @@ public class Collect : MonoBehaviour {
                 if (raycastHit.collider.tag == "Low")
                 {
                     _collectedItem = raycastHit.transform.gameObject;
-                    ShowCollectionPanel();
+                    var collectible = _collectedItem.GetComponentInParent<Collectible>();
+                    collectible.Id = Convert.ToInt32(_collectedItem.transform.parent.name);
+                    collectible.IsCollected = true;
+                    GameManager.Instance.AddCollectedItem(collectible.Id);
+                    SceneManager.LoadScene("ARMode");
                 }
             }
         }
