@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityARInterface;
+using GoogleARCore;
+using GoogleARCoreInternal;
 
 public class ARPlaceMapOnPlane : MonoBehaviour
 {
@@ -21,6 +23,13 @@ public class ARPlaceMapOnPlane : MonoBehaviour
 
 	void Start()
 	{
+		#if UNITY_ANDROID
+			ARSubsystemManager.DestroySubsystems();
+        	ARSubsystemManager.CreateSubsystems();
+        	ARSubsystemManager.StopSubsystems();
+        	ARSubsystemManager.StartSubsystems();
+		#endif
+
 		ARPlaneHandler.returnARPlane += PlaceMap;
 		ARPlaneHandler.resetARPlane += ResetPlane;
 	}

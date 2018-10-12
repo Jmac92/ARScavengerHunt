@@ -756,7 +756,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Use the camera to slowly scan a flat surface to place the map. \n\nFor
+  m_Text: "Slowly scan a flat surface to place an AR map of the areas to search. \n\nFor
     best results, use a surface with clear boundaries such as a table or bench top."
 --- !u!222 &812501245
 CanvasRenderer:
@@ -882,7 +882,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1194023422
 RectTransform:
   m_ObjectHideFlags: 0
