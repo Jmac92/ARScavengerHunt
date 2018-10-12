@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ARMode.unity
     guid: a0ddf9c27675c854ca5c398c275ceb28
+  - enabled: 1
+    path: Assets/Scenes/AROverviewMap.unity
+    guid: cc984a7d686f74604a7946e18802ee5d
   m_configObjects: {}

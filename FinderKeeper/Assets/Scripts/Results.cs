@@ -12,9 +12,9 @@ public class Results : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		scoreText.text = "You found: " + EndGame.finalScore;
+		scoreText.text = "You found: " + Transitions.finalScore;
 
-		switch (EndGame.finalScore)
+		switch (Transitions.finalScore)
 		{
 			case "5/5":
 				messageText.text = "Impressive!";
