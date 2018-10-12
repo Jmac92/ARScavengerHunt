@@ -65,6 +65,7 @@ public class OverviewMap : MonoBehaviour {
 
     public void StorePlayerPosition () {
         Transitions.playerPosition = _map.CenterLatitudeLongitude;
+        Transitions.isOverviewActive = true;
     }
 
     public void EnableOverviewMap () {
@@ -134,12 +135,16 @@ public class OverviewMap : MonoBehaviour {
             _locations = Transitions.locations;
             InitializeObjectsFromExistingLocations();
             SyncComponentSettings();
-            
         }
 
         InitializePlayerInstance();
 
         InitializeOverviewMap();  
+
+        if (Transitions.isOverviewActive) {
+            Transitions.isOverviewActive = false;
+            EnableOverviewMap();
+        }
     }
 
     private void SyncComponentSettings () {

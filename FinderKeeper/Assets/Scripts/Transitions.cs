@@ -13,4 +13,6 @@ public static class Transitions {
     public static bool rotationSetting { get; set; }
 
     public static bool cameraSetting { get; set; }
+
+    public static bool isOverviewActive { get; set; }
 }

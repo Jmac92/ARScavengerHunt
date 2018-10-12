@@ -1002,7 +1002,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit
+  m_Text: Back
 --- !u!222 &1443000875
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1166,7 +1166,7 @@ GameObject:
   - component: {fileID: 1887510445}
   - component: {fileID: 1887510444}
   m_Layer: 5
-  m_Name: ExitButton
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
