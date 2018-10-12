@@ -20,24 +20,9 @@ public class ARCollect : MonoBehaviour {
         }
 
         //touch input - use this block for the app
-        //if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
-        //{
-        //    Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        //    RaycastHit raycastHit;
-        //    if (Physics.Raycast(raycast, out raycastHit))
-        //    {
-        //        if (raycastHit.collider.tag == "Low")
-        //        {
-        //            _collectedItem = raycastHit.transform.gameObject;
-        //            CollectItem(_collectedItem);
-        //        }
-        //    }
-        //}
-
-        //mouse input - use this block for testing
-        if (Input.GetMouseButtonUp(0))
+        if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            Ray raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             RaycastHit raycastHit;
             if (Physics.Raycast(raycast, out raycastHit))
             {
@@ -48,6 +33,21 @@ public class ARCollect : MonoBehaviour {
                 }
             }
         }
+
+        //mouse input -use this block for testing
+        //if (Input.GetMouseButtonUp(0))
+        //{
+        //    Ray raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //    RaycastHit raycastHit;
+        //    if (Physics.Raycast(raycast, out raycastHit))
+        //    {
+        //        if (raycastHit.collider.tag == "Low")
+        //        {
+        //            _collectedItem = raycastHit.transform.gameObject;
+        //            CollectItem(_collectedItem);
+        //        }
+        //    }
+        //}
     }
 
     private void CollectItem(GameObject item) {

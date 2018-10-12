@@ -64,24 +64,24 @@ public class Collect : MonoBehaviour {
     private void Update()
     {
         //Touch input - use this block for app
-        //if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
-        //    {
-        //        Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        //        RaycastHit raycastHit;
-        //        if (Physics.Raycast(raycast, out raycastHit))
-        //        {
-        //            if (raycastHit.collider.tag == "Low")
-        //            {
-        //                _collectedItem = raycastHit.transform.gameObject;
-        //                ShowCollectionPanel();
-        //                var collectible = _collectedItem.GetComponentInParent<Collectible>();
-        //                collectible.Id = Convert.ToInt32(_collectedItem.transform.parent.name);
-        //                collectible.IsCollected = true;
-        //                GameManager.Instance.AddCollectedItem(collectible.Id);
-        //                SceneManager.LoadScene("ARMode");
-        //            }
-        //        }
-        //    }
+        if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
+        {
+            Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            RaycastHit raycastHit;
+            if (Physics.Raycast(raycast, out raycastHit))
+            {
+                if (raycastHit.collider.tag == "Low")
+                {
+                    _collectedItem = raycastHit.transform.gameObject;
+                    ShowCollectionPanel();
+                    var collectible = _collectedItem.GetComponentInParent<Collectible>();
+                    collectible.Id = Convert.ToInt32(_collectedItem.transform.parent.name);
+                    collectible.IsCollected = true;
+                    GameManager.Instance.AddCollectedItem(collectible.Id);
+                    SceneManager.LoadScene("ARMode");
+                }
+            }
+        }
 
         //mouse input - use this block for testing
         if (Input.GetMouseButton(0))
