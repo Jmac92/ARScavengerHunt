@@ -74,7 +74,6 @@ public class Collect : MonoBehaviour {
                 if (raycastHit.collider.tag == "Low")
                 {
                     _collectedItem = raycastHit.transform.gameObject;
-                    ShowCollectionPanel();
                     var collectible = _collectedItem.GetComponentInParent<Collectible>();
                     collectible.Id = Convert.ToInt32(_collectedItem.transform.parent.name);
                     collectible.IsCollected = true;
