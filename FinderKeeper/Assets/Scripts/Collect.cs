@@ -33,7 +33,7 @@ public class Collect : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        int collectedCount = GameManager.Instance.collectedItems.Count;
+        int collectedCount = GameManager.Instance.GetCollectedItems().Count;
         itemsText.text = collectedCount + "/5";
         HideCollectionPanel();
         _Items = collectedCount;
@@ -53,7 +53,8 @@ public class Collect : MonoBehaviour {
                 var collectible = _collectedItem.GetComponentInParent<Collectible>();
                 collectible.Id = Convert.ToInt32(_collectedItem.transform.parent.name);
                 collectible.IsCollected = true;
-                GameManager.Instance.AddCollectedItem(collectible.Id);
+                collectible.IsVisibleOnMap = false;
+                GameManager.Instance.AddCollectedItem(collectible);
             }
             else Debug.Log(_collectedItem.name + " AIN'T NO COLLECTIBLE");
 
@@ -77,7 +78,8 @@ public class Collect : MonoBehaviour {
                     var collectible = _collectedItem.GetComponentInParent<Collectible>();
                     collectible.Id = Convert.ToInt32(_collectedItem.transform.parent.name);
                     collectible.IsCollected = true;
-                    GameManager.Instance.AddCollectedItem(collectible.Id);
+                    collectible.IsVisibleOnMap = false;
+                    GameManager.Instance.AddCollectedItem(collectible);
                     SceneManager.LoadScene("ARMode");
                 }
             }
@@ -96,7 +98,8 @@ public class Collect : MonoBehaviour {
                     var collectible = _collectedItem.GetComponentInParent<Collectible>();
                     collectible.Id = Convert.ToInt32(_collectedItem.transform.parent.name);
                     collectible.IsCollected = true;
-                    GameManager.Instance.AddCollectedItem(collectible.Id);
+                    collectible.IsVisibleOnMap = false;
+                    GameManager.Instance.AddCollectedItem(collectible);
                     SceneManager.LoadScene("ARMode");
                 }
             }

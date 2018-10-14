@@ -34,9 +34,9 @@ public class SpawnOnMap : MonoBehaviour
 
         for (int i = 0; i < _locationStrings.Length; i++)
         {
-            var collectedItems = GameManager.Instance.collectedItems;
-            foreach (var id in collectedItems) {
-                Debug.Log("COLLECTED ITEM: " + id);
+            var collectedItems = GameManager.Instance.GetCollectedItems();
+            foreach (var item in collectedItems) {
+                Debug.Log("COLLECTED ITEM: " + item.Id);
             }
 
             var locationString = _locationStrings[i];

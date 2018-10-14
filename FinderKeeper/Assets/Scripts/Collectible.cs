@@ -32,4 +32,8 @@ public class Collectible : MonoBehaviour {
     public int Id { get; set; }
 
     public bool IsCollected { get; set; }
+
+    public bool IsVisibleOnMap { get; set; }
+
+    public string LatLong { get; set; }
 }

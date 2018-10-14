@@ -57,3 +57,6 @@ MonoBehaviour:
   - name: PartyPopper
     clip: {fileID: 8300000, guid: 6a15bd368a6e08c46bc9fe49963ee5b7, type: 3}
     isEffect: 1
+  - name: Chime
+    clip: {fileID: 8300000, guid: 84b9ca4f8cb527a4c926f6ded9bb2e97, type: 3}
+    isEffect: 1

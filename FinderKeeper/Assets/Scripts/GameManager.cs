@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -8,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public float sceneTime = 0;
     public bool hasTimerStarted = false;
 
-    public ArrayList collectedItems;
+    private List<Collectible> _collectedItems;
 
     private static GameManager _instance;
 
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetFloat("maxTime", maxTime);
         sceneTime = PlayerPrefs.GetFloat("sceneTime");
 
-        collectedItems = new ArrayList();
+        _collectedItems = new List<Collectible>();
 
 
         DontDestroyOnLoad(gameObject);
@@ -74,31 +75,54 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetInt("hasTimerStarted", 0);
     }
 
-    public void AddCollectedItem(int id)
+    public List<Collectible> GetCollectedItems()
     {
-        if(!collectedItems.Contains(id))
-            collectedItems.Add(id);
-        else
-            Debug.Log(id + "ALREADY COLLECTED");
+        return _collectedItems;
+    }
 
-        foreach (var idNo in collectedItems)
+    public Collectible GetCollectedItem(int id)
+    {
+        foreach (Collectible item in _collectedItems) {
+            if (item.Id == id)
+                return item;
+        }
+        return null;
+    }
+
+    public void AddCollectedItem(Collectible item)
+    {
+        if(!_collectedItems.Contains(item))
+            _collectedItems.Add(item);
+        else
+            Debug.Log(item.Id + "ALREADY COLLECTED");
+
+        foreach (var itm in _collectedItems)
         {
-            Debug.Log("COLLECTED ITEM: " + idNo);
+            Debug.Log("COLLECTED ITEM: " + itm.Id);
         }
     }
 
     public void RemoveCollectedItem(int id)
     {
-        collectedItems.Remove(id);
+        foreach (Collectible item in _collectedItems)
+        {
+            if (item.Id == id)
+                _collectedItems.Remove(item);
+        }
     }
 
     public void ClearCollectedItems()
     {
-        collectedItems.Clear();
+        _collectedItems.Clear();
     }
 
     public bool HasItemBeenCollected(int id)
     {
-        return collectedItems.Contains(id);
+        foreach (Collectible item in _collectedItems)
+        {
+            if (item.Id == id)
+                return true;
+        }
+        return false;
     }
 }
