@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Button : MonoBehaviour {
-    public Image rotationIcon;
-    public Sprite locked;
-    public Sprite unlocked;
-    private bool _unlock = true;
+    public Image icon;
+    public Sprite sprite01;
+    public Sprite sprite02;
+    private bool _active = true;
 
 	// Use this for initialization
 	void Start () {
-        rotationIcon.GetComponent<Image>();
+        icon.GetComponent<Image>();
 	}
 	
 	// Update is called once per frame
@@ -20,14 +20,14 @@ public class Button : MonoBehaviour {
 	}
     public void Lock()
     {
-        _unlock = !_unlock;
-        if (_unlock == false)
+        _active = !_active;
+        if (_active == false)
         {
-            rotationIcon.overrideSprite = locked;
+            icon.overrideSprite = sprite01;
         }
         else
         {
-            rotationIcon.overrideSprite = unlocked;
+            icon.overrideSprite = sprite02;
         }
     }
 }
