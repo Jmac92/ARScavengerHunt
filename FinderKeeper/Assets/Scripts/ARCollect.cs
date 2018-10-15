@@ -66,6 +66,7 @@ public class ARCollect : MonoBehaviour {
 
     private void ReturnToMap()
     {
+        SoundManager.Instance.StopAll();
         SceneManager.LoadScene("map");
     }
 }
