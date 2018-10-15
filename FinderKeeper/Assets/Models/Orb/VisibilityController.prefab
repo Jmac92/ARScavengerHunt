@@ -56,6 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4768721660219984}
   - component: {fileID: 114568466311392512}
+  - component: {fileID: 114706356485824962}
   m_Layer: 0
   m_Name: VisibilityController
   m_TagString: Low
@@ -170,6 +171,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b79c62851650aa4cac853390104276d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114706356485824962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961207376309816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43cca5f9c507a648b2b951abc5ef471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &135412906755557376

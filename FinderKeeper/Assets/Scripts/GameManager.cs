@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour {
     public float maxTime = 300;
     public float sceneTime = 0;
     public bool hasTimerStarted = false;
+
+    private List<Collectible> _collectedItems;
 
     private static GameManager _instance;
 
@@ -25,10 +28,10 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetFloat("maxTime", maxTime);
         sceneTime = PlayerPrefs.GetFloat("sceneTime");
 
+        _collectedItems = new List<Collectible>();
+
 
         DontDestroyOnLoad(gameObject);
-
-        
     }
 
     private void Update()
@@ -70,5 +73,56 @@ public class GameManager : MonoBehaviour {
     public void StopTimer()
     {
         PlayerPrefs.SetInt("hasTimerStarted", 0);
+    }
+
+    public List<Collectible> GetCollectedItems()
+    {
+        return _collectedItems;
+    }
+
+    public Collectible GetCollectedItem(int id)
+    {
+        foreach (Collectible item in _collectedItems) {
+            if (item.Id == id)
+                return item;
+        }
+        return null;
+    }
+
+    public void AddCollectedItem(Collectible item)
+    {
+        if(!_collectedItems.Contains(item))
+            _collectedItems.Add(item);
+        else
+            Debug.Log(item.Id + "ALREADY COLLECTED");
+
+        foreach (var itm in _collectedItems)
+        {
+            Debug.Log("COLLECTED ITEM: " + itm.Id);
+        }
+    }
+
+    public void RemoveCollectedItem(int id)
+    {
+        foreach (Collectible item in _collectedItems)
+        {
+            if (item.Id == id)
+                _collectedItems.Remove(item);
+        }
+    }
+
+    public void ClearCollectedItems()
+    {
+        _collectedItems.Clear();
+    }
+
+    public bool HasItemBeenCollected(int id)
+    {
+        foreach (Collectible item in _collectedItems)
+        {
+            if (item.Id == id)
+                return true;
+        }
+        return false;
     }
 }

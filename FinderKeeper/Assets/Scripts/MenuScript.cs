@@ -15,6 +15,10 @@ public class MenuScript : MonoBehaviour
             PlayerPrefs.SetFloat("sceneTime", 0);
             PlayerPrefs.SetInt("hasTimerStarted", 0);
         }
+
+        if (SceneManager.GetActiveScene().name == "ARMode" && !!SoundManager.Instance)
+            SoundManager.Instance.StopAll();
+
 		SceneManager.LoadScene(sceneName); //load a scene
 	}
 }
