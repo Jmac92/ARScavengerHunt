@@ -28,11 +28,13 @@ public class AROverviewMap : MonoBehaviour {
         
 		_spawnedObjects = new List<GameObject>();
         for (int i = 0; i < _locations.Length; i++) {   
-            var location = _locations[i];
-            var instance = Instantiate(_markerPrefab);
-            instance.transform.SetParent(_map.transform);
-            instance.transform.localPosition = _map.GeoToWorldPosition(location, true);
-            _spawnedObjects.Add(instance);
+            if (!GameManager.Instance.HasItemBeenCollected(i)) {
+                var location = _locations[i];
+                var instance = Instantiate(_markerPrefab);
+                instance.transform.SetParent(_map.transform);
+                instance.transform.localPosition = _map.GeoToWorldPosition(location, true);
+                _spawnedObjects.Add(instance);
+            }
         }
 
         _playerInstance = Instantiate(_playerPrefab);
@@ -40,12 +42,12 @@ public class AROverviewMap : MonoBehaviour {
         _playerInstance.transform.localPosition = Conversions.GeoToWorldPosition(Transitions.playerPosition, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz();
 
         _map.Initialize(CalculateCentroid(_locations), 16);
-        _map.gameObject.SetActive(false);
+        //_map.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (_spawnedObjects != null) {
+		if (_spawnedObjects != null && _map.gameObject.activeSelf) {
             int count = _spawnedObjects.Count;
             for (int i = 0; i < count; i++)
             {
