@@ -17,7 +17,7 @@ public class DistanceToPlayer : MonoBehaviour {
         float dist = (gameObject.transform.position - player.transform.position).magnitude;
         if (!ToggleARMode.isARActive && dist < 7.5f)
         {
-            //Debug.Log("NAME: " + gameObject.name);
+            Debug.Log("NAME: " + gameObject.name);
 
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             gameObject.transform.GetChild(1).gameObject.SetActive(true);

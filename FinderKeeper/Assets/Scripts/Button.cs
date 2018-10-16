@@ -7,7 +7,7 @@ public class Button : MonoBehaviour {
     public Image icon;
     public Sprite sprite01;
     public Sprite sprite02;
-    public bool active = true;
+    private bool _active = true;
 
 	// Use this for initialization
 	void Start () {
@@ -20,8 +20,8 @@ public class Button : MonoBehaviour {
 	}
     public void Lock()
     {
-        active = !active;
-        if (active == false)
+        _active = !_active;
+        if (_active == false)
         {
             icon.overrideSprite = sprite01;
         }
