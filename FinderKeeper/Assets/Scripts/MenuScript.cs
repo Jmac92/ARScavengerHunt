@@ -4,9 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour 
 {
-	public void LoadScene(string sceneName)
+    public Animator fadeIn;
+    public Animator fadeOut;
+
+    void Start()
+    {
+        fadeIn.SetTrigger("FadeIn");
+
+    }
+    public void LoadScene(string sceneName)
 	{
-		if (sceneName == null)
+        fadeOut.SetTrigger("FadeOut");
+        if (sceneName == null)
 			Debug.Log("<color=orange>"+gameObject.name+": No Scene Name Was given for LoadScene function!</color>");
 
         if (SceneManager.GetActiveScene().name == "Ready" && !!GameManager.Instance)
@@ -15,6 +24,15 @@ public class MenuScript : MonoBehaviour
             PlayerPrefs.SetFloat("sceneTime", 0);
             PlayerPrefs.SetInt("hasTimerStarted", 0);
         }
-		SceneManager.LoadScene(sceneName); //load a scene
+
+        if (SceneManager.GetActiveScene().name == "ARMode" && !!SoundManager.Instance)
+            SoundManager.Instance.StopAll();
+        
+        StartCoroutine(LoadNextScene(sceneName)); //load a scene
 	}
+    public IEnumerator LoadNextScene(string name)
+    {
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(name);
+    }
 }

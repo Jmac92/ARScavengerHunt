@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ARCollect : MonoBehaviour {
 
@@ -9,18 +11,36 @@ public class ARCollect : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Debug.Log("CONFETTI: " + !!confetti);
-	}
+        SoundManager.Instance.PlaySound("Chime", 1.0f, true);
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        transform.Rotate(0, transform.position.y + 1, 0, Space.Self);
+
         if (_collectedItem != null) {
             confetti.transform.parent = transform;
         }
 
-        if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
+        //touch input - use this block for the app
+        //if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
+        //{
+        //    Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        //    RaycastHit raycastHit;
+        //    if (Physics.Raycast(raycast, out raycastHit))
+        //    {
+        //        if (raycastHit.collider.tag == "Low")
+        //        {
+        //            _collectedItem = raycastHit.transform.gameObject;
+        //            CollectItem(_collectedItem);
+        //        }
+        //    }
+        //}
+
+        //mouse input -use this block for testing
+        if (Input.GetMouseButtonUp(0))
         {
-            Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            Ray raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit raycastHit;
             if (Physics.Raycast(raycast, out raycastHit))
             {
@@ -37,9 +57,16 @@ public class ARCollect : MonoBehaviour {
         item.GetComponent<MeshRenderer>().enabled = false;
         SoundManager.Instance.PlaySound("PartyPopper");
 
+        SoundManager.Instance.StopSound("Chime");
+
         confetti.Play();
-        if (!confetti.isPlaying) {
-            Destroy(gameObject);
-        }
+
+        Invoke("ReturnToMap", 3);
+    }
+
+    private void ReturnToMap()
+    {
+        SoundManager.Instance.StopAll();
+        SceneManager.LoadScene("map");
     }
 }

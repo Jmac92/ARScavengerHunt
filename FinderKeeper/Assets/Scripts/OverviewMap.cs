@@ -45,6 +45,9 @@ public class OverviewMap : MonoBehaviour {
     [SerializeField]
     GameObject _rotationIcon;
 
+    [SerializeField]
+    GameObject _perspectiveIcon;
+
     Vector2d[] _locations;
 
     List<GameObject> _spawnedObjects;
@@ -57,7 +60,9 @@ public class OverviewMap : MonoBehaviour {
 
     CameraSwap _cameraScript;
 
-    Button _buttonScript;
+    Button _rotationButtonScript;
+
+    Button _perspectiveButtonScript;
 
     public void SnapToCurrentLocation () {
         _overviewMap.UpdateMap(CalculateCentroid(_locations), _overviewMap.InitialZoom);
@@ -126,7 +131,8 @@ public class OverviewMap : MonoBehaviour {
 
         _rotationScript = _playerGameObject.GetComponent(typeof(RotateWithLocationProvider)) as RotateWithLocationProvider;
         _cameraScript = _playerGameObject.GetComponent(typeof(CameraSwap)) as CameraSwap;
-        _buttonScript = _rotationIcon.GetComponent(typeof(Button)) as Button;
+        _rotationButtonScript = _rotationIcon.GetComponent(typeof(Button)) as Button;
+        _perspectiveButtonScript = _perspectiveIcon.GetComponent(typeof(Button)) as Button;
 
         if (Transitions.locations == null) {
             InitializeObjectsFromNewLocations();
@@ -142,14 +148,20 @@ public class OverviewMap : MonoBehaviour {
         InitializeOverviewMap();  
 
         if (Transitions.isOverviewActive) {
-            Transitions.isOverviewActive = false;
-            EnableOverviewMap();
-        }
+             Transitions.isOverviewActive = false;
+             EnableOverviewMap();
+         }
     }
 
     private void SyncComponentSettings () {
         if (_cameraScript.isIsoCamera != Transitions.cameraSetting) {
             _cameraScript.Swap();
+
+            if (!_cameraScript.isIsoCamera) {
+                if (_perspectiveButtonScript.active) {
+                    _perspectiveButtonScript.Lock();
+                }
+            } 
         }
 
         if (_rotationScript.isRotatable != Transitions.rotationSetting) {
@@ -158,7 +170,7 @@ public class OverviewMap : MonoBehaviour {
             if (_rotationScript.isRotatable) {
                 _playerGameObject.transform.localRotation = Transitions.playerRotation;
             } else {
-                _buttonScript.Lock();
+                _rotationButtonScript.Lock();
             }
         } else if (_rotationScript.isRotatable) {
             _playerGameObject.transform.localRotation = Transitions.playerRotation;
