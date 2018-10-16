@@ -39,28 +39,29 @@ public class Collect : MonoBehaviour {
         _Items = collectedCount;
     }
 
-    public void CollectionOnClick() {
-        if (_collectedItem.tag == "Low")
-        {
-            _Items += 1;
-            itemsText.text =  _Items + "/5";
-            //_inventory = InventoryList.GetComponent<Inventory>();
-            //_inventory.WhitenImage();
+    //public void CollectionOnClick() {
+    //    if (_collectedItem.tag == "Low")
+    //    {
+    //        _Items += 1;
+    //        itemsText.text =  _Items + "/5";
+    //        //_inventory = InventoryList.GetComponent<Inventory>();
+    //        //_inventory.WhitenImage();
 
-            if (_collectedItem.GetComponentInParent<Collectible>() != null)
-            {
-                Debug.Log("COLLECTED " + _collectedItem.transform.parent.name);
-                var collectible = _collectedItem.GetComponentInParent<Collectible>();
-                collectible.Id = Convert.ToInt32(_collectedItem.transform.parent.name);
-                collectible.IsCollected = true;
-                collectible.IsVisibleOnMap = false;
-                GameManager.Instance.AddCollectedItem(collectible);
-            }
-            else Debug.Log(_collectedItem.name + " AIN'T NO COLLECTIBLE");
+    //        if (_collectedItem.GetComponentInParent<Collectible>() != null)
+    //        {
+    //            Debug.Log("COLLECTED " + _collectedItem.transform.parent.name);
 
-        }
-        HideCollectionPanel();  
-    }
+    //            Collectible collectible = GameManager.Instance.GetCourseItem(Convert.ToInt32(_collectedItem.transform.parent.name));
+    //            collectible.IsCollected = true;
+    //            collectible.IsVisibleOnMap = false;
+
+    //            GameManager.Instance.AddCollectedItem(collectible);
+    //        }
+    //        else Debug.Log(_collectedItem.name + " AIN'T NO COLLECTIBLE");
+
+    //    }
+    //    HideCollectionPanel();  
+    //}
 
     private void Update()
     {
@@ -74,8 +75,7 @@ public class Collect : MonoBehaviour {
                 if (raycastHit.collider.tag == "Low")
                 {
                     _collectedItem = raycastHit.transform.gameObject;
-                    var collectible = _collectedItem.GetComponentInParent<Collectible>();
-                    collectible.Id = Convert.ToInt32(_collectedItem.transform.parent.name);
+                    Collectible collectible = GameManager.Instance.GetCourseItem(Convert.ToInt32(_collectedItem.transform.parent.name));
                     collectible.IsCollected = true;
                     collectible.IsVisibleOnMap = false;
                     GameManager.Instance.AddCollectedItem(collectible);
@@ -94,8 +94,7 @@ public class Collect : MonoBehaviour {
                 if (raycastHit.collider.tag == "Low")
                 {
                     _collectedItem = raycastHit.transform.gameObject;
-                    var collectible = _collectedItem.GetComponentInParent<Collectible>();
-                    collectible.Id = Convert.ToInt32(_collectedItem.transform.parent.name);
+                    Collectible collectible = GameManager.Instance.GetCourseItem(Convert.ToInt32(_collectedItem.transform.parent.name));
                     collectible.IsCollected = true;
                     collectible.IsVisibleOnMap = false;
                     GameManager.Instance.AddCollectedItem(collectible);

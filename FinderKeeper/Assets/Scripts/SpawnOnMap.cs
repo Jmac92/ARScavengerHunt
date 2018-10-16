@@ -61,13 +61,7 @@ public class SpawnOnMap : MonoBehaviour
 
             if (!GameManager.Instance.GetCourseItems().Contains(collectible))
                 GameManager.Instance.AddCourseItem(collectible);
-
         }
-
-        Debug.Log("ITEMS: " + GameManager.Instance.GetCourseItems().Count);
-
-        foreach (Collectible item in GameManager.Instance.GetCourseItems())
-            Debug.Log("ITEM: " + item.Id + " LOCATION: " + item.LatLong);
     }
 
     private void Update()

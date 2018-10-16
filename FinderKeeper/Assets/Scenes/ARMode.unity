@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1310,6 +1310,10 @@ Prefab:
         type: 2}
       propertyPath: InitialModule.startColor.maxColor.a
       value: 0.49803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695298176608274, guid: 6c0143001f3d8a7419026cd784496dc0, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c0143001f3d8a7419026cd784496dc0, type: 2}
@@ -2859,6 +2863,7 @@ GameObject:
   - component: {fileID: 2029326941}
   - component: {fileID: 2029326940}
   - component: {fileID: 2029326939}
+  - component: {fileID: 2029326943}
   m_Layer: 12
   m_Name: ArAlignedMap
   m_TagString: Untagged
@@ -3043,11 +3048,7 @@ MonoBehaviour:
         findByType: 2
         categories: -1
         nameString: 
-        coordinates:
-        - -37.807395, 144.986678
-        - -37.807920, 144.986059
-        - -37.807933, 144.986150
-        - -37.687519, 145.125539
+        coordinates: []
         density: 15
   _tileProvider: {fileID: 0}
 --- !u!114 &2029326939
@@ -3113,6 +3114,20 @@ Transform:
   m_Father: {fileID: 1372161580}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2029326943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2029326937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56f5fdc503e4e847ac2a1c0fee59cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  markerPrefab: {fileID: 1695298176608274, guid: 6c0143001f3d8a7419026cd784496dc0,
+    type: 2}
+  abstractMap: {fileID: 2029326938}
 --- !u!95 &2056050830 stripped
 Animator:
   m_PrefabParentObject: {fileID: 95485296215661766, guid: b75798407a7008048b375bc554ed48b7,

@@ -134,6 +134,16 @@ public class GameManager : MonoBehaviour {
         return _courseItems;
     }
 
+    public Collectible GetCourseItem(int id)
+    {
+        foreach (Collectible item in _courseItems)
+        {
+            if (item.Id == id)
+                return item;
+        }
+        return null;
+    }
+
     public void AddCourseItem(Collectible item)
     {
         bool idFound = false;
@@ -148,6 +158,5 @@ public class GameManager : MonoBehaviour {
 
         if (!idFound)
             _courseItems.Add(item);
-        
     }
 }

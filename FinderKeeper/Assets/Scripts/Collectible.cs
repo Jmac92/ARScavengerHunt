@@ -13,12 +13,7 @@ public class Collectible : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         bool isInCollectionList = GameManager.Instance.HasItemBeenCollected(Id);
-        if (IsCollected)
-        {
-            Debug.Log("DESTROYING " + Id);
-            Destroy(gameObject);
-        }
-
+        
         if (isInCollectionList)
         {
             gameObject.SetActive(false);
