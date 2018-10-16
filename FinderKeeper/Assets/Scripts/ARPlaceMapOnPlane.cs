@@ -15,6 +15,10 @@ public class ARPlaceMapOnPlane : MonoBehaviour
 	[SerializeField]
 	private GameObject _arPanel;
 
+	private ARPointCloudVisualizer _pointScript;
+
+	private ARPlaneVisualizer _planeScript;
+
 	public void ToggleARPanel() {
 		_arPanel.SetActive(!_arPanel.activeSelf);
 	}
@@ -23,26 +27,26 @@ public class ARPlaceMapOnPlane : MonoBehaviour
 	{
 		ARPlaneHandler.returnARPlane += PlaceMap;
 		ARPlaneHandler.resetARPlane += ResetPlane;
+
+		_pointScript = _arRoot.GetComponent(typeof(ARPointCloudVisualizer)) as ARPointCloudVisualizer;
+		_planeScript = _arRoot.GetComponent(typeof(ARPlaneVisualizer)) as ARPlaneVisualizer;
 	}
 
 	void PlaceMap(BoundedPlane plane)
 	{
+		_pointScript.enabled = false;
+		_planeScript.enabled = false;
+
+		var oldMask = _camera.cullingMask;
+		var newMask = oldMask & ~(1 << 8);
+		_camera.cullingMask = newMask;
+
 		if (!_mapTransform.gameObject.activeSelf)
 		{
 			_mapTransform.gameObject.SetActive(true);
 		}
 
 		_mapTransform.position = plane.center;
-
-		var pointScript = _arRoot.GetComponent(typeof(ARPointCloudVisualizer)) as ARPointCloudVisualizer;
-		var planeScript = _arRoot.GetComponent(typeof(ARPlaneVisualizer)) as ARPlaneVisualizer;
-
-		pointScript.enabled = false;
-		planeScript.enabled = false;
-
-		var oldMask = _camera.cullingMask;
-		var newMask = oldMask & ~(1 << 8);
-		_camera.cullingMask = newMask;
 	}
 
 	void ResetPlane()

@@ -140,7 +140,9 @@ public class OverviewMap : MonoBehaviour {
         } else {
             _locations = Transitions.locations;
             InitializeObjectsFromExistingLocations();
-            SyncComponentSettings();
+            if (!Transitions.cameraSetting == null) {
+                SyncComponentSettings();
+            }
         }
 
         InitializePlayerInstance();
@@ -204,13 +206,15 @@ public class OverviewMap : MonoBehaviour {
 
     private void InitializeObjectsFromExistingLocations () {
         _spawnedObjects = new List<GameObject>();
-        for (int i = 0; i < _locations.Length; i++) {   
-            var location = _locations[i];       
-            var instance = Instantiate(_markerPrefab);
-            instance.transform.SetParent(_overviewMapGameObject.transform);
-            instance.transform.localPosition = _map.GeoToWorldPosition(location, true);
-            instance.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
-            _spawnedObjects.Add(instance);
+        for (int i = 0; i < _locations.Length; i++) {  
+            if (!GameManager.Instance.HasItemBeenCollected(i)) {
+                var location = _locations[i];       
+                var instance = Instantiate(_markerPrefab);
+                instance.transform.SetParent(_overviewMapGameObject.transform);
+                instance.transform.localPosition = _map.GeoToWorldPosition(location, true);
+                instance.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
+                _spawnedObjects.Add(instance);
+            } 
         }
     }
 

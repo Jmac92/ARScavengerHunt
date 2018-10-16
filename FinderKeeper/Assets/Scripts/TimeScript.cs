@@ -30,19 +30,13 @@ public class TimeScript : MonoBehaviour {
         string min = Mathf.Floor(Mathf.Round(MaxTime - SceneTime) / 60).ToString("00");
         string sec = Mathf.Floor(Mathf.Round(MaxTime - SceneTime) % 60).ToString("00");
 
-
-        if (SceneTime >= MaxTime)
+        if (SceneTime >= MaxTime || ItemText.text == "5/5")
         {
             timeStop = true;
             End();
         }
 
-        if (ItemText.text == "Items = 5/5")
-        {
-            End();
-        }
-
-        if (hasTimerStarted)
+        if (hasTimerStarted && !timeStop)
             TimeText.text = min + ":" + sec;
         else
             TimeText.text = "00:00";
