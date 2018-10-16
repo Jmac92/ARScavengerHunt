@@ -42,16 +42,32 @@ public class SpawnOnMap : MonoBehaviour
             var locationString = _locationStrings[i];
             _locations[i] = Conversions.StringToLatLon(locationString);
 
+            GameObject instance = Instantiate(_markerPrefab);
+            instance.transform.SetParent(_mapGameObject.transform);
+            instance.transform.localPosition = _map.GeoToWorldPosition(_locations[i], true);
+            instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
+            instance.name = i.ToString();
+
+            Collectible collectible = instance.GetComponent<Collectible>();
+            collectible.Id = i;
+            collectible.IsCollected = false;
+            collectible.IsVisibleOnMap = true;
+            collectible.LatLong = locationString;
+
             if (!GameManager.Instance.HasItemBeenCollected(i))
             {
-                var instance = Instantiate(_markerPrefab);
-                instance.transform.SetParent(_mapGameObject.transform);
-                instance.transform.localPosition = _map.GeoToWorldPosition(_locations[i], true);
-                instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
-                instance.name = i.ToString();
                 _spawnedObjects.Add(instance);
             }
+
+            if (!GameManager.Instance.GetCourseItems().Contains(collectible))
+                GameManager.Instance.AddCourseItem(collectible);
+
         }
+
+        Debug.Log("ITEMS: " + GameManager.Instance.GetCourseItems().Count);
+
+        foreach (Collectible item in GameManager.Instance.GetCourseItems())
+            Debug.Log("ITEM: " + item.Id + " LOCATION: " + item.LatLong);
     }
 
     private void Update()

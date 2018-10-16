@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public bool hasTimerStarted = false;
 
     private List<Collectible> _collectedItems;
+    private List<Collectible> _courseItems;
 
     private static GameManager _instance;
 
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour {
         sceneTime = PlayerPrefs.GetFloat("sceneTime");
 
         _collectedItems = new List<Collectible>();
+        _courseItems = new List<Collectible>();
 
 
         DontDestroyOnLoad(gameObject);
@@ -124,5 +126,28 @@ public class GameManager : MonoBehaviour {
                 return true;
         }
         return false;
+    }
+
+
+    public List<Collectible> GetCourseItems()
+    {
+        return _courseItems;
+    }
+
+    public void AddCourseItem(Collectible item)
+    {
+        bool idFound = false;
+        foreach(Collectible itm in _courseItems)
+        {
+            if (item.Id == itm.Id)
+            {
+                idFound = true;
+                continue;
+            }
+        }
+
+        if (!idFound)
+            _courseItems.Add(item);
+        
     }
 }
