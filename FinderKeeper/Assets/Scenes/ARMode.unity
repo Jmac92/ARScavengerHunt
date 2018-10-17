@@ -3125,9 +3125,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56f5fdc503e4e847ac2a1c0fee59cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerPrefab: {fileID: 1695298176608274, guid: 6c0143001f3d8a7419026cd784496dc0,
+  _mapGameObject: {fileID: 2029326937}
+  _map: {fileID: 2029326938}
+  _location:
+    x: 0
+    y: 0
+  _spawnScale: 0.1
+  _markerPrefab: {fileID: 1695298176608274, guid: 6c0143001f3d8a7419026cd784496dc0,
     type: 2}
-  abstractMap: {fileID: 2029326938}
 --- !u!95 &2056050830 stripped
 Animator:
   m_PrefabParentObject: {fileID: 95485296215661766, guid: b75798407a7008048b375bc554ed48b7,

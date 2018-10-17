@@ -5153,6 +5153,7 @@ MonoBehaviour:
   _map: {fileID: 1771452847}
   _locationStrings:
   - -37.687519,145.125534
+  - -37.687516,145.125454
   _spawnScale: 1.5
   _markerPrefab: {fileID: 1961207376309816, guid: 32f43cd74ac333842801bc372d4db9d4,
     type: 2}

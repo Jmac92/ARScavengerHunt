@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
     public float sceneTime = 0;
     public bool hasTimerStarted = false;
 
+    private int _currentItemId;
+
     private List<Collectible> _collectedItems;
     private List<Collectible> _courseItems;
 
@@ -64,6 +66,19 @@ public class GameManager : MonoBehaviour {
             }
 
             return _instance;
+        }
+    }
+
+    public int CurrentItemId
+    {
+        get
+        {
+            return _currentItemId;
+        }
+
+        set
+        {
+            _currentItemId = value;
         }
     }
 

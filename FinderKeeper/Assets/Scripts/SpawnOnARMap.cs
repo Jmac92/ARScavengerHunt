@@ -1,37 +1,57 @@
-﻿using Mapbox.Unity.Map;
+﻿using UnityEngine;
+using Mapbox.Utils;
+using Mapbox.Unity.Map;
+using Mapbox.Unity.MeshGeneration.Factories;
 using Mapbox.Unity.Utilities;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class SpawnOnARMap : MonoBehaviour {
+public class SpawnOnARMap : MonoBehaviour
+{
+    [SerializeField]
+    GameObject _mapGameObject;
 
-    public GameObject markerPrefab;
-    public AbstractMap abstractMap;
+    [SerializeField]
+    AbstractMap _map;
 
-    private List<Collectible> _collectibles;
+    [SerializeField]
+    Vector2d _location;
 
-	// Use this for initialization
-	void Awake () {
-        _collectibles = GameManager.Instance.GetCourseItems();
+    [SerializeField]
+    float _spawnScale = 100f;
 
-        SpawnItems();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField]
+    GameObject _markerPrefab;
 
-    private void SpawnItems() {
-        Debug.Log("COLLECTIBLES: " + _collectibles.Count);
-        foreach(Collectible item in _collectibles)
+    private GameObject _spawnedObject;
+
+    void Awake()
+    {
+
+        Collectible collectible = GameManager.Instance.GetCourseItem(GameManager.Instance.CurrentItemId);
+
+        var locationString = collectible.LatLong;
+        _location = Conversions.StringToLatLon(locationString);
+
+        GameObject instance = Instantiate(_markerPrefab);
+        instance.transform.SetParent(_mapGameObject.transform);
+        instance.transform.localPosition = _map.GeoToWorldPosition(_location, true);
+        instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
+        instance.transform.rotation *= Quaternion.Euler(0f, 0f, 180f);
+
+        if (collectible != null)
         {
-            Debug.Log(item.Id + " " + (item.IsCollected) + " " + (item.IsVisibleOnMap) + " " + item.LatLong);
-            if(!!item && !item.IsCollected)
-            {
-                abstractMap.SpawnPrefabAtGeoLocation(markerPrefab, Conversions.StringToLatLon(item.LatLong), null, true, "Item " + item.name);
-            }
+            _spawnedObject = instance;
+        }
+    }
+
+    private void Update()
+    {
+        if (_spawnedObject != null)
+        {
+            _spawnedObject.transform.localPosition = _map.GeoToWorldPosition(_location, true);
+            _spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
+            var pos = _spawnedObject.transform.localPosition;
+            _spawnedObject.transform.localPosition = pos;
         }
     }
 }

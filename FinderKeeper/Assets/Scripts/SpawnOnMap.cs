@@ -28,17 +28,11 @@ public class SpawnOnMap : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("MAP SCENE INITATING");
         _locations = new Vector2d[_locationStrings.Length];
         _spawnedObjects = new List<GameObject>();
 
         for (int i = 0; i < _locationStrings.Length; i++)
         {
-            var collectedItems = GameManager.Instance.GetCollectedItems();
-            foreach (var item in collectedItems) {
-                Debug.Log("COLLECTED ITEM: " + item.Id);
-            }
-
             var locationString = _locationStrings[i];
             _locations[i] = Conversions.StringToLatLon(locationString);
 

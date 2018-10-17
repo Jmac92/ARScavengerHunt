@@ -79,6 +79,7 @@ public class Collect : MonoBehaviour {
                     collectible.IsCollected = true;
                     collectible.IsVisibleOnMap = false;
                     GameManager.Instance.AddCollectedItem(collectible);
+                    GameManager.Instance.CurrentItemId = collectible.Id;
                     SceneManager.LoadScene("ARMode");
                 }
             }
@@ -98,6 +99,7 @@ public class Collect : MonoBehaviour {
                     collectible.IsCollected = true;
                     collectible.IsVisibleOnMap = false;
                     GameManager.Instance.AddCollectedItem(collectible);
+                    GameManager.Instance.CurrentItemId = collectible.Id;
                     SceneManager.LoadScene("ARMode");
                 }
             }
