@@ -4,6 +4,7 @@ using Mapbox.Unity.Map;
 using Mapbox.Unity.MeshGeneration.Factories;
 using Mapbox.Unity.Utilities;
 using System.Collections.Generic;
+using System;
 
 public class SpawnOnARMap : MonoBehaviour
 {
@@ -26,17 +27,20 @@ public class SpawnOnARMap : MonoBehaviour
 
     void Awake()
     {
+        GameObject instance = Instantiate(_markerPrefab);
 
-        Collectible collectible = GameManager.Instance.GetCourseItem(GameManager.Instance.CurrentItemId);
+        Collectible collectible = GameManager.Instance.GetCourseItem(Convert.ToInt32(instance.name));
 
         var locationString = collectible.LatLong;
         _location = Conversions.StringToLatLon(locationString);
 
-        GameObject instance = Instantiate(_markerPrefab);
         instance.transform.SetParent(_mapGameObject.transform);
         instance.transform.localPosition = _map.GeoToWorldPosition(_location, true);
         instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
         instance.transform.rotation *= Quaternion.Euler(0f, 0f, 180f);
+        instance.name = GameManager.Instance.CurrentItemId.ToString();
+
+        
 
         if (collectible != null)
         {

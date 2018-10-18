@@ -61,6 +61,10 @@ public class ARCollect : MonoBehaviour {
 
         confetti.Play();
 
+        int currentItem = GameManager.Instance.CurrentItemId;
+        Collectible collectible = GameManager.Instance.GetCourseItem(currentItem);
+        GameManager.Instance.AddCollectedItem(collectible);
+
         Invoke("ReturnToMap", 3);
     }
 

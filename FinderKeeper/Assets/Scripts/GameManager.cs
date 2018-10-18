@@ -110,13 +110,6 @@ public class GameManager : MonoBehaviour {
     {
         if(!_collectedItems.Contains(item))
             _collectedItems.Add(item);
-        else
-            Debug.Log(item.Id + "ALREADY COLLECTED");
-
-        foreach (var itm in _collectedItems)
-        {
-            Debug.Log("COLLECTED ITEM: " + itm.Id);
-        }
     }
 
     public void RemoveCollectedItem(int id)

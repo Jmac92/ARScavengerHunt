@@ -9,9 +9,7 @@ public class Collect : MonoBehaviour {
 
     public Text itemsText;
     public GameObject collectionPanel = null;
-    //public GameObject InventoryList;
 
-    //private Inventory _inventory;
     private int _Items;
     private GameObject _collectedItem = null;
     
@@ -39,30 +37,6 @@ public class Collect : MonoBehaviour {
         _Items = collectedCount;
     }
 
-    //public void CollectionOnClick() {
-    //    if (_collectedItem.tag == "Low")
-    //    {
-    //        _Items += 1;
-    //        itemsText.text =  _Items + "/5";
-    //        //_inventory = InventoryList.GetComponent<Inventory>();
-    //        //_inventory.WhitenImage();
-
-    //        if (_collectedItem.GetComponentInParent<Collectible>() != null)
-    //        {
-    //            Debug.Log("COLLECTED " + _collectedItem.transform.parent.name);
-
-    //            Collectible collectible = GameManager.Instance.GetCourseItem(Convert.ToInt32(_collectedItem.transform.parent.name));
-    //            collectible.IsCollected = true;
-    //            collectible.IsVisibleOnMap = false;
-
-    //            GameManager.Instance.AddCollectedItem(collectible);
-    //        }
-    //        else Debug.Log(_collectedItem.name + " AIN'T NO COLLECTIBLE");
-
-    //    }
-    //    HideCollectionPanel();  
-    //}
-
     private void Update()
     {
         //Touch input - use this block for app
@@ -76,10 +50,8 @@ public class Collect : MonoBehaviour {
                 {
                     _collectedItem = raycastHit.transform.gameObject;
                     Collectible collectible = GameManager.Instance.GetCourseItem(Convert.ToInt32(_collectedItem.transform.parent.name));
-                    collectible.IsCollected = true;
                     collectible.IsVisibleOnMap = false;
-                    GameManager.Instance.AddCollectedItem(collectible);
-                    GameManager.Instance.CurrentItemId = collectible.Id;
+                     GameManager.Instance.CurrentItemId = collectible.Id;
                     SceneManager.LoadScene("ARMode");
                 }
             }
@@ -96,9 +68,7 @@ public class Collect : MonoBehaviour {
                 {
                     _collectedItem = raycastHit.transform.gameObject;
                     Collectible collectible = GameManager.Instance.GetCourseItem(Convert.ToInt32(_collectedItem.transform.parent.name));
-                    collectible.IsCollected = true;
                     collectible.IsVisibleOnMap = false;
-                    GameManager.Instance.AddCollectedItem(collectible);
                     GameManager.Instance.CurrentItemId = collectible.Id;
                     SceneManager.LoadScene("ARMode");
                 }
