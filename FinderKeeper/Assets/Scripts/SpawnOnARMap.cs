@@ -37,7 +37,6 @@ public class SpawnOnARMap : MonoBehaviour
         instance.transform.SetParent(_mapGameObject.transform);
         instance.transform.localPosition = _map.GeoToWorldPosition(_location, true);
         instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
-        instance.transform.rotation *= Quaternion.Euler(0f, 0f, 180f);
         instance.name = GameManager.Instance.CurrentItemId.ToString();
 
         
