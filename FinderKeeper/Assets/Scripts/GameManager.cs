@@ -56,6 +56,17 @@ public class GameManager : MonoBehaviour {
             StopTimer();
     }
 
+    void OnApplicationPause(bool paused)
+    {
+        var timeWhenClosed = 0;
+        if (paused) {
+            timeWhenClosed = DateTime.UtcNow.Second;
+        } else {
+            var timeDifference = DateTime.UtcNow.Second - timeWhenClosed;
+            sceneTime = sceneTime + (timeDifference);
+        }
+    }
+
     public static GameManager Instance
     {
         get
