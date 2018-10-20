@@ -18,7 +18,7 @@ public class SpawnOnARMap : MonoBehaviour
     Vector2d _location;
 
     [SerializeField]
-    float _spawnScale = 100f;
+    float _spawnScale = 0.1f;
 
     [SerializeField]
     GameObject _markerPrefab;
