@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour {
 
     private static GameManager _instance;
 
+    private int _timeClosed;
+    private int _timeDifference;
+
     // Use this for initialization
     void Awake()
     {
@@ -43,7 +46,7 @@ public class GameManager : MonoBehaviour {
         //Keep time once the player has entered the map scene
         if (Convert.ToBoolean(PlayerPrefs.GetInt("hasTimerStarted")))
         {
-            sceneTime += Time.deltaTime;
+            sceneTime += Time.unscaledDeltaTime;
             PlayerPrefs.SetFloat("sceneTime", sceneTime);
         }
         else
@@ -54,17 +57,6 @@ public class GameManager : MonoBehaviour {
 
         if (sceneTime >= maxTime)
             StopTimer();
-    }
-
-    void OnApplicationPause(bool paused)
-    {
-        var timeWhenClosed = 0;
-        if (paused) {
-            timeWhenClosed = DateTime.UtcNow.Second;
-        } else {
-            var timeDifference = DateTime.UtcNow.Second - timeWhenClosed;
-            sceneTime = sceneTime + (timeDifference);
-        }
     }
 
     public static GameManager Instance
