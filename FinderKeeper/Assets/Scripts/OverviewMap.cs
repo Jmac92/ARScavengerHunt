@@ -45,6 +45,9 @@ public class OverviewMap : MonoBehaviour {
     [SerializeField]
     GameObject _rotationIcon;
 
+    [SerializeField]
+    GameObject _perspectiveIcon;
+
     Vector2d[] _locations;
 
     List<GameObject> _spawnedObjects;
@@ -57,7 +60,9 @@ public class OverviewMap : MonoBehaviour {
 
     CameraSwap _cameraScript;
 
-    Button _buttonScript;
+    Button _rotationButtonScript;
+
+    Button _perspectiveButtonScript;
 
     public void SnapToCurrentLocation () {
         _overviewMap.UpdateMap(CalculateCentroid(_locations), _overviewMap.InitialZoom);
@@ -65,11 +70,7 @@ public class OverviewMap : MonoBehaviour {
 
     public void StorePlayerPosition () {
         Transitions.playerPosition = _map.CenterLatitudeLongitude;
-    }
-
-    public void ToggleARPanel() {
-        var panel = _overviewMapCanvas.transform.Find("ARPanel").gameObject;
-        panel.SetActive(!panel.activeSelf);
+        Transitions.isOverviewActive = true;
     }
 
     public void EnableOverviewMap () {
@@ -130,7 +131,8 @@ public class OverviewMap : MonoBehaviour {
 
         _rotationScript = _playerGameObject.GetComponent(typeof(RotateWithLocationProvider)) as RotateWithLocationProvider;
         _cameraScript = _playerGameObject.GetComponent(typeof(CameraSwap)) as CameraSwap;
-        _buttonScript = _rotationIcon.GetComponent(typeof(Button)) as Button;
+        _rotationButtonScript = _rotationIcon.GetComponent(typeof(Button)) as Button;
+        _perspectiveButtonScript = _perspectiveIcon.GetComponent(typeof(Button)) as Button;
 
         if (Transitions.locations == null) {
             InitializeObjectsFromNewLocations();
@@ -138,18 +140,30 @@ public class OverviewMap : MonoBehaviour {
         } else {
             _locations = Transitions.locations;
             InitializeObjectsFromExistingLocations();
-            SyncComponentSettings();
-            
+            if (!Transitions.cameraSetting == null) {
+                SyncComponentSettings();
+            }
         }
 
         InitializePlayerInstance();
 
         InitializeOverviewMap();  
+
+        if (Transitions.isOverviewActive) {
+             Transitions.isOverviewActive = false;
+             EnableOverviewMap();
+         }
     }
 
     private void SyncComponentSettings () {
         if (_cameraScript.isIsoCamera != Transitions.cameraSetting) {
             _cameraScript.Swap();
+
+            if (!_cameraScript.isIsoCamera) {
+                if (_perspectiveButtonScript.active) {
+                    _perspectiveButtonScript.Lock();
+                }
+            } 
         }
 
         if (_rotationScript.isRotatable != Transitions.rotationSetting) {
@@ -158,7 +172,7 @@ public class OverviewMap : MonoBehaviour {
             if (_rotationScript.isRotatable) {
                 _playerGameObject.transform.localRotation = Transitions.playerRotation;
             } else {
-                _buttonScript.Lock();
+                _rotationButtonScript.Lock();
             }
         } else if (_rotationScript.isRotatable) {
             _playerGameObject.transform.localRotation = Transitions.playerRotation;
@@ -192,13 +206,15 @@ public class OverviewMap : MonoBehaviour {
 
     private void InitializeObjectsFromExistingLocations () {
         _spawnedObjects = new List<GameObject>();
-        for (int i = 0; i < _locations.Length; i++) {   
-            var location = _locations[i];       
-            var instance = Instantiate(_markerPrefab);
-            instance.transform.SetParent(_overviewMapGameObject.transform);
-            instance.transform.localPosition = _map.GeoToWorldPosition(location, true);
-            instance.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
-            _spawnedObjects.Add(instance);
+        for (int i = 0; i < _locations.Length; i++) {  
+            if (!GameManager.Instance.HasItemBeenCollected(i)) {
+                var location = _locations[i];       
+                var instance = Instantiate(_markerPrefab);
+                instance.transform.SetParent(_overviewMapGameObject.transform);
+                instance.transform.localPosition = _map.GeoToWorldPosition(location, true);
+                instance.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
+                _spawnedObjects.Add(instance);
+            } 
         }
     }
 
