@@ -137,12 +137,12 @@ public class OverviewMap : MonoBehaviour {
         if (Transitions.locations == null) {
             InitializeObjectsFromNewLocations();
             Transitions.locations = _locations;
+            Transitions.cameraSetting = true;
+            Transitions.rotationSetting = true;
         } else {
             _locations = Transitions.locations;
             InitializeObjectsFromExistingLocations();
-            if (!Transitions.cameraSetting == null) {
-                SyncComponentSettings();
-            }
+            SyncComponentSettings();
         }
 
         InitializePlayerInstance();
