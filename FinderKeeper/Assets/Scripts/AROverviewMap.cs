@@ -42,7 +42,7 @@ public class AROverviewMap : MonoBehaviour {
         _playerInstance.transform.localPosition = Conversions.GeoToWorldPosition(Transitions.playerPosition, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz();
 
         _map.Initialize(CalculateCentroid(_locations), 16);
-        //_map.gameObject.SetActive(false);
+        _map.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
