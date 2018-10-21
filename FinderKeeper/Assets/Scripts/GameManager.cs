@@ -9,9 +9,15 @@ public class GameManager : MonoBehaviour {
     public float sceneTime = 0;
     public bool hasTimerStarted = false;
 
+    private int _currentItemId;
+
     private List<Collectible> _collectedItems;
+    private List<Collectible> _courseItems;
 
     private static GameManager _instance;
+
+    private int _timeClosed;
+    private int _timeDifference;
 
     // Use this for initialization
     void Awake()
@@ -29,6 +35,7 @@ public class GameManager : MonoBehaviour {
         sceneTime = PlayerPrefs.GetFloat("sceneTime");
 
         _collectedItems = new List<Collectible>();
+        _courseItems = new List<Collectible>();
 
 
         DontDestroyOnLoad(gameObject);
@@ -39,7 +46,7 @@ public class GameManager : MonoBehaviour {
         //Keep time once the player has entered the map scene
         if (Convert.ToBoolean(PlayerPrefs.GetInt("hasTimerStarted")))
         {
-            sceneTime += Time.deltaTime;
+            sceneTime += Time.unscaledDeltaTime;
             PlayerPrefs.SetFloat("sceneTime", sceneTime);
         }
         else
@@ -62,6 +69,19 @@ public class GameManager : MonoBehaviour {
             }
 
             return _instance;
+        }
+    }
+
+    public int CurrentItemId
+    {
+        get
+        {
+            return _currentItemId;
+        }
+
+        set
+        {
+            _currentItemId = value;
         }
     }
 
@@ -93,13 +113,6 @@ public class GameManager : MonoBehaviour {
     {
         if(!_collectedItems.Contains(item))
             _collectedItems.Add(item);
-        else
-            Debug.Log(item.Id + "ALREADY COLLECTED");
-
-        foreach (var itm in _collectedItems)
-        {
-            Debug.Log("COLLECTED ITEM: " + itm.Id);
-        }
     }
 
     public void RemoveCollectedItem(int id)
@@ -124,5 +137,37 @@ public class GameManager : MonoBehaviour {
                 return true;
         }
         return false;
+    }
+
+
+    public List<Collectible> GetCourseItems()
+    {
+        return _courseItems;
+    }
+
+    public Collectible GetCourseItem(int id)
+    {
+        foreach (Collectible item in _courseItems)
+        {
+            if (item.Id == id)
+                return item;
+        }
+        return null;
+    }
+
+    public void AddCourseItem(Collectible item)
+    {
+        bool idFound = false;
+        foreach(Collectible itm in _courseItems)
+        {
+            if (item.Id == itm.Id)
+            {
+                idFound = true;
+                continue;
+            }
+        }
+
+        if (!idFound)
+            _courseItems.Add(item);
     }
 }
