@@ -29,17 +29,10 @@ public class SpawnOnARMap : MonoBehaviour
     {
         GameObject instance = Instantiate(_markerPrefab);
 
-        Collectible collectible = GameManager.Instance.GetCourseItem(Convert.ToInt32(instance.name));
+        Collectible collectible = GameManager.Instance.GetCourseItem(Convert.ToInt32(GameManager.Instance.CurrentItemId));
 
         var locationString = collectible.LatLong;
         _location = Conversions.StringToLatLon(locationString);
-
-        instance.transform.SetParent(_mapGameObject.transform);
-        instance.transform.localPosition = _map.GeoToWorldPosition(_location, true);
-        instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
-        instance.name = GameManager.Instance.CurrentItemId.ToString();
-
-        
 
         if (collectible != null)
         {
@@ -51,10 +44,10 @@ public class SpawnOnARMap : MonoBehaviour
     {
         if (_spawnedObject != null)
         {
+            _spawnedObject.transform.SetParent(_mapGameObject.transform);
             _spawnedObject.transform.localPosition = _map.GeoToWorldPosition(_location, true);
             _spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
-            var pos = _spawnedObject.transform.localPosition;
-            _spawnedObject.transform.localPosition = pos;
+            _spawnedObject.name = GameManager.Instance.CurrentItemId.ToString();
         }
     }
 }
