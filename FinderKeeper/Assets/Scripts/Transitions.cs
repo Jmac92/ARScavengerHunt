@@ -6,6 +6,8 @@ public static class Transitions {
 
     public static Vector2d[] locations { get; set; }
 
+    public static string[] locationStrings { get; set; }
+
     public static Vector2d playerPosition { get; set; }
 
     public static Quaternion playerRotation { get; set; }

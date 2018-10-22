@@ -38,6 +38,7 @@ public class SpawnOnMap : MonoBehaviour
             
             GameObject instance = Instantiate(_markerPrefab);
             instance.name = locationString;
+            instance.transform.SetParent(_mapGameObject.transform);
 
             Collectible collectible = instance.GetComponent<Collectible>();
             collectible.Id = locationString;
@@ -51,24 +52,6 @@ public class SpawnOnMap : MonoBehaviour
         }
     }
 
-    /*private void Update()
-    {
-        int count = _spawnedObjects.Count;
-        for (int i = 0; i < count; i++)
-        {
-            var spawnedObject = _spawnedObjects[i];
-            if (spawnedObject != null)
-            {
-                var location = _locations[i];
-                spawnedObject.transform.localPosition = _map.GeoToWorldPosition(location, true);
-                spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
-                var pos = spawnedObject.transform.localPosition;
-                pos.y = 5;
-                spawnedObject.transform.localPosition = pos;
-            }
-        }
-    }*/
-
     private void Update()
     {
         int count = _spawnedObjects.Count;
@@ -80,7 +63,6 @@ public class SpawnOnMap : MonoBehaviour
                 var location = Conversions.StringToLatLon(spawnedObject.name);
                 if (!GameManager.Instance.HasItemBeenCollected(spawnedObject.name))
                 {
-                    spawnedObject.transform.SetParent(_mapGameObject.transform);
                     spawnedObject.transform.localPosition = _map.GeoToWorldPosition(location, true);
                     spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
                     var pos = spawnedObject.transform.localPosition;
