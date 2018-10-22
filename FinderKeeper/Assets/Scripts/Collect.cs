@@ -49,7 +49,7 @@ public class Collect : MonoBehaviour {
                 if (raycastHit.collider.tag == "Low")
                 {
                     _collectedItem = raycastHit.transform.gameObject;
-                    Collectible collectible = GameManager.Instance.GetCourseItem(Convert.ToInt32(_collectedItem.transform.parent.name));
+                    Collectible collectible = GameManager.Instance.GetCourseItem(_collectedItem.transform.parent.name);
                     collectible.IsVisibleOnMap = false;
                      GameManager.Instance.CurrentItemId = collectible.Id;
                     SceneManager.LoadScene("ARMode");
@@ -67,7 +67,7 @@ public class Collect : MonoBehaviour {
                 if (raycastHit.collider.tag == "Low")
                 {
                     _collectedItem = raycastHit.transform.gameObject;
-                    Collectible collectible = GameManager.Instance.GetCourseItem(Convert.ToInt32(_collectedItem.transform.parent.name));
+                    Collectible collectible = GameManager.Instance.GetCourseItem(_collectedItem.transform.parent.name);
                     collectible.IsVisibleOnMap = false;
                     GameManager.Instance.CurrentItemId = collectible.Id;
                     SceneManager.LoadScene("ARMode");

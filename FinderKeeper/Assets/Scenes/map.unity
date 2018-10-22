@@ -3486,7 +3486,7 @@ MonoBehaviour:
   _overviewMap: {fileID: 1006689815}
   _markerPrefab: {fileID: 1934693623955548, guid: dc045e62d23a829479b958da9344af88,
     type: 2}
-  _markerSpawnScale: 12
+  _markerSpawnScale: 6
   _playerPrefab: {fileID: 100004, guid: cdc93de93f2f11e48a70a0446b5a5557, type: 3}
   _rotationIcon: {fileID: 1859964821}
   _perspectiveIcon: {fileID: 1558826509}
@@ -4619,11 +4619,11 @@ MonoBehaviour:
   _mapGameObject: {fileID: 1771452846}
   _map: {fileID: 1771452847}
   _locationStrings:
-  - -37.807395, 144.986678
-  - -37.808516, 144.985867
-  - -37.807999, 144.987240
-  - -37.808024, 144.986382
-  - -37.808914, 144.987723
+  - -37.807774, 144.986006
+  - -37.807808, 144.986368
+  - -37.807970, 144.986349
+  - -37.807935, 144.985970
+  - -37.807876, 144.986173
   _spawnScale: 1.5
   _markerPrefab: {fileID: 1961207376309816, guid: 32f43cd74ac333842801bc372d4db9d4,
     type: 2}

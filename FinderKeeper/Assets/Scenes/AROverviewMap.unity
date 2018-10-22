@@ -1803,3 +1803,14 @@ MonoBehaviour:
   _camera: {fileID: 2141252180}
   _arRoot: {fileID: 2141252184}
   _arPanel: {fileID: 458917359}
+--- !u!114 &2141252186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2141252184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562a9fe49bfc2418099790a804f22711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

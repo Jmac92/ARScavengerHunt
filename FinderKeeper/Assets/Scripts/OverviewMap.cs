@@ -50,6 +50,8 @@ public class OverviewMap : MonoBehaviour {
 
     Vector2d[] _locations;
 
+    string[] _locationStrings;
+
     List<GameObject> _spawnedObjects;
 
     GameObject _playerInstance;
@@ -137,10 +139,12 @@ public class OverviewMap : MonoBehaviour {
         if (Transitions.locations == null) {
             InitializeObjectsFromNewLocations();
             Transitions.locations = _locations;
+            Transitions.locationStrings = _locationStrings;
             Transitions.cameraSetting = true;
             Transitions.rotationSetting = true;
         } else {
             _locations = Transitions.locations;
+            _locationStrings = Transitions.locationStrings;
             InitializeObjectsFromExistingLocations();
             SyncComponentSettings();
         }
@@ -180,41 +184,38 @@ public class OverviewMap : MonoBehaviour {
     }
 
 	private void InitializeObjectsFromNewLocations () {
-        string[] locationStrings = new string[0];
+        _locationStrings = new string[0];
 		SpawnOnMap spawnScript = _map.GetComponent(typeof(SpawnOnMap)) as SpawnOnMap;
 
 		if (spawnScript != null) {
-		    locationStrings = spawnScript._locationStrings;
+		    _locationStrings = spawnScript._locationStrings;
         }
-        _locations = new Vector2d[locationStrings.Length];
+        _locations = new Vector2d[_locationStrings.Length];
         
         _spawnedObjects = new List<GameObject>();
-        for (int i = 0; i < locationStrings.Length; i++) {
-            _locations[i] = Conversions.StringToLatLon(locationStrings[i]);         
+        for (int i = 0; i < _locationStrings.Length; i++) {
+            _locations[i] = Conversions.StringToLatLon(_locationStrings[i]);         
 
             Vector2d randPoint = new Vector2d(CalculateRandomXOffset(_locations[i]), CalculateRandomYOffset(_locations[i]));
 
             _locations[i] = randPoint;
             
-            var instance = Instantiate(_markerPrefab);
+            GameObject instance = Instantiate(_markerPrefab);
+            instance.name = _locationStrings[i];
             instance.transform.SetParent(_overviewMapGameObject.transform);
-            instance.transform.localPosition = _map.GeoToWorldPosition(randPoint, true);
-            instance.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
+            
             _spawnedObjects.Add(instance);
         }
     }
 
     private void InitializeObjectsFromExistingLocations () {
         _spawnedObjects = new List<GameObject>();
-        for (int i = 0; i < _locations.Length; i++) {  
-            if (!GameManager.Instance.HasItemBeenCollected(i)) {
-                var location = _locations[i];       
-                var instance = Instantiate(_markerPrefab);
-                instance.transform.SetParent(_overviewMapGameObject.transform);
-                instance.transform.localPosition = _map.GeoToWorldPosition(location, true);
-                instance.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
-                _spawnedObjects.Add(instance);
-            } 
+        for (int i = 0; i < _locations.Length; i++) {       
+            GameObject instance = Instantiate(_markerPrefab);
+            instance.name = _locationStrings[i];
+            instance.transform.SetParent(_overviewMapGameObject.transform);
+
+            _spawnedObjects.Add(instance);
         }
     }
 
@@ -246,9 +247,9 @@ public class OverviewMap : MonoBehaviour {
     private double CalculateRandomXOffset (Vector2d point) {
         double randX = 0.00;
         if (Random.value > 0.5) {
-            randX = point.x + ((double)Random.Range(0, 11) / 111111);
+            randX = point.x + ((double)Random.Range(0, 5) / 111111);
         } else {
-            randX = point.x - ((double)Random.Range(0, 11) / 111111);
+            randX = point.x - ((double)Random.Range(0, 5) / 111111);
         }
         return randX;
     }
@@ -256,9 +257,9 @@ public class OverviewMap : MonoBehaviour {
     private double CalculateRandomYOffset (Vector2d point) {
         var randY = 0.0;
         if (Random.value > 0.5) {
-            randY = point.y + (Random.Range(0, 11) / (111111 * Mathf.Cos((float)(point.x * (Mathf.PI / 180)))));
+            randY = point.y + (Random.Range(0, 5) / (111111 * Mathf.Cos((float)(point.x * (Mathf.PI / 180)))));
         } else {
-            randY = point.y - (Random.Range(0, 11) / (111111 * Mathf.Cos((float)(point.x * (Mathf.PI / 180)))));
+            randY = point.y - (Random.Range(0, 5) / (111111 * Mathf.Cos((float)(point.x * (Mathf.PI / 180)))));
         }
         return randY;
     }
@@ -271,7 +272,10 @@ public class OverviewMap : MonoBehaviour {
             {
                 var spawnedObject = _spawnedObjects[i];
                 var location = _locations[i];
-                spawnedObject.transform.localPosition = Conversions.GeoToWorldPosition(location, _overviewMap.CenterMercator, _overviewMap.WorldRelativeScale).ToVector3xz();
+                if (!GameManager.Instance.HasItemBeenCollected(spawnedObject.name)) {
+                    spawnedObject.transform.localPosition = Conversions.GeoToWorldPosition(location, _overviewMap.CenterMercator, _overviewMap.WorldRelativeScale).ToVector3xz();
+                    spawnedObject.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
+                }
             }
 
             _playerInstance.transform.localPosition = Conversions.GeoToWorldPosition(_map.CenterLatitudeLongitude, _overviewMap.CenterMercator, _overviewMap.WorldRelativeScale).ToVector3xz();

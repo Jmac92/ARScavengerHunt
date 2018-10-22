@@ -18,6 +18,8 @@ public class AROverviewMap : MonoBehaviour {
 
 	Vector2d[] _locations;
 
+    string[] _locationStrings;
+
 	List<GameObject> _spawnedObjects;
 
     GameObject _playerInstance;
@@ -25,21 +27,19 @@ public class AROverviewMap : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_locations = Transitions.locations;
+        _locationStrings = Transitions.locationStrings;
         
 		_spawnedObjects = new List<GameObject>();
         for (int i = 0; i < _locations.Length; i++) {   
-            if (!GameManager.Instance.HasItemBeenCollected(i)) {
-                var location = _locations[i];
-                var instance = Instantiate(_markerPrefab);
-                instance.transform.SetParent(_map.transform);
-                instance.transform.localPosition = _map.GeoToWorldPosition(location, true);
-                _spawnedObjects.Add(instance);
-            }
+            GameObject instance = Instantiate(_markerPrefab);
+            instance.name = _locationStrings[i];
+            instance.transform.SetParent(_map.transform);
+
+            _spawnedObjects.Add(instance);
         }
 
         _playerInstance = Instantiate(_playerPrefab);
         _playerInstance.transform.SetParent(_map.transform);
-        _playerInstance.transform.localPosition = Conversions.GeoToWorldPosition(Transitions.playerPosition, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz();
 
         _map.Initialize(CalculateCentroid(_locations), 16);
         _map.gameObject.SetActive(false);
@@ -53,7 +53,8 @@ public class AROverviewMap : MonoBehaviour {
             {
                 var spawnedObject = _spawnedObjects[i];
                 var location = _locations[i];
-                spawnedObject.transform.localPosition = Conversions.GeoToWorldPosition(location, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz();
+                if (!GameManager.Instance.HasItemBeenCollected(spawnedObject.name))
+                    spawnedObject.transform.localPosition = Conversions.GeoToWorldPosition(location, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz();
             }
 
             _playerInstance.transform.localPosition = Conversions.GeoToWorldPosition(Transitions.playerPosition, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz();
