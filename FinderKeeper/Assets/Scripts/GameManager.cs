@@ -170,4 +170,10 @@ public class GameManager : MonoBehaviour {
         if (!idFound)
             _courseItems.Add(item);
     }
+
+    public void Reset()
+    {
+        ClearCollectedItems();
+        ResetTimer();
+    }
 }

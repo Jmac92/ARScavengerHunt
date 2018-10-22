@@ -30,4 +30,8 @@ public class Results : MonoBehaviour {
 				break;
 		}
 	}
+
+	public void Restart() {
+		GameManager.Instance.Reset();
+	}
 }
