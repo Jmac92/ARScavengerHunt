@@ -22,7 +22,7 @@ public class DistanceToPlayer : MonoBehaviour {
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             gameObject.transform.GetChild(1).gameObject.SetActive(true);
 
-            Collectible item = GameManager.Instance.GetCollectedItem(Convert.ToInt32(gameObject.name));
+            Collectible item = GameManager.Instance.GetCollectedItem(gameObject.name);
             if (item != null)
                 item.IsVisibleOnMap = true;
         }
@@ -31,7 +31,7 @@ public class DistanceToPlayer : MonoBehaviour {
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             gameObject.transform.GetChild(1).gameObject.SetActive(false);
 
-            Collectible item = GameManager.Instance.GetCollectedItem(Convert.ToInt32(gameObject.name));
+            Collectible item = GameManager.Instance.GetCollectedItem(gameObject.name);
             if (item != null)
                 item.IsVisibleOnMap = false;
         }

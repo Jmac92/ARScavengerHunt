@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657856, g: 0.49641234, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -682,7 +682,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.01677149, y: 0.1804807}
   m_AnchorMax: {x: 0.142, y: 0.84629774}
-  m_AnchoredPosition: {x: 22.330994, y: -0.5000553}
+  m_AnchoredPosition: {x: 22.330992, y: -0.5000553}
   m_SizeDelta: {x: 47.89622, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &338544964
@@ -4619,11 +4619,11 @@ MonoBehaviour:
   _mapGameObject: {fileID: 1771452846}
   _map: {fileID: 1771452847}
   _locationStrings:
-  - -37.807395, 144.986678
-  - -37.808516, 144.985867
-  - -37.807999, 144.987240
-  - -37.808024, 144.986382
-  - -37.808914, 144.987723
+  - -37.807774, 144.986006
+  - -37.807808, 144.986368
+  - -37.807970, 144.986349
+  - -37.807935, 144.985970
+  - -37.807876, 144.986173
   _spawnScale: 1.5
   _markerPrefab: {fileID: 1961207376309816, guid: 32f43cd74ac333842801bc372d4db9d4,
     type: 2}

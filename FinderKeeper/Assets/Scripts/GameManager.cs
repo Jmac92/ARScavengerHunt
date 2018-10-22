@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public float sceneTime = 0;
     public bool hasTimerStarted = false;
 
-    private int _currentItemId;
+    private string _currentItemId;
 
     private List<Collectible> _collectedItems;
     private List<Collectible> _courseItems;
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public int CurrentItemId
+    public string CurrentItemId
     {
         get
         {
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour {
         return _collectedItems;
     }
 
-    public Collectible GetCollectedItem(int id)
+    public Collectible GetCollectedItem(string id)
     {
         foreach (Collectible item in _collectedItems) {
             if (item.Id == id)
@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour {
             _collectedItems.Add(item);
     }
 
-    public void RemoveCollectedItem(int id)
+    public void RemoveCollectedItem(string id)
     {
         foreach (Collectible item in _collectedItems)
         {
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour {
         _collectedItems.Clear();
     }
 
-    public bool HasItemBeenCollected(int id)
+    public bool HasItemBeenCollected(string id)
     {
         foreach (Collectible item in _collectedItems)
         {
@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour {
         return _courseItems;
     }
 
-    public Collectible GetCourseItem(int id)
+    public Collectible GetCourseItem(string id)
     {
         foreach (Collectible item in _courseItems)
         {
@@ -169,5 +169,13 @@ public class GameManager : MonoBehaviour {
 
         if (!idFound)
             _courseItems.Add(item);
+    }
+
+    public void UpdateCourseItem(string id, Collectible newItem)
+    {
+        Collectible oldItem = GetCourseItem(id);
+        oldItem.IsCollected = newItem.IsCollected;
+        oldItem.IsVisibleOnMap = newItem.IsVisibleOnMap;
+        oldItem.LatLong = newItem.LatLong;
     }
 }

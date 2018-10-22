@@ -6,25 +6,19 @@ public class Collectible : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
-        Id = -1;
+        Id = "";
         IsCollected = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        bool isInCollectionList = GameManager.Instance.HasItemBeenCollected(Id);
-        
-        if (isInCollectionList)
+        if (IsCollected)
         {
             gameObject.SetActive(false);
         }
-
-        if (Id >= 0) {
-            Debug.Log("ID: " + Id);
-        }
 	}
 
-    public int Id { get; set; }
+    public string Id { get; set; }
 
     public bool IsCollected { get; set; }
 

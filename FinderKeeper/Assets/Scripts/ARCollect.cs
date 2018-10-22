@@ -61,9 +61,12 @@ public class ARCollect : MonoBehaviour {
 
         confetti.Play();
 
-        int currentItem = GameManager.Instance.CurrentItemId;
+        string currentItem = GameManager.Instance.CurrentItemId;
         Collectible collectible = GameManager.Instance.GetCourseItem(currentItem);
-        GameManager.Instance.AddCollectedItem(collectible);
+        collectible.IsCollected = true;
+        collectible.IsVisibleOnMap = false;
+        UpdateCollectible(collectible);
+        
 
         Invoke("ReturnToMap", 3);
     }
@@ -72,5 +75,11 @@ public class ARCollect : MonoBehaviour {
     {
         SoundManager.Instance.StopAll();
         SceneManager.LoadScene("map");
+    }
+
+    private void UpdateCollectible(Collectible item)
+    {
+        GameManager.Instance.UpdateCourseItem(GameManager.Instance.CurrentItemId, item);
+        GameManager.Instance.AddCollectedItem(item);
     }
 }

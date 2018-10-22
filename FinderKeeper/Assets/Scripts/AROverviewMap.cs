@@ -28,7 +28,7 @@ public class AROverviewMap : MonoBehaviour {
         
 		_spawnedObjects = new List<GameObject>();
         for (int i = 0; i < _locations.Length; i++) {   
-            if (!GameManager.Instance.HasItemBeenCollected(i)) {
+            if (!GameManager.Instance.HasItemBeenCollected(_locations[i].ToString())) {
                 var location = _locations[i];
                 var instance = Instantiate(_markerPrefab);
                 instance.transform.SetParent(_map.transform);
