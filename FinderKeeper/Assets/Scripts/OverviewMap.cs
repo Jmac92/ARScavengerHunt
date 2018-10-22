@@ -247,9 +247,9 @@ public class OverviewMap : MonoBehaviour {
     private double CalculateRandomXOffset (Vector2d point) {
         double randX = 0.00;
         if (Random.value > 0.5) {
-            randX = point.x + ((double)Random.Range(0, 11) / 111111);
+            randX = point.x + ((double)Random.Range(0, 5) / 111111);
         } else {
-            randX = point.x - ((double)Random.Range(0, 11) / 111111);
+            randX = point.x - ((double)Random.Range(0, 5) / 111111);
         }
         return randX;
     }
@@ -257,9 +257,9 @@ public class OverviewMap : MonoBehaviour {
     private double CalculateRandomYOffset (Vector2d point) {
         var randY = 0.0;
         if (Random.value > 0.5) {
-            randY = point.y + (Random.Range(0, 11) / (111111 * Mathf.Cos((float)(point.x * (Mathf.PI / 180)))));
+            randY = point.y + (Random.Range(0, 5) / (111111 * Mathf.Cos((float)(point.x * (Mathf.PI / 180)))));
         } else {
-            randY = point.y - (Random.Range(0, 11) / (111111 * Mathf.Cos((float)(point.x * (Mathf.PI / 180)))));
+            randY = point.y - (Random.Range(0, 5) / (111111 * Mathf.Cos((float)(point.x * (Mathf.PI / 180)))));
         }
         return randY;
     }

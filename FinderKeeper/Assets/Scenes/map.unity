@@ -3486,7 +3486,7 @@ MonoBehaviour:
   _overviewMap: {fileID: 1006689815}
   _markerPrefab: {fileID: 1934693623955548, guid: dc045e62d23a829479b958da9344af88,
     type: 2}
-  _markerSpawnScale: 12
+  _markerSpawnScale: 6
   _playerPrefab: {fileID: 100004, guid: cdc93de93f2f11e48a70a0446b5a5557, type: 3}
   _rotationIcon: {fileID: 1859964821}
   _perspectiveIcon: {fileID: 1558826509}
