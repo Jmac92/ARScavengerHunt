@@ -35,30 +35,23 @@ public class SpawnOnMap : MonoBehaviour
         {
             var locationString = _locationStrings[i];
             _locations[i] = Conversions.StringToLatLon(locationString);
-
+            
             GameObject instance = Instantiate(_markerPrefab);
-            instance.transform.SetParent(_mapGameObject.transform);
-            instance.transform.localPosition = _map.GeoToWorldPosition(_locations[i], true);
-            instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
-            instance.name = i.ToString();
+            instance.name = locationString;
 
             Collectible collectible = instance.GetComponent<Collectible>();
-            collectible.Id = i;
-            collectible.IsCollected = false;
-            collectible.IsVisibleOnMap = true;
-            collectible.LatLong = locationString;
+            collectible.Id = locationString;
 
-            if (!GameManager.Instance.HasItemBeenCollected(i))
-            {
+            collectible.LatLong = locationString;
+            if(collectible != null)
                 _spawnedObjects.Add(instance);
-            }
 
             if (!GameManager.Instance.GetCourseItems().Contains(collectible))
                 GameManager.Instance.AddCourseItem(collectible);
         }
     }
 
-    private void Update()
+    /*private void Update()
     {
         int count = _spawnedObjects.Count;
         for (int i = 0; i < count; i++)
@@ -72,6 +65,28 @@ public class SpawnOnMap : MonoBehaviour
                 var pos = spawnedObject.transform.localPosition;
                 pos.y = 5;
                 spawnedObject.transform.localPosition = pos;
+            }
+        }
+    }*/
+
+    private void Update()
+    {
+        int count = _spawnedObjects.Count;
+        for (int i = 0; i < count; i++)
+        {
+            var spawnedObject = _spawnedObjects[i];
+            if (spawnedObject != null)
+            {
+                var location = Conversions.StringToLatLon(spawnedObject.name);
+                if (!GameManager.Instance.HasItemBeenCollected(spawnedObject.name))
+                {
+                    spawnedObject.transform.SetParent(_mapGameObject.transform);
+                    spawnedObject.transform.localPosition = _map.GeoToWorldPosition(location, true);
+                    spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
+                    var pos = spawnedObject.transform.localPosition;
+                    pos.y = 5;
+                    spawnedObject.transform.localPosition = pos;
+                }
             }
         }
     }
