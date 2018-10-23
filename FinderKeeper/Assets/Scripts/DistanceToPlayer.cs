@@ -14,8 +14,14 @@ public class DistanceToPlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        float dist = (gameObject.transform.position - player.transform.position).magnitude;
-        if (!ToggleARMode.isARActive && dist < 5.0f)
+
+        Vector3 playerPos = player.transform.localPosition;
+        Vector3 objectPos = gameObject.transform.localPosition;
+        Vector3 difference = new Vector3(objectPos.x - playerPos.x, 0, objectPos.z - playerPos.z);
+
+        float distance = difference.magnitude;
+
+        if (!ToggleARMode.isARActive && distance < 2.5f)
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             gameObject.transform.GetChild(1).gameObject.SetActive(true);

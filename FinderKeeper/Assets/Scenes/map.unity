@@ -563,15 +563,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4165213320594474, guid: f9bb8fd617c79004c96e5ae8d5b2b8c0, type: 2}
       propertyPath: m_LocalScale.x
-      value: 17.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4165213320594474, guid: f9bb8fd617c79004c96e5ae8d5b2b8c0, type: 2}
       propertyPath: m_LocalScale.y
-      value: 17.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4165213320594474, guid: f9bb8fd617c79004c96e5ae8d5b2b8c0, type: 2}
       propertyPath: m_LocalScale.z
-      value: 17.5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9bb8fd617c79004c96e5ae8d5b2b8c0, type: 2}
@@ -682,7 +682,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.01677149, y: 0.1804807}
   m_AnchorMax: {x: 0.142, y: 0.84629774}
-  m_AnchoredPosition: {x: 22.330994, y: -0.5000553}
+  m_AnchoredPosition: {x: 22.330994, y: -0.5000534}
   m_SizeDelta: {x: 47.89622, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &338544964
@@ -2982,7 +2982,7 @@ MonoBehaviour:
   _subtractUserHeading: 0
   _rotationFollowFactor: 1
   _rotateZ: 0
-  _useNegativeAngle: 0
+  _useNegativeAngle: 1
   _useTransformLocationProvider: 0
   isRotatable: 1
 --- !u!114 &1352142562
@@ -3476,6 +3476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9831ee22e37c4381a2af820aca79988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _locationProvider: {fileID: 2117919255}
   _mapCanvas: {fileID: 413035922}
   _overviewMapCanvas: {fileID: 96350817}
   _mapGameObject: {fileID: 1771452846}
@@ -3601,15 +3602,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4904196409281692, guid: 0cbf921c24e7fa74ca4ba04b04079e09, type: 2}
       propertyPath: m_LocalScale.x
-      value: 17.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4904196409281692, guid: 0cbf921c24e7fa74ca4ba04b04079e09, type: 2}
       propertyPath: m_LocalScale.y
-      value: 17.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4904196409281692, guid: 0cbf921c24e7fa74ca4ba04b04079e09, type: 2}
       propertyPath: m_LocalScale.z
-      value: 17.5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0cbf921c24e7fa74ca4ba04b04079e09, type: 2}
@@ -4619,11 +4620,11 @@ MonoBehaviour:
   _mapGameObject: {fileID: 1771452846}
   _map: {fileID: 1771452847}
   _locationStrings:
-  - -37.807774, 144.986006
-  - -37.807808, 144.986368
-  - -37.807970, 144.986349
-  - -37.807935, 144.985970
-  - -37.807876, 144.986173
+  - -37.822807, 145.038072
+  - -37.822716, 145.038359
+  - -37.822712, 145.038024
+  - -37.822854, 145.038332
+  - -37.822500, 145.038407
   _spawnScale: 1.5
   _markerPrefab: {fileID: 1961207376309816, guid: 32f43cd74ac333842801bc372d4db9d4,
     type: 2}
@@ -5829,9 +5830,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a38712e93231418a84665190b8473d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _desiredAccuracyInMeters: 5
-  _updateDistanceInMeters: 5
-  _updateTimeInMilliSeconds: 500
+  _desiredAccuracyInMeters: 1
+  _updateDistanceInMeters: 1
+  _updateTimeInMilliSeconds: 50
   _userHeadingSmoothing: {fileID: 0}
   _deviceOrientationSmoothing: {fileID: 0}
   _editorDebuggingOnly:
