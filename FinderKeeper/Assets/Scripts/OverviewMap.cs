@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mapbox.Unity;
 using Mapbox.Unity.Map;
+using Mapbox.Unity.Location;
 using Mapbox.Unity.Utilities;
 using Mapbox.Utils;
 using Mapbox.Map;
 using Mapbox.Examples;
 
 public class OverviewMap : MonoBehaviour {
+    [SerializeField]
+    DeviceLocationProvider _locationProvider;
+
     [SerializeField]
     GameObject _mapCanvas;
 
@@ -71,7 +75,7 @@ public class OverviewMap : MonoBehaviour {
     }
 
     public void StorePlayerPosition () {
-        Transitions.playerPosition = _map.CenterLatitudeLongitude;
+        Transitions.playerPosition = _locationProvider.CurrentLocation.LatitudeLongitude;
         Transitions.isOverviewActive = true;
     }
 
@@ -104,6 +108,8 @@ public class OverviewMap : MonoBehaviour {
         if (!_cameraScript.isIsoCamera) {
             _cameraScript.Swap();
         }
+
+        _playerInstance.transform.localRotation = Transitions.playerRotation;
 	}
 
     public void DisableOverviewMap () {
@@ -277,8 +283,8 @@ public class OverviewMap : MonoBehaviour {
                     spawnedObject.transform.localScale = new Vector3(_markerSpawnScale, _markerSpawnScale, _markerSpawnScale);
                 }
             }
-
-            _playerInstance.transform.localPosition = Conversions.GeoToWorldPosition(_map.CenterLatitudeLongitude, _overviewMap.CenterMercator, _overviewMap.WorldRelativeScale).ToVector3xz();
+            
+            _playerInstance.transform.localPosition = Conversions.GeoToWorldPosition(_locationProvider.CurrentLocation.LatitudeLongitude, _overviewMap.CenterMercator, _overviewMap.WorldRelativeScale).ToVector3xz();
         }
 	}
 }
