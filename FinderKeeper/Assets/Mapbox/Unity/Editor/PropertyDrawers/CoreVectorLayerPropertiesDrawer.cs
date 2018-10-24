@@ -3,53 +3,59 @@
 	using UnityEditor;
 	using UnityEngine;
 	using Mapbox.Unity.Map;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System;
+	using Mapbox.VectorTile.ExtensionMethods;
 
 	[CustomPropertyDrawer(typeof(CoreVectorLayerProperties))]
 	public class CoreVectorLayerPropertiesDrawer : PropertyDrawer
 	{
-		static float lineHeight = EditorGUIUtility.singleLineHeight;
+		bool _isGUIContentSet = false;
+		GUIContent[] _primitiveTypeContent;
 
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 		{
-			EditorGUI.BeginProperty(position, label, property);
-			position.height = lineHeight;
+			EditorGUI.BeginProperty(position, null, property);
 
 			// Draw label.
-			EditorGUI.PropertyField(new Rect(position.x, position.y, position.width, lineHeight), property.FindPropertyRelative("isActive"));
-			position.y += lineHeight;
 			var primitiveType = property.FindPropertyRelative("geometryType");
 
-			var typePosition = EditorGUI.PrefixLabel(new Rect(position.x, position.y, position.width, lineHeight), GUIUtility.GetControlID(FocusType.Passive), new GUIContent { text = "Primitive Type", tooltip = "Primitive geometry type of the visualizer, allowed primitives - point, line, polygon." });
-			EditorGUI.indentLevel--;
-			primitiveType.enumValueIndex = EditorGUI.Popup(typePosition, primitiveType.enumValueIndex, primitiveType.enumDisplayNames);
-			EditorGUI.indentLevel++;
+			var primitiveTypeLabel = new GUIContent
+			{
+				text = "Primitive Type",
+				tooltip = "Primitive geometry type of the visualizer, allowed primitives - point, line, polygon."
+			};
 
-			position.y += lineHeight;
-			EditorGUI.PropertyField(new Rect(position.x, position.y, position.width, lineHeight), property.FindPropertyRelative("layerName"));
+			var displayNames = primitiveType.enumDisplayNames;
+			int count = primitiveType.enumDisplayNames.Length;
 
-			position.y += lineHeight;
-			EditorGUI.PropertyField(position, property.FindPropertyRelative("snapToTerrain"));
+			if (!_isGUIContentSet)
+			{
+				_primitiveTypeContent = new GUIContent[count];
+				for (int extIdx = 0; extIdx < count; extIdx++)
+				{
+					_primitiveTypeContent[extIdx] = new GUIContent
+					{
+						text = displayNames[extIdx],
+						tooltip = EnumExtensions.Description((VectorPrimitiveType)extIdx),
+					};
+				}
+				_isGUIContentSet = true;
+			}
 
-			position.y += lineHeight;
-			EditorGUI.PropertyField(position, property.FindPropertyRelative("groupFeatures"));
+			primitiveType.enumValueIndex = EditorGUILayout.Popup(primitiveTypeLabel, primitiveType.enumValueIndex, _primitiveTypeContent);
+
+			var serializedMapObject = property.serializedObject;
+			AbstractMap mapObject = (AbstractMap)serializedMapObject.targetObject;
 
 			if ((VectorPrimitiveType)primitiveType.enumValueIndex == VectorPrimitiveType.Line)
 			{
-				position.y += lineHeight;
-				EditorGUI.PropertyField(position, property.FindPropertyRelative("lineWidth"));
+				EditorGUILayout.PropertyField(property.FindPropertyRelative("lineWidth"));
 			}
-
 			EditorGUI.EndProperty();
 		}
+		//private static int count = 0;
 
-		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-		{
-			var sourceTypeProperty = property.FindPropertyRelative("geometryType");
-
-			float height = 0.0f;
-			height += (((((VectorPrimitiveType)sourceTypeProperty.enumValueIndex == VectorPrimitiveType.Line)) ? 6.0f : 5.0f) * EditorGUIUtility.singleLineHeight);
-
-			return height;
-		}
 	}
 }
