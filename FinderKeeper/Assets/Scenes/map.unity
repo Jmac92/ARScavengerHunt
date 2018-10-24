@@ -563,15 +563,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4165213320594474, guid: f9bb8fd617c79004c96e5ae8d5b2b8c0, type: 2}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4165213320594474, guid: f9bb8fd617c79004c96e5ae8d5b2b8c0, type: 2}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4165213320594474, guid: f9bb8fd617c79004c96e5ae8d5b2b8c0, type: 2}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9bb8fd617c79004c96e5ae8d5b2b8c0, type: 2}
@@ -3487,7 +3487,7 @@ MonoBehaviour:
   _overviewMap: {fileID: 1006689815}
   _markerPrefab: {fileID: 1934693623955548, guid: dc045e62d23a829479b958da9344af88,
     type: 2}
-  _markerSpawnScale: 6
+  _markerSpawnScale: 3
   _playerPrefab: {fileID: 100004, guid: cdc93de93f2f11e48a70a0446b5a5557, type: 3}
   _rotationIcon: {fileID: 1859964821}
   _perspectiveIcon: {fileID: 1558826509}
@@ -3602,15 +3602,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4904196409281692, guid: 0cbf921c24e7fa74ca4ba04b04079e09, type: 2}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4904196409281692, guid: 0cbf921c24e7fa74ca4ba04b04079e09, type: 2}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4904196409281692, guid: 0cbf921c24e7fa74ca4ba04b04079e09, type: 2}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0cbf921c24e7fa74ca4ba04b04079e09, type: 2}
@@ -3935,6 +3935,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1483012084}
+        m_MethodName: StoreRotationSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1572137016
@@ -4147,7 +4158,7 @@ MonoBehaviour:
   _autoFireEvent: 1
   _updateInterval: 0.1
   _sendEvent: 0
-  _latitudeLongitude: -37.807846, 144.986221
+  _latitudeLongitude: -37.822807, 145.038072
   _targetTransform: {fileID: 0}
 --- !u!1 &1678058191
 GameObject:
@@ -4468,7 +4479,7 @@ MonoBehaviour:
   _initializeOnStart: 0
   _options:
     locationOptions:
-      latitudeLongitude: 37.784179, -122.401583
+      latitudeLongitude: -37.822807, 145.038072
       zoom: 16
     extentOptions:
       extentType: 0
@@ -5682,6 +5693,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1558826513}
         m_MethodName: Lock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1483012084}
+        m_MethodName: StoreCameraSetting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
