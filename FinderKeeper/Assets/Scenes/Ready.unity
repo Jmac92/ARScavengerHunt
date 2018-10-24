@@ -392,14 +392,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Location: Gridstone
+  m_Text: 'Location: Swinburne (ATC)
+
 
     Items: 5
 
-    Time: 05:00
 
-
-'
+    Time: 05:00'
 --- !u!222 &401344382
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1045,7 +1044,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Collect
+  m_Text: Course
 --- !u!222 &1725178198
 CanvasRenderer:
   m_ObjectHideFlags: 0
